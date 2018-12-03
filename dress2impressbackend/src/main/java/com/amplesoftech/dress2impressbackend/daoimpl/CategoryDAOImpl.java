@@ -12,7 +12,7 @@ import com.amplesoftech.dress2impressbackend.dto.Category;
 public class CategoryDAOImpl implements CategoryDAO {
 	
 	private static List<Category> categories = new ArrayList<Category>();
-
+ 
 	static {
 
 		Category category = new Category();
@@ -40,10 +40,8 @@ public class CategoryDAOImpl implements CategoryDAO {
 		category.setDescr("Here is Kids");
 		category.setImageURL("kid.png");
 
-		categories.add(category);
+		categories.add(category); 
 		
-		
-
 	}
 
 	@Override

@@ -19,7 +19,7 @@
 					<li class="breadcrumb-item active">View Clothes</li>
 				
 					
-					</ol>
+					</ol> 
                  </c:if>
                  
                  <c:if test="${userClickCategoryClothes==true}">

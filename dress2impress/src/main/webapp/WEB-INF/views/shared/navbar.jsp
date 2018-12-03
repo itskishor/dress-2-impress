@@ -28,6 +28,6 @@
 			  <button style="font-size:12px">Cart <i class="fa fa-shopping-cart"></i></button></a>
             </li>
           </ul>
-        </div>
+        </div> 
       </div>
     </nav>

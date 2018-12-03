@@ -19,8 +19,7 @@ $(function() {
 		break;
 	default:
 		$('#viewclothes').addClass('active');
-	    $('#a_'+menu).addClass('active');
+	    $('#a_'+menu ).addClass('active');
 		break;
 	}
-
 });

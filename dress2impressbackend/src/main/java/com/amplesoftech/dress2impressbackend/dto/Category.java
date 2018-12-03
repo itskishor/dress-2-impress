@@ -1,6 +1,6 @@
 package com.amplesoftech.dress2impressbackend.dto;
 
-public class Category 
+public class Category  
 {
 	//private fields
 		private int id;
