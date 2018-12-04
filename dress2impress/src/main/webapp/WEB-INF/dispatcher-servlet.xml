@@ -15,7 +15,7 @@
 	<context:component-scan
 		base-package="com.amplesoftech.dress2impress.controller" />
 	<context:component-scan
-		base-package="com.amplesoftech.dress2impressbackend.daoimpl" />
+		base-package="com.amplesoftech.dress2impressbackend" />
 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

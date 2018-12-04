@@ -18,6 +18,7 @@ $(function() {
 		$('#signin').addClass('active');
 		break;
 	default:
+		if(menu == 'Home') break;
 		$('#viewclothes').addClass('active');
 	    $('#a_'+menu ).addClass('active');
 		break;
