@@ -1,13 +1,13 @@
- <div class="container">
+ <div class="container-fluid">
 
       <div class="row">
 
-        <div class="col-lg-3"> 
+        <div class="col-lg-2"> 
 		<%@include file="./shared/sidebar.jsp" %>
         </div>
         <!-- /.col-lg-3 -->
 
-        <div class="col-lg-9">
+        <div class="col-lg-10">
 
           <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
             <ol class="carousel-indicators">

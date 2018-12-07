@@ -1,5 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<h3 class="my-4 ">Categories</h3>
+<h3 class="my-4 " align="left">Categories</h3>
 <div class="list-group">
 
 	<c:forEach  items="${categories}" var="category">
