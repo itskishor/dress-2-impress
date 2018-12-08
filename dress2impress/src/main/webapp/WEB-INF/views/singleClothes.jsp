@@ -28,7 +28,7 @@
 		
 			<div class="thumbnail">
 							
-				<img src="${images}/${clothes.code}.jpeg" class="img img-responsive" width="400" height="400"/>
+				<img src="${images}/${clothes.code}.jpeg" class="img img-responsive" width=100% height=100%/>
 						
 			</div>
 		
@@ -44,14 +44,47 @@
 			<p>${clothes.description}</p>
 			<hr/>
 			
-			<h4>Price: <strong> &#8377; ${clothes.unitPrice} /-</strong></h4>
+			<h5>Original Price: <strong> &#8377;${clothes.unitPrice} /-</strong></h5>
 			<hr/>
+			<h5>Price Per Day: <strong> &#8377;${clothes.pricePerDay} /-</strong></h5>
+			<hr/>
+					
+			<c:choose>
+				
+				<c:when test="${clothes.quantity < 1}">
+				
+					<h6>Qty. Available: <span style="color:red">Out of Stock!</span></h6>
+					<h6><span style="color:blue">Coming Soon!</span></h6>
+					
+				</c:when>
+				<c:otherwise>				
+					
 					<h6>Qty. Available: ${clothes.quantity}</h6>
+						
+				</c:otherwise>
+			
+			</c:choose>
+			
+			<c:choose>
+				
+				<c:when test="${clothes.quantity < 1}">
+				
+					<a href="javascript:void(0)" class="btn btn-success disabled"><strike>
+				<span class="fa fa-shopping-cart"></span> Add to Cart</strike></a>
+					
+				</c:when>
+				<c:otherwise>				
+					
+					<a href="${contextRoot}/cart/add/${clothes.id}/clothes" class="btn btn-success">
+				<span class="fa fa-shopping-cart"></span> Add to Cart</a>
+						
+				</c:otherwise>
+			
+			</c:choose>
 					
 					
 						
-		        <a href="${contextRoot}/cart/add/${clothes.id}/clothes" class="btn btn-success">
-				<span class="fa fa-shopping-cart"></span> Add to Cart</a>
+		        
 				<a href="${contextRoot}/show/all/clothes" class="btn btn-primary">Back</a>
 			
 					

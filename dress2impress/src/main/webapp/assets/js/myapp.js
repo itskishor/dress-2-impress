@@ -108,7 +108,15 @@ $(function() {
 				bSortable : false,
 				mRender : function(data, type, row) {
 					var str='';
-					str +='<a href="'+window.contextRoot+'/cart/add/'+data+'/clothes" class="btn btn-success btn-sm">Cart<span class="fa fa-shopping-cart"></span></a>';
+					
+					if (row.quantity < 1) {
+						str += '<a href="javascript:void(0)" class="btn btn-success btn-sm disabled">Cart<span class="fa fa-shopping-cart"></span></a>';
+					}
+					else
+						{
+						str +='<a href="'+window.contextRoot+'/cart/add/'+data+'/clothes" class="btn btn-success btn-sm">Cart<span class="fa fa-shopping-cart"></span></a>';
+						 
+						}
 					return str;
 				}
 

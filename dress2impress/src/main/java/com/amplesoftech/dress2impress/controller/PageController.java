@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.amplesoftech.dress2impress.excepiton.ClothesNotFoundException;
 import com.amplesoftech.dress2impressbackend.dao.CategoryDAO;
 import com.amplesoftech.dress2impressbackend.dao.ClothesDAO;
 import com.amplesoftech.dress2impressbackend.dto.Category;
@@ -112,11 +113,13 @@ public class PageController {
 	 * */
 	
 	@RequestMapping(value = "/show/{id}/clothes") 
-	public ModelAndView showSingleProduct(@PathVariable int id){
+	public ModelAndView showSingleClothes(@PathVariable int id) throws ClothesNotFoundException
+	{
 		
 		ModelAndView mv = new ModelAndView("page");
 			// update the view count
 		Clothes clothes = clothesDAO.get(id);
+		if(clothes == null) throw new ClothesNotFoundException();
 		clothes.setViews(clothes.getViews() + 1);
 		clothesDAO.update(clothes);
 		//---------------------------
