@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -31,7 +34,6 @@ public class Clothes {
 	private double pricePerDay;
 	private int quantity;
 	@Column(name = "is_active")	
-	@JsonIgnore
 	private boolean active;
 	@Column(name = "category_id")
 	@JsonIgnore
@@ -42,7 +44,26 @@ public class Clothes {
 	private int rented;
 	private int views;
 	
-	// default constructor
+	@Transient
+	private MultipartFile file;
+	
+	public MultipartFile getFile() {
+		return file;
+	}
+
+
+
+
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
+
+
+
+
+
+		// default constructor
 		public Clothes() {
 			
 			this.code = "PRD" + UUID.randomUUID().toString().substring(26).toUpperCase();
@@ -137,6 +158,18 @@ public class Clothes {
 	public void setViews(int views) {
 		this.views = views;
 	}
+	@Override
+	public String toString() {
+		return "Clothes [id=" + id + ", code=" + code + ", name=" + name + ", brand=" + brand + ", size=" + size
+				+ ", description=" + description + ", unitPrice=" + unitPrice + ", pricePerDay=" + pricePerDay
+				+ ", quantity=" + quantity + ", active=" + active + ", categoryId=" + categoryId + ", supplierId="
+				+ supplierId + ", rented=" + rented + ", views=" + views + "]";
+	}
+
+
+
+
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

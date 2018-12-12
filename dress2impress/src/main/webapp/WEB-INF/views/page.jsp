@@ -41,6 +41,7 @@
 <!-- Custom styles for this template -->
 <link href="${css}/myapp.css" rel="stylesheet">
 
+<link href="${css}/font-awesome.min.css" rel="stylesheet">
 
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -61,6 +62,11 @@
 				<!--Loading The View Clothes Content -->
 			<c:if test="${userClickViewClothes==true or userClickCategoryClothes==true}">
 				<%@include file="viewclothes.jsp"%>
+			</c:if>
+			
+			<!--Loading The Manage Clothes Content -->
+			<c:if test="${userClickManageClothes==true}">
+				<%@include file="manageclothes.jsp"%> 
 			</c:if>
 			
 			<!--Loading The View Clothes Content -->
@@ -97,8 +103,13 @@
 		<%@include file="./shared/footer.jsp"%>
 
 
-		<!-- Bootstrap core JavaScript -->
+		<!-- JQuery -->
 		<script src="${js}/jquery.js"></script>
+		
+		<!-- JQuery Validator Plugin -->
+		<script src="${js}/jquery.validate.js"></script>
+		
+		<!-- Bootstrap core JavaScript -->
 		<script src="${js}/bootstrap.bundle.min.js"></script>
 		
 		
@@ -107,7 +118,10 @@
 		
 		<!--Data Table Bootstrap -->
 		<script src="${js}/dataTables.bootstrap4.js"></script>
-
+		
+       <!--Bootbox plugin -->
+		<script src="${js}/bootbox.min.js"></script>
+		
 		<!-- Self Coded Java Script -->
 		<script src="${js}/myapp.js"></script>
 	</div>

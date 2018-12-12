@@ -9,6 +9,9 @@
              <li id="viewclothes">
               <a class="nav-link" href="${contextRoot}/show/all/clothes">View Clothes</a>
             </li>
+            <li id="manageclothes">
+              <a class="nav-link" href="${contextRoot}/manage/clothes">Manage Clothes</a>
+            </li>
           </ul>
           <ul class="navbar-nav ml-auto">
           <li id="admin">                                               <!-- class="nav-item" -->

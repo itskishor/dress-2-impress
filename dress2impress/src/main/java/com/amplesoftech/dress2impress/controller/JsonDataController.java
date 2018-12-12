@@ -19,20 +19,18 @@ public class JsonDataController
 	@Autowired
 	private ClothesDAO clothesDAO;
 	
-
-	@RequestMapping("/admin/all/clothes")
-	@ResponseBody
-	public List<Clothes> getAllClothesList() {		
-		return clothesDAO.list();
-				
-	}	
-	
-	
 	@RequestMapping("/all/clothes")
 	@ResponseBody
 	public List<Clothes> getAllProducts() {
 		
 		return clothesDAO.listActiveClothes();
+				
+	}
+	
+	@RequestMapping("/admin/all/clothes")
+	@ResponseBody
+	public List<Clothes> getAllClothesListForAdmin() {		
+		return clothesDAO.list();
 				
 	}
 	
