@@ -25,7 +25,7 @@
 
 <script>
 	window.menu = '${title}';
-	
+
 	window.contextRoot = '${contextRoot}';
 </script>
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -47,66 +47,12 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
+
 <body>
 	<div class="wrapper">
 		<!-- Navigation -->
-		<%@include file="./shared/navbar.jsp"%>
+		<%@include file="../shared/flows-navbar.jsp" %>
 
 		<!-- Page Content -->
 		<div class="content">
-			<!--Loading The Home Content -->
-			<c:if test="${userClickHome==true}">
-				<%@include file="home.jsp"%>
-			</c:if>
-			
-				<!--Loading The View Clothes Content -->
-			<c:if test="${userClickViewClothes==true or userClickCategoryClothes==true}">
-				<%@include file="viewclothes.jsp"%>
-			</c:if>
-			
-			<!--Loading The Manage Clothes Content -->
-			<c:if test="${userClickManageClothes==true}">
-				<%@include file="manageclothes.jsp"%> 
-			</c:if>
-			
-			<!--Loading The View Clothes Content -->
-			<c:if test="${userClickShowClothes==true}">
-				<%@include file="singleClothes.jsp"%>
-			</c:if>
-
-			<!--Loads Only when Users Click On Cart-->
-			<c:if test="${userClickCart==true}">
-				<%@include file="cart.jsp"%>
-			</c:if>
 		</div>
-
-		<!--Footer Comes Here-->
-		<%@include file="./shared/footer.jsp"%>
-
-
-		<!-- JQuery -->
-		<script src="${js}/jquery.js"></script>
-		
-		<!-- JQuery Validator Plugin -->
-		<script src="${js}/jquery.validate.js"></script>
-		
-		<!-- Bootstrap core JavaScript -->
-		<script src="${js}/bootstrap.bundle.min.js"></script>
-		
-		
-		<!--Data Table Plugin -->
-		<script src="${js}/jquery.dataTables.js"></script>
-		
-		<!--Data Table Bootstrap -->
-		<script src="${js}/dataTables.bootstrap4.js"></script>
-		
-       <!--Bootbox plugin -->
-		<script src="${js}/bootbox.min.js"></script>
-		
-		<!-- Self Coded Java Script -->
-		<script src="${js}/myapp.js"></script>
-	</div>
-</body>
-
-</html>
-

@@ -8,18 +8,6 @@ $(function() {
 	case 'Manage Clothes':
 		$('#manageclothes').addClass('active');
 		break;
-	case 'Admin':
-		$('#admin').addClass('active');
-		break;
-	case 'Employee':
-		$('#employee').addClass('active');
-		break;
-	case 'Supplier':
-		$('#supplier').addClass('active');
-		break;
-	case 'Sign In':
-		$('#signin').addClass('active');
-		break;
 	default:
 		if (menu == 'Home')
 			break;

@@ -14,14 +14,9 @@
             </li>
           </ul>
           <ul class="navbar-nav ml-auto">
-          <li id="admin">                                               <!-- class="nav-item" -->
-              <a class="nav-link" href="${contextRoot}/admin">Admin</a>
-            </li>
-             <li id="employee">
-              <a class="nav-link" href="${contextRoot}/employee">Employee</a>
-            </li>
-             <li id="supplier">
-              <a class="nav-link" href="${contextRoot}/supplier">Supplier</a>
+           <!-- class="nav-item" -->
+          <li id="register">                   
+              <a class="nav-link" href="${contextRoot}/register">Sign Up</a>
             </li>
             <li id="signin">
               <a class="nav-link" href="${contextRoot}/signin">Sign In</a>

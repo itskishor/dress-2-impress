@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+
+<!-- is the start state -->
+<view-state id="personal" view="flows/register/signup-personal"/>
+
+	<!-- view the signup-personal page -->
+	<!-- <view-state id="personal"
+		view="flows/register/signup-personal" model="user">
+		<transition on="billing" to="validate" />
+		<on-exit>
+			<evaluate
+				expression="registerHandler.addUser(flowScope.registerModel, user)" />
+		</on-exit>
+	</view-state -->
+
+
+     <!-- end state -->
+	<!-- <end-state  id="success" view="flows/membership/signup-success" /> -->
+	
+	<end-state id="home" view="externalRedirect:contextRelative:/" />
+	
+	<!-- global transition -->
+	<global-transitions>
+		<transition on="home" to="home"/>
+	</global-transitions>
+
+
+</flow>

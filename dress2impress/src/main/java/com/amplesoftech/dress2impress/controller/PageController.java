@@ -34,32 +34,6 @@ public class PageController {
 	return mv;
 	}
 	
-	@RequestMapping(value="/admin")
-	public ModelAndView admin()
-	{
-	ModelAndView mv=new ModelAndView("page");
-	mv.addObject("title","Admin");
-	mv.addObject("userClickAdmin",true);
-	return mv;
-	}
-	
-	@RequestMapping(value="/employee")
-	public ModelAndView employee()
-	{
-	ModelAndView mv=new ModelAndView("page");
-	mv.addObject("title","Employee");
-	mv.addObject("userClickEmployee",true);
-	return mv;
-	}
-	
-	@RequestMapping(value="/supplier")
-	public ModelAndView supplier()
-	{
-	ModelAndView mv=new ModelAndView("page");
-	mv.addObject("title","Supplier");
-	mv.addObject("userClickSupplier",true);
-	return mv;
-	}
 	
 	@RequestMapping(value="/signin")
 	public ModelAndView signin()
@@ -132,5 +106,13 @@ public class PageController {
 		
 		return mv;
 		
+	}
+	
+	@RequestMapping(value="/register")
+	public ModelAndView register()
+	{
+	ModelAndView mv=new ModelAndView("page");
+	mv.addObject("title","Employee");
+	return mv;
 	}
 }
