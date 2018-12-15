@@ -20,8 +20,11 @@ public class Address implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
+	@Column(name = "user_id")
+	private int userId;
+	
 	//-----------
-	@ManyToOne
+	/*@ManyToOne
 	private User user;
 	public User getUser() {
 		return user;
@@ -30,6 +33,7 @@ public class Address implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	*/
 
 	//-----------
 	//@NotBlank(message = "Please enter address line one!")
@@ -59,6 +63,14 @@ public class Address implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	
 
 	public String getAddressLineOne() {
 		return addressLineOne;
@@ -133,20 +145,13 @@ public class Address implements Serializable {
 
 	
 		
-/*	@Column(name = "user_id")
-	private int userId;
-	public boolean isShipping() {
+	
+	/*public boolean isShipping() {
 		return shipping;
 	}
 	public void setShipping(boolean shipping) {
 		this.shipping = shipping;
-	}
-	public int getUserId() {
-		return userId;
-	}
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-	*/
+	}*/
+
 	
 }

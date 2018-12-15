@@ -22,11 +22,11 @@ public interface UserDAO {
 	boolean addAddress(Address address);
 	//alternatives
 	
-	//Address getBillingAddress(int userId);
-	//List<Address> listShippingAddresses(int userId);
-	
+	Address getBillingAddress(int userId);
+	List<Address> listShippingAddresses(int userId);
+	/*
 	Address getBillingAddress(User user);
-	List<Address> listShippingAddresses(User user);
+	List<Address> listShippingAddresses(User user);*/
 	
 	
 	//update the cart

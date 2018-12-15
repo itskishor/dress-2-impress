@@ -17,7 +17,7 @@ public class UserTestCase {
 
 	private static AnnotationConfigApplicationContext context;
 	private static UserDAO userDAO;
-	private User user = null;
+	private User user=null;
 	private Cart cart = null;
 	private Address address = null;
 	
@@ -214,7 +214,7 @@ public class UserTestCase {
 	  
 	}
 	 */
-	@Test
+	/*@Test
 	public void testGetAddress() {
 		//fetch the user by its email
      user = userDAO.getByEmail("hr@gmail.com");
@@ -225,6 +225,6 @@ public class UserTestCase {
      assertEquals("Failed to fetch the billing address and size does not match!","Mumbai",
     		 userDAO.getBillingAddress(user).getCity());
 		
-	}
+	}*/
 	
 }
