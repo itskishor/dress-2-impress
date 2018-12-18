@@ -15,16 +15,15 @@
 
 		<div class="col-8">
 			<div class="card ">
-				<div class="card-header bg-dark text-white">
+				<div class="card-header bg-primary text-white">
 					<h5 class="card-title">Sign Up-Personal</h5>
 				</div>
 
 				<div class="card-body">
-					<sf:form class="form-horizontal" id="registerForm"
+					<sf:form class="form" id="registerForm"
 						modelAttribute="user" method="POST">
-
-						<div class="form-group">
-							<label class="control-label col-md-4">First Name</label>
+						<div class="form-group row">
+							<label class="control-label col-md-4"><b>First Name:</b></label>
 							<div class="col-8">
 								<sf:input type="text" path="firstName" class="form-control"
 									placeholder="First Name" />
@@ -32,8 +31,8 @@
 							</div>
 						</div>
 
-						<div class="form-group">
-							<label class="control-label col-md-4">Last Name</label>
+						<div class="form-group row">
+							<label class="control-label col-md-4"><b>Last Name:</b></label>
 							<div class="col-8">
 								<sf:input type="text" path="lastName" class="form-control"
 									placeholder="Last Name" />
@@ -41,17 +40,17 @@
 							</div>
 						</div>
 
-						<div class="form-group">
-							<label class="control-label col-md-4">Email</label>
+						<div class="form-group row">
+							<label class="control-label col-md-4"><b>Email:</b></label>
 							<div class="col-8">
-								<sf:input type="text" path="email" class="form-control"
+								<sf:input type="email" path="email" class="form-control"
 									placeholder="Email" />
 								<sf:errors path="email" cssClass="help-block" element="em" />
 							</div>
 						</div>
 
-						<div class="form-group">
-							<label class="control-label col-md-4">Contact Number</label>
+						<div class="form-group row">
+							<label class="control-label col-md-4"><b>Mobile Number:</b></label>
 							<div class="col-8">
 								<sf:input type="text" path="contactNumber" class="form-control"
 									placeholder="XXXXXXXXXX" />
@@ -60,8 +59,8 @@
 							</div>
 						</div>
 
-						<div class="form-group">
-							<label class="control-label col-md-4">Password</label>
+						<div class="form-group row">
+							<label class="control-label col-md-4"><b>Password:</b></label>
 							<div class="col-8">
 								<sf:input type="password" path="password" class="form-control"
 									placeholder="Password" />
@@ -69,8 +68,8 @@
 							</div>
 						</div>
 
-						<div class="form-group">
-							<label class="control-label col-md-4">Confirm Password</label>
+						<div class="form-group row">
+							<label class="control-label col-md-4"><b>Confirm Password:</b></label>
 							<div class="col-8">
 								<sf:input type="password" path="confirmPassword"
 									class="form-control" placeholder="Re-Type Password" />
@@ -79,24 +78,26 @@
 							</div>
 						</div>
 
-						<div class="form-group">
-							<label class="control-label col-md-4">Select Role</label>
+						<div class="form-group row">
+							<label class="control-label col-md-4"><b>Select Role:</b></label>
 							<div class="col-8">
-								<label class="radio-inline"> 
-								<sf:radiobutton path="role" value="USER" checked="checked" /> User
-								<%-- </label> <label class="radio-inline"> 
+								<label class="radio-inline"> <sf:radiobutton path="role"
+										value="USER" checked="checked" /> <b>User</b> <%-- </label> <label class="radio-inline"> 
 								<sf:radiobutton path="role" value="ADMIN" /> Admin
 								</label> <label class="radio-inline"> 
 								<sf:radiobutton path="role" value="EMPLOYEE" /> Employee
-								</label> <label class="radio-inline">  --%>
-								<sf:radiobutton path="role" value="SUPPLIER" /> Supplier
+								</label> <label class="radio-inline">  --%> <sf:radiobutton
+										path="role" value="SUPPLIER" /> <b>Supplier</b>
 								</label>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="row justify-content-center">
-								<button type="submit" class="btn btn-primary btn-md" name="_eventId_billing">Next-Billing <span class="fa fa-angle-right"></span></button>
-								
+								<button type="submit" class="btn btn-primary btn-md"
+									name="_eventId_billing">
+									Next-Billing <span class="fa fa-angle-right"></span>
+								</button>
+
 							</div>
 						</div>
 
@@ -106,7 +107,7 @@
 			</div>
 		</div>
 	</div>
-
+</div>
 <%-- 	<!-- Modal -->
 	<div class="modal fade" id="myCategoryModal" tabindex="-1"
 		role="dialog">

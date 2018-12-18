@@ -1,3 +1,6 @@
+<%@taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
+	
 <div class="container-fluid">
 
 	<!-- Breadcrumb -->
@@ -64,7 +67,7 @@
 				</c:otherwise>
 			
 			</c:choose>
-			
+			<security:authorize access="isAnonymous() or hasAuthority('USER')">	
 			<c:choose>
 				
 				<c:when test="${clothes.quantity < 1}">
@@ -81,8 +84,12 @@
 				</c:otherwise>
 			
 			</c:choose>
+			</security:authorize>
 					
-					
+					<security:authorize access="hasAuthority('ADMIN')">
+				<a href="${contextRoot}/manage/${clothes.id}/clothes" class="btn btn-success">
+				<span class="fa fa-pencil"></span> Edit</a>
+			</security:authorize>
 						
 		        
 				<a href="${contextRoot}/show/all/clothes" class="btn btn-primary">Back</a>

@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 public class Address implements Serializable {
@@ -24,7 +24,7 @@ public class Address implements Serializable {
 	private int userId;
 	
 	//-----------
-	/*@ManyToOne
+/*	@ManyToOne
 	private User user;
 	public User getUser() {
 		return user;
@@ -36,24 +36,24 @@ public class Address implements Serializable {
 	*/
 
 	//-----------
-	//@NotBlank(message = "Please enter address line one!")
+	@NotBlank(message = "Please enter address line one!")
 	@Column(name = "address_line_one")
 	private String addressLineOne;
-	//@NotBlank(message = "Please enter address line two!")	
+	@NotBlank(message = "Please enter address line two!")	
 	@Column(name = "address_line_two")
 	private String addressLineTwo;
-	//@NotBlank(message = "Please enter City!")	
+	@NotBlank(message = "Please enter City!")	
 	private String city;
-	//@NotBlank(message = "Please enter State!")	
+	@NotBlank(message = "Please enter State!")	
 	private String state;
-	//@NotBlank(message = "Please enter country!")	
+	@NotBlank(message = "Please enter country!")	
 	private String country;
 	@Column(name ="postal_code")
-	//@NotBlank(message = "Please enter Postal Code!")	
+	@NotBlank(message = "Please enter Postal Code!")	
 	private String postalCode;
-	//@Column(name="is_shipping")
+     @Column(name="is_shipping")
 	private boolean shipping;
-	//@Column(name="is_billing")
+	@Column(name="is_billing")
 	private boolean billing;
 	
 	public int getId() {
@@ -142,16 +142,5 @@ public class Address implements Serializable {
 				+ ", city=" + city + ", state=" + state + ", country=" + country + ", postalCode=" + postalCode
 				+ ", shipping=" + shipping + ", billing=" + billing + "]";
 	}
-
-	
-		
-	
-	/*public boolean isShipping() {
-		return shipping;
-	}
-	public void setShipping(boolean shipping) {
-		this.shipping = shipping;
-	}*/
-
 	
 }

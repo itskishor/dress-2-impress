@@ -20,15 +20,12 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=yes">
 <meta name="description" content="">
 <meta name="author" content="">
-<meta name="_csrf" content="${_csrf.token}">
-<meta name="_csrf_header" content="${_csrf.headerName}">
-
 
 <title>Dress2Impress- ${title}</title>
 
 <script>
 	window.menu = '${title}';
-	
+
 	window.contextRoot = '${contextRoot}';
 </script>
 <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -50,37 +47,95 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
+
 <body>
+
 	<div class="wrapper">
+
 		<!-- Navigation -->
-		<%@include file="./shared/navbar.jsp"%>
-
+		<%@include file="./shared/navbar.jsp"%><br />
+		<br />
 		<!-- Page Content -->
-		<div class="content">
-			<!--Loading The Home Content -->
-			<c:if test="${userClickHome==true}">
-				<%@include file="home.jsp"%>
-			</c:if>
-			
-				<!--Loading The View Clothes Content -->
-			<c:if test="${userClickViewClothes==true or userClickCategoryClothes==true}">
-				<%@include file="viewclothes.jsp"%>
-			</c:if>
-			
-			<!--Loading The Manage Clothes Content -->
-			<c:if test="${userClickManageClothes==true}">
-				<%@include file="manageclothes.jsp"%> 
-			</c:if>
-			
-			<!--Loading The View Clothes Content -->
-			<c:if test="${userClickShowClothes==true}">
-				<%@include file="singleClothes.jsp"%>
-			</c:if>
 
-			<!--Loads Only when Users Click On Cart-->
-			<c:if test="${userClickCart==true}">
-				<%@include file="cart.jsp"%>
-			</c:if>
+		<div class="content">
+
+			<div class="container-fluid">
+
+				<c:if test="${not empty message}">
+					<div class="row justify-content-center">
+						<div class="col-md-8">
+							<div class="alert alert-danger alert-dismissible">${message}</div>
+						</div>
+					</div>
+				</c:if>
+
+				<c:if test="${not empty logout}">
+					<div class="row justify-content-center">
+						<div class="col-md-8">
+							<div class="alert alert-success">${logout}</div>
+						</div>
+					</div>
+				</c:if>
+
+				<div class="row justify-content-center">
+
+					<div class="col-md-6">
+
+						<div class="card card-primary">
+
+							<div class="card-heading bg-primary" >
+								<h4>
+									<center><h3><b>
+										Login</b></h3>
+									</center>
+								</h4>
+							</div>
+
+							<div class="card-body">
+								<form action="${contextRoot}/login" method="POST"
+									class="form-horizontal" id="loginForm">
+             
+									<div class="form-group row">
+										<label for="username" class="col-md-4 control-label"><b>Email:</b>
+										</label>
+										<div class="col-8">
+											<input type="text" name="username" id="username"
+												class="form-control" />
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="password" class="col-md-4 control-label"><b>Password:</b>
+										</label>
+										<div class="col-8">
+											<input type="password" name="password" id="password"
+												class="form-control" />
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-12 text-center">
+											<input type="submit" value="Login" class="btn btn-primary" />
+											<input type="hidden" name="${_csrf.parameterName}"
+												value="${_csrf.token}" />
+										</div>
+									</div>
+								</form>
+
+							</div>
+							<div class="card-footer">
+								<div class="text-right">
+									New User - <a href="${contextRoot}/register">Register Here</a>
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+
 		</div>
 
 		<!--Footer Comes Here-->
@@ -89,27 +144,27 @@
 
 		<!-- JQuery -->
 		<script src="${js}/jquery.js"></script>
-		
+
 		<!-- JQuery Validator Plugin -->
 		<script src="${js}/jquery.validate.js"></script>
-		
+
 		<!-- Bootstrap core JavaScript -->
 		<script src="${js}/bootstrap.bundle.min.js"></script>
-		
-		
+
+
 		<!--Data Table Plugin -->
 		<script src="${js}/jquery.dataTables.js"></script>
-		
+
 		<!--Data Table Bootstrap -->
 		<script src="${js}/dataTables.bootstrap4.js"></script>
-		
-       <!--Bootbox plugin -->
+
+		<!--Bootbox plugin -->
 		<script src="${js}/bootbox.min.js"></script>
-		
+
 		<!-- Self Coded Java Script -->
 		<script src="${js}/myapp.js"></script>
 	</div>
+
 </body>
 
 </html>
-

@@ -15,6 +15,17 @@ $(function() {
 		$('#a_' + menu).addClass('active');
 		break;
 	}
+	
+	// for handling CSRF token
+	var token = $('meta[name="_csrf"]').attr('content');
+	var header = $('meta[name="_csrf_header"]').attr('content');
+	
+	if((token!=undefined && header !=undefined) && (token.length > 0 && header.length > 0)) {		
+		// set the token header for the ajax request
+		$(document).ajaxSend(function(e, xhr, options) {			
+			xhr.setRequestHeader(header,token);		
+		});				
+	} 
 
 	// Code For JQery Table
 	var $table = $("#clothesListTable");
@@ -99,7 +110,7 @@ $(function() {
 				bSortable : false,
 				mRender : function(data, type, row) {
 					var str='';
-					
+					if(userRole !== 'ADMIN') {
 					if (row.quantity < 1) {
 						str += '<a href="javascript:void(0)" class="btn btn-success btn-sm disabled">Cart<span class="fa fa-shopping-cart"></span></a>';
 					}
@@ -107,6 +118,12 @@ $(function() {
 						{
 						str +='<a href="'+window.contextRoot+'/cart/add/'+data+'/clothes" class="btn btn-success btn-sm">Cart<span class="fa fa-shopping-cart"></span></a>';
 						 
+						}
+					}
+					else
+						{
+						str +='<a href="'+window.contextRoot+'/manage/'+data+'/clothes" class="btn btn-success btn-sm">Edit<span class="fa fa-pencil"></span></a>';
+						
 						}
 					return str;
 				}

@@ -4,39 +4,43 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow
                           http://www.springframework.org/schema/webflow/spring-webflow.xsd">
 
-	<var name="user"
-		class="com.amplesoftech.dress2impressbackend.dto.User" />
-	<var name="billing"
-		class="com.amplesoftech.dress2impressbackend.dto.Address" />
+	<var name="user" class="com.amplesoftech.dress2impressbackend.dto.User" />
+	<var name="billing" class="com.amplesoftech.dress2impressbackend.dto.Address" />
 
 	<!-- returning and adding inside the flow a registerModel Instance -->
 	<on-start>
-		<evaluate expression="registerHandler.init()"
-			result="flowScope.registerModel" />
+		<evaluate expression="registerHandler.init()" result="flowScope.registerModel"/>
 	</on-start>
 
-	<!-- is the start state -->
-	<view-state id="personal"
-		view="flows/register/signup-personal" model="user">
-		<transition on="billing" to="billing"></transition>
+	<!-- view is the start state -->
+	<view-state id="personal" view="flows/register/signup-personal" model="user">
+		<transition on="billing" to="validate"></transition>
 		<on-exit>
 			<evaluate expression="registerHandler.addUser(flowScope.registerModel, user)" />			
 		</on-exit>
 	</view-state>
-
-	<view-state id="billing"
-		view="flows/register/signup-billing" model="billing">
-		<transition on="personal" to="personal"></transition>
+	
+	<!-- validate signup-personal page-->
+	<action-state id="validate">
+		<evaluate expression="registerHandler.validateUser(user, messageContext)" />
+		<transition on="success" to="billing"/>
+		<transition on="failure" to="personal"/>
+	</action-state>
+	
+<!-- view the signup-billing page-->
+	<view-state id="billing" view="flows/register/signup-billing" model="billing">
 		<transition on="confirm" to="confirm"></transition>
+		<transition on="personal" to="personal"></transition>
 		<on-exit>
 			<evaluate expression="registerHandler.addBilling(flowScope.registerModel, billing)" />
 		</on-exit>
 	</view-state>
-
+	
+<!-- view the signup-confirm page -->	
 	<view-state id="confirm" view="flows/register/signup-confirm" model="flowScope.registerModel">
-		<transition on="personal" to="personal"></transition>
-		<transition on="billing" to="billing"></transition>
 		<transition on="submit" to="submit"></transition>
+			<transition on="billing" to="billing"></transition>
+		<transition on="personal" to="personal"></transition>
 	</view-state>
 	
 	<!-- handle the submit action -->
@@ -44,20 +48,15 @@
 		<evaluate expression="registerHandler.saveAll(flowScope.registerModel)" />
 		<transition on="success" to="success"/>
 	</action-state>
-
-	<!-- view the signup-personal page -->
-	<!-- <view-state id="personal" view="flows/register/signup-personal" model="user"> 
-		<transition on="billing" to="validate" /> <on-exit> <evaluate expression="registerHandler.addUser(flowScope.registerModel, 
-		user)" /> </on-exit> </view-state -->
-
-
+	
 	<!-- end state -->
-	<end-state id="home" view="externalRedirect:contextRelative:/" />
-	<end-state id="success" view="flows/register/signup-success" />
+	<end-state id="success" view="flows/register/signup-success"/>
+	<end-state id="home" view="externalRedirect:contextRelative:/"/>
+	
 
 	<!-- global transition -->
 	<global-transitions>
-		<transition on="home" to="home" />
+		<transition on="home" to="home" validate="false"/>
 	</global-transitions>
 
 

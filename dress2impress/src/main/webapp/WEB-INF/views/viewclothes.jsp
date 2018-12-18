@@ -7,7 +7,7 @@
 			<%@include file="./shared/sidebar.jsp"%>
 
 		</div>
-		
+
 
 		<!-- To Display the actual products -->
 		<div class="col-lg-10">
@@ -42,48 +42,50 @@
 
 			<div class="row">
 				<div class="col-lg-12">
+					<div class="container-fluid">
+						<div class="table-responsive">
+							<table id="clothesListTable"
+								class="table table-hover table-borderd">
 
-					<table id="clothesListTable"
-						class="table table-hover table-borderd">
+								<thead class="thead-dark">
 
-						<thead class="thead-dark">
+									<tr>
+										<th></th>
+										<th>Name</th>
+										<th>Brand</th>
+										<th>Size</th>
+										<th>UnitPrice</th>
+										<th>Price/Day</th>
+										<th>Qua.</th>
+										<th></th>
+										<th></th>
+									</tr>
 
-							<tr>
-                                <th></th>
-								<th>Name</th>
-								<th>Brand</th>
-								<th>Size</th>
-								<th>UnitPrice</th>
-								<th>Price/Day</th>
-								<th>Qua.</th>
-								<th></th>
-								<th></th>
-							</tr>
+								</thead>
 
-						</thead>
+								<tfoot class="thead-dark">
 
-						<tfoot class="thead-dark">
+									<tr>
+										<th></th>
+										<th>Name</th>
+										<th>Brand</th>
+										<th>Size</th>
+										<th>Price</th>
+										<th>Price/Day</th>
+										<th>Qau.</th>
+										<th></th>
+										<th></th>
 
-							<tr>
-							    <th></th>
-								<th>Name</th>
-								<th>Brand</th>
-								<th>Size</th>
-								<th>Price</th>
-								<th>Price/Day</th>
-								<th>Qau.</th>
-								<th></th>
-								<th></th>
-								
-								
-							</tr>
 
-						</tfoot>
+									</tr>
 
-					</table>
+								</tfoot>
 
+							</table>
+
+						</div>
+					</div>
 				</div>
-
 			</div>
 		</div>
 	</div>
