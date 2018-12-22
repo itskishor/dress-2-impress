@@ -28,3 +28,20 @@ CREATE TABLE `drees2impress`.`category` (
  	CONSTRAINT fk_clothes_category_id FOREIGN KEY (category_id) REFERENCES category (id),
 	CONSTRAINT fk_clothes_supplier_id FOREIGN KEY (supplier_id) REFERENCES user_detail(id)	
   );
+  
+  CREATE TABLE cart_line (
+	id NOT NULL AUTO_INCREMENT,
+	cart_id int,
+	clothes_id int,
+	clothes_count int,
+	price_per_day DECIMAL(10,2),
+        issue_date date,
+	no_of_days int,
+        return_date date,
+        deposite DECIMAL (10,2),
+	is_available boolean,
+        total_price DECIMAL (10,2),
+        CONSTRAINT fk_cartline_cart_id FOREIGN KEY (cart_id ) REFERENCES cart (id),
+	CONSTRAINT fk_cartline_clothes_id FOREIGN KEY (clothes_id ) REFERENCES clothes (id),
+	CONSTRAINT pk_cartline_id PRIMARY KEY (id)
+);

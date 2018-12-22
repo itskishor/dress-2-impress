@@ -4,7 +4,7 @@
 	window.userRole = '${userModel.role}';
 </script>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-	<div class="container">
+	<div class="container-fluid">
 		<a class="navbar-brand" href="${contextRoot}/home">Dress 2 Impress</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarResponsive" aria-controls="navbarResponsive"
@@ -29,7 +29,7 @@
 						href="${contextRoot}/login">Login</a></li>
 				</security:authorize>
 				<security:authorize access="isAuthenticated()">
-					<li class="dropdown" id="userModel"><a
+					<li class="dropdown" id="userCart"><a
 						class="btn btn-primary btn-sm dropdown-toggle" href="javascript:void(0)"
 						id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
 						aria-expanded="true"> ${userModel.fullName} 

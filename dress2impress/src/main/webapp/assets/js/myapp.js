@@ -8,6 +8,9 @@ $(function() {
 	case 'Manage Clothes':
 		$('#manageclothes').addClass('active');
 		break;
+	case 'User Cart':
+		$('#userCart').addClass('active');
+		break;
 	default:
 		if (menu == 'Home')
 			break;
@@ -325,6 +328,59 @@ $(function() {
 		}
 	
 	//--------------------------
+	/* handle refresh cart*/	
+	$('button[name="refreshCart"]').click(function()
+	{
+		//fetch the cart line id
+		var cartLineId = $(this).attr('value');
+		var countElement = $('#count_' + cartLineId);
+		var countDays = $('#countdays_' + cartLineId);
+		var issueDate = $('#issuedate_' + cartLineId);
+		
+		var originalCount = countElement.attr('value');
+		var currentCount=countElement.val();
+		
+		var originalCountDays = countDays.attr('value');
+		var currentCountDays=countDays.val();
+		
+		var originalIssueDate = issueDate.attr('value');
+		var currentIssueDate=issueDate.val();
+		
+		// do the checking only when the count has changed
+		if((currentCount !== originalCount) ||(currentCountDays !== originalCountDays) ||(currentIssueDate > originalIssueDate) ) {
+			
+			if(currentCountDays > 7 || currentCountDays < 1)
+				{
+				// set the field back to the original field
+				countDays.val(originalCountDays);
+			  	bootbox.alert({
+					size: 'medium',
+			    	//title: 'Error',
+			    	message: 'Days Count should be minimum 1 and Maximum 7 Only!'
+				});
+				
+				}
+			// check if the quantity is within the specified range
+		else if(currentCount < 1) {
+				// set the field back to the original field
+				countElement.val(originalCount);
+			  	bootbox.alert({
+					size: 'medium',
+			    	//title: 'Error',
+			    	message: 'Clothes Count should be minimum 1!'
+				});
+			}
+			else {
+				// use the window.location.href property to send the request to the server
+				var updateUrl = window.contextRoot+'/cart/'+ cartLineId +'/update?count='+currentCount+'&countdays='+currentCountDays+'&issuedate='+currentIssueDate;
+				//forward it to the controller
+				window.location.href = updateUrl;
+			}
+			
+			
+		}	
+			
+	});
 });
 
 

@@ -173,6 +173,15 @@ public class Clothes {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+
+
+
+
+	public Clothes get(int clothesId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 

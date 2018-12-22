@@ -20,10 +20,9 @@ public class Cart implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO) 
 	private int id;
-	//----------------
+	// linking the cart with a user
 	@OneToOne
 	private User user;
-	
 	public User getUser() {
 		return user;
 	}
@@ -57,19 +56,5 @@ public class Cart implements Serializable {
 	public String toString() {
 		return "Cart [id=" + id + ", grandTotal=" + grandTotal + ", cartLines=" + cartLines + "]";
 	}
-
 	
-	
-	
-	
-	/*// linking the cart with a user
-	@OneToOne
-	private User user;
-	public User getUser() {
-		return user;
-	}
-	public void setUser(User user) {
-		this.user = user;
-	}
-	*/
 }
