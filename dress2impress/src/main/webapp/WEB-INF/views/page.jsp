@@ -14,18 +14,15 @@
 <html lang="en">
 
 <head>
-
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=yes">
 <meta name="description" content="">
-<meta name="author" content="">
+<meta name="author" content=""> 
 <meta name="_csrf" content="${_csrf.token}">
 <meta name="_csrf_header" content="${_csrf.headerName}">
-
-
 <title>Dress2Impress- ${title}</title>
-
+<link rel="shortcut icon" type="image/png" href="/assets/images/favcon.png"/>
 <script>
 	window.menu = '${title}';
 	
@@ -70,6 +67,21 @@
 			<!--Loading The Manage Clothes Content -->
 			<c:if test="${userClickManageClothes==true}">
 				<%@include file="manageclothes.jsp"%> 
+			</c:if>
+			
+			<!--Loading The Manage Clothes Content -->
+			<c:if test="${userClickManageEmployee==true}">
+				<%@include file="manageemployee.jsp"%> 
+			</c:if>
+			
+			<!--Loading The Manage Clothes Content -->
+			<c:if test="${userClickManageUser==true}">
+				<%@include file="manageuser.jsp"%> 
+			</c:if>
+			
+			<!--Loading The Manage Clothes Content -->
+			<c:if test="${userClickAddClothes==true}">
+				<%@include file="addClothes.jsp"%> 
 			</c:if>
 			
 			<!--Loading The View Clothes Content -->

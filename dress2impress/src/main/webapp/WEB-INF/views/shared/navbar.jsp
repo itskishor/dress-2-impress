@@ -15,9 +15,20 @@
 			<ul class="navbar-nav justify-content-center">
 				<li id="viewclothes"><a class="nav-link"
 					href="${contextRoot}/show/all/clothes">View Clothes</a></li>
+					<security:authorize access="hasAuthority('SUPPLIER')">
+					<li id="addclothes"><a class="nav-link"
+						href="${contextRoot}/add/clothes">Add Clothes</a></li>
+					</security:authorize>
 				<security:authorize access="hasAuthority('ADMIN')">
 					<li id="manageclothes"><a class="nav-link"
 						href="${contextRoot}/manage/clothes">Manage Clothes</a></li>
+
+					<li id="manageemployee"><a class="nav-link"
+						href="${contextRoot}/manage/employee">Manage Employees</a></li>
+						<li id="managesupplier"><a class="nav-link"
+						href="${contextRoot}/manage/supplier">Manage Supplier</a></li>
+						<li id="manageuser"><a class="nav-link"
+						href="${contextRoot}/manage/user">Manage User</a></li>
 				</security:authorize>
 			</ul>
 			<ul class="navbar-nav ml-auto">
@@ -30,19 +41,21 @@
 				</security:authorize>
 				<security:authorize access="isAuthenticated()">
 					<li class="dropdown" id="userCart"><a
-						class="btn btn-primary btn-sm dropdown-toggle" href="javascript:void(0)"
-						id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="true"> ${userModel.fullName} 
-						<span
-							class="caret"></span>
+						class="btn btn-primary btn-sm dropdown-toggle"
+						href="javascript:void(0)" id="dropdownMenu1"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							${userModel.fullName} <span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 							<security:authorize access="hasAuthority('USER')">
-								<center><li id="cart"><a href="${contextRoot}/cart/show"> 
-								<span class="fa fa-shopping-cart" style="font-size:30px;color:red"></span> &#160;&#160;<span
-										class="badge">${userModel.cart.cartLines}</span> -  &#8377;&#160;
-										${userModel.cart.grandTotal}
-								</a></li></center>
+								<center>
+									<li id="cart"><a href="${contextRoot}/cart/show"> <span
+											class="fa fa-shopping-cart"
+											style="font-size: 30px; color: red"></span> &#160;&#160;<span
+											class="badge">${userModel.cart.cartLines}</span> -
+											&#8377;&#160; ${userModel.cart.grandTotal}
+									</a></li>
+								</center>
 								<li role="separator" class="divider"></li>
 							</security:authorize>
 							<li id="logout"><a href="${contextRoot}/perform-logout"><center>Logout</center></a></li>

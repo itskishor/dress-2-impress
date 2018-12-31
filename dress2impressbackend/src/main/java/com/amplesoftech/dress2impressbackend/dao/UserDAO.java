@@ -24,6 +24,7 @@ public interface UserDAO {
 	
 	Address getBillingAddress(int userId);
 	List<Address> listShippingAddresses(int userId);
+	List<User> listByRole(String role);
 	/*
 	Address getBillingAddress(User user);
 	List<Address> listShippingAddresses(User user);*/

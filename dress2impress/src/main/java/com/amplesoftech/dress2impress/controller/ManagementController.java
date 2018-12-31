@@ -21,23 +21,33 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.amplesoftech.dress2impress.util.FileUploadUtility;
 import com.amplesoftech.dress2impress.validator.ClothesValidator;
+import com.amplesoftech.dress2impress.validator.EmployeeValidator;
 import com.amplesoftech.dress2impressbackend.dao.CategoryDAO;
 import com.amplesoftech.dress2impressbackend.dao.ClothesDAO;
+import com.amplesoftech.dress2impressbackend.dao.EmployeeDAO;
 import com.amplesoftech.dress2impressbackend.dto.Category;
 import com.amplesoftech.dress2impressbackend.dto.Clothes;
+import com.amplesoftech.dress2impressbackend.dto.Employee;
 
 @Controller
 @RequestMapping("/manage")
-public class ClothesManagementController {
+public class ManagementController {
 
-	private static final Logger logger = LoggerFactory.getLogger(ClothesManagementController.class);
+	private static final Logger logger = LoggerFactory.getLogger(ManagementController.class);
 
 	@Autowired
 	private ClothesDAO clothesDAO;
+	
+	
+	@Autowired
+	private EmployeeDAO employeeDAO;
 
 	@Autowired
 	private CategoryDAO categoryDAO;
-
+    
+	//--------------------Clothes Management Controller-------------
+	
+	
 	@RequestMapping(value = "/clothes", method = RequestMethod.GET)
 	public ModelAndView showmanageClothes(@RequestParam(name = "operation", required = false) String operation) {
 
@@ -71,6 +81,12 @@ public class ClothesManagementController {
 		return mv;
 
 	}
+	
+	
+	//------------------------Add Clothes-----------------------------------
+	
+	
+	//-------------------------------------------------------------------------
 
 	// handling clothes submission
 	@RequestMapping(value = "/clothes", method = RequestMethod.POST)
@@ -162,15 +178,10 @@ public class ClothesManagementController {
 		return (isActive) ? "You have successfully deactivated clothes with " + clothes.getId()
 				: "You have successfully activated clothes with: " + clothes.getId();
 	}
+	
+	
+	
 
-	// to handle category submission
-	@RequestMapping(value = "/category", method = RequestMethod.POST)
-	public String handleCategorySubmission(@ModelAttribute Category category) {
-
-		categoryDAO.add(category);
-		return "redirect:/manage/clothes?operation=category";
-
-	}
 
 	/*
 	 * @RequestMapping(value = "/category", method=RequestMethod.POST) public String
@@ -188,5 +199,99 @@ public class ClothesManagementController {
 	public Category getCategory() {
 		return new Category();
 	}
+	
+	
+	//--------------------Employee Management Controller-------------
+
+	@RequestMapping(value = "/employee", method = RequestMethod.GET)
+	public ModelAndView showManageEmployee(@RequestParam(name = "operation", required = false) String operation) {
+
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "Manage Employee");
+		mv.addObject("userClickManageEmployee", true);
+
+		Employee nemployee = new Employee();
+
+		// assuming that the user is ADMIN
+		// later we will fixed it based on user is SUPPLIER or ADMIN
+		//employee.setSupplierId(1);
+		nemployee.setEnabled(true);
+
+		mv.addObject("employee", nemployee);
+
+		if (operation != null) {
+			if (operation.equals("employee")) {
+				mv.addObject("message", "Employee Information Submitted Successfully!");
+			}
+		}
+		return mv;
+	}
+	
+	@RequestMapping(value = "/employee/{id}/activation", method = RequestMethod.POST)
+	@ResponseBody
+	public String managePostEmployeeActivation(@PathVariable int id) {
+		// Is going to fetch the employee from database
+		Employee employee = employeeDAO.get(id);
+		boolean isActive = employee.isEnabled();
+		// activation and deactivation based on the values of the active field
+		employee.setEnabled(!employee.isEnabled());
+		// update the product
+		employeeDAO.update(employee);
+		return (isActive) ? "You have successfully deactivated Employee with " + employee.getId()
+				: "You have successfully activated Employee with: " + employee.getId();
+	}
+	
+	@RequestMapping(value = "/{id}/employee", method = RequestMethod.GET)
+	public ModelAndView showEditEmployee(@PathVariable int id) {
+
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "Employee Management");
+		mv.addObject("userClickManageEmployee", true);
+		// fetch the clothes from database
+		Employee memployee = employeeDAO.get(id);
+		// set the clothes fetch from the database
+		mv.addObject("employee", memployee);
+
+		return mv;
+
+	}
+
+	// to handle category submission
+	@RequestMapping(value = "/category", method = RequestMethod.POST)
+	public String handleCategorySubmission(@ModelAttribute Category category) {
+
+		categoryDAO.add(category);
+		return "redirect:/manage/clothes?operation=category";
+
+	}
+
+	// Handling Employee Addition
+	@RequestMapping(value = "/employee", method = RequestMethod.POST)
+	public String handleEmployeeSubmission(@Valid @ModelAttribute("employee") Employee memployee, BindingResult results,
+			Model model, HttpServletRequest request) {
+		// handle image validation for new clothes
+		if (memployee.getId() == 0) {
+			new EmployeeValidator().validate(memployee, results);
+		} 
+		// check if there is any error
+		if (results.hasErrors()) {
+			model.addAttribute("userClickManageEmployee", true);
+			model.addAttribute("title", "Manage Employee");
+			model.addAttribute("message", "Validation Failed For Employee Submission!");
+			return "page";
+		}
+		logger.info(memployee.toString());
+		// Create a new employee Record
+		if (memployee.getId() == 0) {
+			// create the employee if id is 0
+			employeeDAO.add(memployee);
+		} else {
+			// update the employee if id is not 0
+			employeeDAO.update(memployee);
+		}
+		return "redirect:/manage/employee?operation=employee";
+
+	}
+
 
 }
