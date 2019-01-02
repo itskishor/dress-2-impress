@@ -84,9 +84,6 @@ public class ManagementController {
 	
 	
 	//------------------------Add Clothes-----------------------------------
-	
-	
-	//-------------------------------------------------------------------------
 
 	// handling clothes submission
 	@RequestMapping(value = "/clothes", method = RequestMethod.POST)
@@ -192,7 +189,7 @@ public class ManagementController {
 
 	@ModelAttribute("categories")
 	public List<Category> modelCategories() {
-		return categoryDAO.list();
+		return categoryDAO.listActiveCategory();
 	}
 
 	@ModelAttribute("category")
@@ -255,43 +252,117 @@ public class ManagementController {
 		return mv;
 
 	}
-
-	// to handle category submission
-	@RequestMapping(value = "/category", method = RequestMethod.POST)
-	public String handleCategorySubmission(@ModelAttribute Category category) {
-
-		categoryDAO.add(category);
-		return "redirect:/manage/clothes?operation=category";
-
-	}
-
+	
 	// Handling Employee Addition
-	@RequestMapping(value = "/employee", method = RequestMethod.POST)
-	public String handleEmployeeSubmission(@Valid @ModelAttribute("employee") Employee memployee, BindingResult results,
-			Model model, HttpServletRequest request) {
-		// handle image validation for new clothes
-		if (memployee.getId() == 0) {
-			new EmployeeValidator().validate(memployee, results);
-		} 
-		// check if there is any error
-		if (results.hasErrors()) {
-			model.addAttribute("userClickManageEmployee", true);
-			model.addAttribute("title", "Manage Employee");
-			model.addAttribute("message", "Validation Failed For Employee Submission!");
-			return "page";
+		@RequestMapping(value = "/employee", method = RequestMethod.POST)
+		public String handleEmployeeSubmission(@Valid @ModelAttribute("employee") Employee memployee, BindingResult results,
+				Model model, HttpServletRequest request) {
+			// handle image validation for new clothes
+			if (memployee.getId() == 0) {
+				new EmployeeValidator().validate(memployee, results);
+			} 
+			// check if there is any error
+			if (results.hasErrors()) {
+				model.addAttribute("userClickManageEmployee", true);
+				model.addAttribute("title", "Manage Employee");
+				model.addAttribute("message", "Validation Failed For Employee Submission!");
+				return "page";
+			}
+			logger.info(memployee.toString());
+			// Create a new employee Record
+			if (memployee.getId() == 0) {
+				// create the employee if id is 0
+				employeeDAO.add(memployee);
+			} else {
+				// update the employee if id is not 0
+				employeeDAO.update(memployee);
+			}
+			return "redirect:/manage/employee?operation=employee";
+
 		}
-		logger.info(memployee.toString());
-		// Create a new employee Record
-		if (memployee.getId() == 0) {
-			// create the employee if id is 0
-			employeeDAO.add(memployee);
-		} else {
-			// update the employee if id is not 0
-			employeeDAO.update(memployee);
+	
+	//--------------------Category Management Controller-------------
+
+		@RequestMapping(value = "/categories", method = RequestMethod.GET)
+		public ModelAndView showManageCategories(@RequestParam(name = "operation", required = false) String operation) {
+
+			ModelAndView mv = new ModelAndView("page");
+			mv.addObject("title", "Manage Categories");
+			mv.addObject("userClickManageCategories", true);
+
+			Category ncategory = new Category();
+
+			// assuming that the user is ADMIN
+			// later we will fixed it based on user is SUPPLIER or ADMIN
+			ncategory.setActive(true);
+
+			mv.addObject("category", ncategory);
+
+			if (operation != null) {
+				if (operation.equals("category")) {
+					mv.addObject("message", "Category Information Submitted Successfully!");
+				}
+			}
+			return mv;
 		}
-		return "redirect:/manage/employee?operation=employee";
+		
+		@RequestMapping(value = "/categories/{id}/activation", method = RequestMethod.POST)
+		@ResponseBody
+		public String managePostCategoryActivation(@PathVariable int id) {
+			// Is going to fetch the categories from database
+			Category category = categoryDAO.get(id);
+			boolean isActive = category.isActive();
+			// activation and deactivation based on the values of the active field
+			category.setActive(!category.isActive());
+			// update the Category
+			categoryDAO.update(category);
+			return (isActive) ? "You have successfully deactivated Category with " + category.getId()
+					: "You have successfully activated Category with: " + category.getId();
+		}
+		
+		@RequestMapping(value ="/{id}/category", method = RequestMethod.GET)
+		public ModelAndView showEditCategory(@PathVariable int id) {
+
+			ModelAndView mv = new ModelAndView("page");
+			mv.addObject("title", "Category Management");
+			mv.addObject("userClickManageCategories", true);
+			// fetch the category from database
+			Category mcategory = categoryDAO.get(id);
+			// set the category fetch from the database
+			mv.addObject("category", mcategory);
+
+			return mv;
+
+		}
+
+	// To handle category submission
+	@RequestMapping(value = "/category", method = RequestMethod.POST)
+	public String handleCategorySubmission(@Valid @ModelAttribute("category") Category mcategory, BindingResult results,
+				Model model, HttpServletRequest request) {
+			// handle image validation for new clothes
+			if (mcategory.getId() == 0) {
+				new EmployeeValidator().validate(mcategory, results);
+			} 
+			// check if there is any error
+			if (results.hasErrors()) {
+				model.addAttribute("userClickManageCategory", true);
+				model.addAttribute("title", "Manage Category");
+				model.addAttribute("message", "Validation Failed For Category Submission!");
+				return "page";
+			}
+			logger.info(mcategory.toString());
+			// Create a new employee Record
+			if (mcategory.getId() == 0) {
+				// create the employee if id is 0
+				categoryDAO.add(mcategory);
+			} 
+			else 
+			{
+				// update the employee if id is not 0
+				categoryDAO.update(mcategory);
+			}
+		return "redirect:/manage/categories?operation=category";
 
 	}
-
 
 }

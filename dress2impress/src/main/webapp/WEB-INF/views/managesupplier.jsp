@@ -4,7 +4,7 @@
 <div class="container-fluid">
 	<hr />
 	<h2 style="text-align: center">
-		<strong>Manage User</strong>
+		<strong>Manage Supplier</strong>
 	</h2>
 	<hr />
 	<div class="row justify-content-center">
@@ -22,12 +22,12 @@
 		<div class="col-6">
 			<div class="card ">
 				<div class="card-header bg-dark text-white">
-					<h5 class="card-title">Manage User</h5>
+					<h5 class="card-title">Manage Supplier</h5>
 				</div>
 
 				<div class="card-body">
                  <sf:form class="form-horizontal" modelAttribute="user"
-						action="${contextRoot}/manage/user" method="POST"
+						action="${contextRoot}/manage/supplier" method="POST"
 						enctype="multipart/form-data">
 					<div class="form-group">
 						<label class="control-label col-md-4">First Name</label>
@@ -86,10 +86,8 @@
 
 
 	<hr />
-	<h2 style="color: black;">
-		<center>
-			<strong>Active User</strong>
-		</center>
+	<h2 style="color: black;"align="center">
+			<strong>Available Suppliers</strong>
 	</h2>
 	<hr />
 	<div class="row justify-content-center">
@@ -99,9 +97,9 @@
 
 			<div style="overflow: auto">
 			
-			<!-- Employee Table For Admin -->
+			<!-- Supplier Table For Admin -->
 			
-				<table id="adminUserTable"
+				<table id="adminSupplierTable"
 					class="table table-dark table-condensed table-bordered">
 
 					<thead>

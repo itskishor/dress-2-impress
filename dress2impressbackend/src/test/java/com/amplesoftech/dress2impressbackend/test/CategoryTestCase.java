@@ -85,7 +85,7 @@ public class CategoryTestCase {
 	  
 	  category.setName("Men");
 	  category.setDescription("This is some description for Men!");
-	  category.setImageURL("CAT_1.png");
+	  //category.setImageURL("CAT_1.png");
 	  
 	  assertEquals("Successfully added a category inside the table!",true,
 	  categoryDAO.add(category));
@@ -95,7 +95,7 @@ public class CategoryTestCase {
 	  
 	  category.setName("Womens");
 	  category.setDescription("This is some description for Women!");
-	  category.setImageURL("CAT_2.png");
+	 // category.setImageURL("CAT_2.png");
 	  
 	  assertEquals("Successfully added a category inside the table!",true,
 	  categoryDAO.add(category));

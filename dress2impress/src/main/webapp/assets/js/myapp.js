@@ -17,6 +17,9 @@ $(function() {
 	case 'Manage Supplier':
 		$('#managesupplier').addClass('active');
 		break;
+	case 'Manage Categories':
+		$('#managecategories').addClass('active');
+		break;
 	case 'Add Clothes':
 		$('#addclothes').addClass('active');
 		break;
@@ -530,6 +533,110 @@ $(function() {
 	}
 
 	// --------------------------
+	
+// Category Data Table for Admin
+	
+	var $adminCategoryTable = $("#adminCategoryTable ");
+
+	if ($adminCategoryTable .length) 
+	{
+		// console.log('Inside the table!');
+
+	var jsonUrl = window.contextRoot + '/json/data/admin/all/categories';
+
+	$adminCategoryTable.DataTable({
+					lengthMenu : [ [ 3, 5, 7, -1 ],[ '3 Records', '5 Records', '7 Records', 'ALL' ] ],
+					pageLength : 5,
+					ajax : {
+						url : jsonUrl,
+						dataSrc : ''
+					},
+					columns : [
+							{
+								data : 'id',
+							},
+							{
+								data : 'name'
+							},
+							{
+								data : 'description'
+							},
+
+							{
+								data : 'active',
+								bSortable : false,
+								mRender : function(data, type, row) 
+								{
+									var str = '';
+									if (data) {
+										str += '<label class="switch"> <input type="checkbox" value="'
+												+ row.id
+												+ '" checked="checked">  <div class="slider round"> </div></label>';
+
+									} else {
+										str += '<label class="switch"> <input type="checkbox" value="'
+												+ row.id
+												+ '">  <div class="slider round"> </div></label>';
+									}
+
+									return str;
+								}
+							},
+							{
+								data : 'id',
+								bSortable : false,
+								mRender : function(data, type, row) {
+									var str = '';
+									str += '<a href="'+window.contextRoot+'/manage/'+data+'/category" class="btn btn-success">';
+									str += '<span class="fa fa-pencil"> Edit</span></a>';
+									return str;
+								}
+							}
+					],
+
+					initComplete : function() {
+						var api = this.api();
+						api.$('.switch input[type="checkbox"]').on('change',
+						function() {
+								var checkbox = $(this);
+								var checked = checkbox.prop('checked');
+								var dMsg = (checked) ? 'Do You want to activate the Category?'
+													: 'Do You want to deactivate the Category?';
+								var value = checkbox.prop('value');
+                                bootbox.confirm({
+												size : "medium",
+												message : dMsg,
+												callback : function(confirmed) {
+															if (confirmed) {
+																console.log(value);
+																var activationUrl = window.contextRoot+'/manage/categories/'+value+'/activation';
+																$.post(activationUrl,function(data) 
+																{
+																	bootbox.alert
+																	({
+														                 size : "medium",
+																	     message : data
+																	});
+
+																});
+															    }
+
+															else 
+															{
+																checkbox.prop('checked',!checked);					
+															}
+														}
+
+													});
+
+										});
+					}
+					
+				});
+	}
+	
+	
+	//---------------------------
 	/* handle refresh cart */
 	$('button[name="refreshCart"]')
 			.click(

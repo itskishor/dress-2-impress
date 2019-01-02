@@ -29,6 +29,8 @@
 						href="${contextRoot}/manage/supplier">Manage Supplier</a></li>
 						<li id="manageuser"><a class="nav-link"
 						href="${contextRoot}/manage/user">Manage User</a></li>
+						<li id="managecategories"><a class="nav-link"
+						href="${contextRoot}/manage/categories">Manage Categories</a></li>
 				</security:authorize>
 			</ul>
 			<ul class="navbar-nav ml-auto">

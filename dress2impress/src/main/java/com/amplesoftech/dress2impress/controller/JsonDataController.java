@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.amplesoftech.dress2impressbackend.dao.CategoryDAO;
 import com.amplesoftech.dress2impressbackend.dao.ClothesDAO;
 import com.amplesoftech.dress2impressbackend.dao.EmployeeDAO;
+import com.amplesoftech.dress2impressbackend.dto.Category;
 import com.amplesoftech.dress2impressbackend.dto.Clothes;
 import com.amplesoftech.dress2impressbackend.dto.Employee;
 
@@ -23,6 +25,9 @@ public class JsonDataController
 	
 	@Autowired
 	private EmployeeDAO employeeDAO;
+	
+	@Autowired
+	private CategoryDAO categoryDAO;
 	
 	@RequestMapping("/all/clothes")
 	@ResponseBody
@@ -64,6 +69,14 @@ public class JsonDataController
 	@ResponseBody
 	public List<Employee> getAllEmployeeListForAdmin() {		
 		return employeeDAO.list();
+				
+	}
+	
+
+	@RequestMapping("/admin/all/categories")
+	@ResponseBody
+	public List<Category> getAllCategoryListForAdmin() {		
+		return categoryDAO.list();
 				
 	}
 

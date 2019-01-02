@@ -79,6 +79,11 @@
 				<%@include file="manageuser.jsp"%> 
 			</c:if>
 			
+			<!--Loading The Manage Categories Content -->
+			<c:if test="${userClickManageCategories==true}">
+				<%@include file="managecategory.jsp"%> 
+			</c:if>
+			
 			<!--Loading The Manage Clothes Content -->
 			<c:if test="${userClickAddClothes==true}">
 				<%@include file="addClothes.jsp"%> 

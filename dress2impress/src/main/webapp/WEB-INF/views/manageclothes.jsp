@@ -11,7 +11,7 @@
 
 		<c:if test="${not empty message}">
 
-			<div class="col-8">
+			<div class="col-6">
 				<div class="alert alert-success alert-dismissible">
 					<button type="button" class="close" data-dismiss="alert">&times;</button>
 					${message}
@@ -19,7 +19,7 @@
 			</div>
 		</c:if>
 
-		<div class="col-8">
+		<div class="col-6">
 			<div class="card ">
 				<div class="card-header bg-dark text-white">
 					<h5 class="card-title">Manage Clothes</h5>
@@ -195,10 +195,8 @@
 
 
 	<hr />
-	<h2 style="color: black;">
-		<center>
+	<h2 style="color: black;"align="center">
 			<strong>Available Clothes</strong>
-		</center>
 	</h2>
 	<hr />
 	<div class="row justify-content-center">

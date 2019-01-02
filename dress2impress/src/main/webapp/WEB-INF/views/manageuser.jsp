@@ -86,10 +86,8 @@
 
 
 	<hr />
-	<h2 style="color: black;">
-		<center>
-			<strong>Active User</strong>
-		</center>
+	<h2 style="color: black;"align="center">
+			<strong>Available User</strong>
 	</h2>
 	<hr />
 	<div class="row justify-content-center">
