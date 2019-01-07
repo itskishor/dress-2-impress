@@ -1,6 +1,5 @@
 <%@taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <div class="container-fluid">
 	<hr/>
 	<h2 style="text-align:center">
