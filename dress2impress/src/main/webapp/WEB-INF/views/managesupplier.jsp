@@ -58,9 +58,9 @@
 						<div class="form-group">
 							<label class="control-label col-md-4">Contact Number</label>
 							<div class="col-6">
-								<sf:input type="date" path="dob" id="dob" class="form-control" required="true"
-									placeholder="Enter Date Of Birth Here!"></sf:input>
-								<sf:errors path="dob" cssClass="help-block" element="em" />
+								<sf:input type="text" path="contactNumber" id="contactNumber" class="form-control" required="true"
+									placeholder="Enter Contact Number Here!"></sf:input>
+								<sf:errors path="contactNumber" cssClass="help-block" element="em" />
 							</div>
 						</div>
 						
@@ -81,9 +81,6 @@
 			</div>
 		</div>
 	</div>
-
-
-
 
 	<hr />
 	<h2 style="color: black;"align="center">

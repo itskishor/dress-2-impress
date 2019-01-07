@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.amplesoftech.dress2impressbackend.dao.UserDAO;
 import com.amplesoftech.dress2impressbackend.dto.Address;
 import com.amplesoftech.dress2impressbackend.dto.Cart;
+import com.amplesoftech.dress2impressbackend.dto.Employee;
 import com.amplesoftech.dress2impressbackend.dto.User;
 
 @Repository("userDAO")
@@ -109,8 +110,56 @@ public class UserDAOImpl implements UserDAO {
 			return null;
 		}
 	}
+
+	@Override
+	public boolean addEmployee(Employee employee) {
+		try {			
+			// will look for this code later and why we need to change it
+			sessionFactory.getCurrentSession().persist(employee);			
+			return true;
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public Employee getEmployeeDetails(int userId) {
+		String selectQuery = "FROM Employee WHERE userId = :userId";
+		try{
+		return sessionFactory.getCurrentSession()
+					.createQuery(selectQuery, Employee.class)
+						.setParameter("userId", userId)
+						.getSingleResult();
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
+	}
 	
-/*
+	@Override
+	public boolean updateEmployee(Employee employee) {
+		try {			
+			sessionFactory.getCurrentSession().update(employee);			
+			return true;
+		}
+		catch(Exception ex) {
+			return false;
+		}
+	}	
+	@Override
+	public Employee getEmployee(int empId) {
+		try {			
+			return sessionFactory.getCurrentSession().get(Employee.class,empId);			
+		}
+		catch(Exception ex) {
+			System.out.println(ex.getMessage());
+			return null;
+		}
+	}
+
 	@Override
 	public boolean updateAddress(Address address) {
 		try {			
@@ -121,11 +170,6 @@ public class UserDAOImpl implements UserDAO {
 			return false;
 		}
 	}	
-	
-
-	
-
-	
 
 	@Override
 	public User get(int id) {
@@ -148,5 +192,17 @@ public class UserDAOImpl implements UserDAO {
 			return null;
 		}
 	}
-*/
+
+	@Override
+	public boolean update(User user) {
+		try {			
+			sessionFactory.getCurrentSession().update(user);			
+			return true;
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
+
 }

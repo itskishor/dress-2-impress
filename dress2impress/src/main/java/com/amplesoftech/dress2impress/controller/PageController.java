@@ -50,6 +50,7 @@ public class PageController {
 	mv.addObject("userClickSignin",true);
 	return mv;
 	}
+
 	
 	@RequestMapping(value="/cart")
 	public ModelAndView cart()
@@ -136,7 +137,6 @@ public class PageController {
 		}
 		return mv;
 	}
-	
 	@RequestMapping(value="/perform-logout")
 	public String logout(HttpServletRequest request, HttpServletResponse response) {
 		// Invalidates HTTP Session, then unbinds any objects bound to it.

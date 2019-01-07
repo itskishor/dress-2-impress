@@ -65,7 +65,7 @@
 			</c:if>
 			
 			<!--Loading The Manage Clothes Content -->
-			<c:if test="${userClickManageClothes==true}">
+			<c:if test="${userClickEmployeeManageClothes==true}">
 				<%@include file="manageclothes.jsp"%> 
 			</c:if>
 			
@@ -75,8 +75,13 @@
 			</c:if>
 			
 			<!--Loading The Manage Clothes Content -->
-			<c:if test="${userClickManageUser==true}">
+			<c:if test="${userClickEmployeeManageUser==true}">
 				<%@include file="manageuser.jsp"%> 
+			</c:if>
+			
+			<!--Loading The Manage Clothes Content -->
+			<c:if test="${userClickManageSupplier==true}">
+				<%@include file="managesupplier.jsp"%> 
 			</c:if>
 			
 			<!--Loading The Manage Categories Content -->

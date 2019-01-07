@@ -6,13 +6,13 @@ $(function() {
 		$('#viewclothes').addClass('active');
 		break;
 	case 'Manage Clothes':
-		$('#manageclothes').addClass('active');
+		$('#employeemanageclothes').addClass('active');
 		break;
 	case 'Manage Employee':
 		$('#manageemployee').addClass('active');
 		break;
 	case 'Manage User':
-		$('#manageuser').addClass('active');
+		$('#employeemanageuser').addClass('active');
 		break;
 	case 'Manage Supplier':
 		$('#managesupplier').addClass('active');
@@ -175,7 +175,7 @@ $(function() {
 
 	// --------------------------------
 
-	/* Data Table For Admin */
+	/* Clothes Data Table For Employee */
 
 	var $adminClothesTable = $("#adminClothesTable");
 
@@ -274,7 +274,7 @@ $(function() {
 									var str = '';
 									str += '<a href="'
 											+ window.contextRoot
-											+ '/manage/'
+											+ '/employeemanage/'
 											+ data
 											+ '/clothes" class="btn btn-success">';
 									str += '<span class="fa fa-pencil"> Edit</span></a>';
@@ -310,7 +310,7 @@ $(function() {
 																console
 																		.log(value);
 																var activationUrl = window.contextRoot
-																		+ '/manage/employee/'
+																		+ '/employeemanage/clothes/'
 																		+ value
 																		+ '/activation';
 																$
@@ -382,18 +382,17 @@ $(function() {
 
 	// ---------------------------------------
 	// Employee Data Table for Admin
-	
-	var $adminEmployeeTable = $("#adminEmoloyeeTable");
+	var $adminEmployeeTable = $("#adminEmployeeTable");
 
 	if ($adminEmployeeTable.length) {
 		// console.log('Inside the table!');
 
-		var jsonUrl = window.contextRoot + '/json/data/admin/all/employee';
+		var jsonUrl = window.contextRoot + '/json/data/admin/all/employees';
 
 		$adminEmployeeTable
 				.DataTable({
 					lengthMenu : [ [ 3, 5, 10, -1 ],
-							[ '3 Records', '5 Records', '10 Records', 'ALL' ] ],
+							[ '3 Records', '5 Records', '7 Records', 'ALL' ] ],
 					pageLength : 5,
 					ajax : {
 						url : jsonUrl,
@@ -413,41 +412,22 @@ $(function() {
 								data : 'email'
 							},
 							{
-								data : 'dob'
-							},
-							{
-								data : 'empaddr'
-							},
-							{
-								data : 'doj'
-							},
-							{
-								data : 'salary',
-								mRender : function(data, type, row) {
-									return '&#8377;' + data
-								}
-							},
-							{
 								data : 'contactNumber',
 							},
-
 							{
-								data : 'department',
-							},
-
+								data : 'role',
+							},							
 							{
 								data : 'enabled',
 								bSortable : false,
 								mRender : function(data, type, row) {
 									var str = '';
 									if (data) {
-										str += '<label class="switch"> <input type="checkbox" value="'
-												+ row.id
+										str += '<label class="switch"> <input type="checkbox" value="'+ row.id
 												+ '" checked="checked">  <div class="slider round"> </div></label>';
 
 									} else {
-										str += '<label class="switch"> <input type="checkbox" value="'
-												+ row.id
+										str += '<label class="switch"> <input type="checkbox" value="'+ row.id
 												+ '">  <div class="slider round"> </div></label>';
 									}
 
@@ -460,11 +440,7 @@ $(function() {
 								mRender : function(data, type, row) {
 
 									var str = '';
-									str += '<a href="'
-											+ window.contextRoot
-											+ '/manage/'
-											+ data
-											+ '/employee" class="btn btn-success">';
+									str += '<a href="'+ window.contextRoot+'/manage/'+data+ '/employee" class="btn btn-success">';
 									str += '<span class="fa fa-pencil"> Edit</span></a>';
 
 									return str;
@@ -483,8 +459,8 @@ $(function() {
 											var checkbox = $(this);
 											var checked = checkbox
 													.prop('checked');
-											var dMsg = (checked) ? 'Do You want to activate the Employee?'
-													: 'Do You want to deactivate the Employee?';
+											var dMsg = (checked) ? 'Do You want to activate the User?'
+													: 'Do You want to deactivate the User?';
 											var value = checkbox.prop('value');
 
 											bootbox
@@ -532,7 +508,265 @@ $(function() {
 				});
 	}
 
+
 	// --------------------------
+	
+//User Data Table for Employee
+	
+	var $adminUserTable = $("#adminUserTable");
+
+	if ($adminUserTable.length) {
+		// console.log('Inside the table!');
+
+		var jsonUrl = window.contextRoot + '/json/data/admin/all/user';
+
+		$adminUserTable
+				.DataTable({
+					lengthMenu : [ [ 3, 5, 10, -1 ],
+							[ '3 Records', '5 Records', '7 Records', 'ALL' ] ],
+					pageLength : 5,
+					ajax : {
+						url : jsonUrl,
+						dataSrc : ''
+					},
+					columns : [
+							{
+								data : 'id',
+							},
+							{
+								data : 'firstName'
+							},
+							{
+								data : 'lastName'
+							},
+							{
+								data : 'email'
+							},
+							{
+								data : 'contactNumber',
+							},
+							
+							{
+								data : 'enabled',
+								bSortable : false,
+								mRender : function(data, type, row) {
+									var str = '';
+									if (data) {
+										str += '<label class="switch"> <input type="checkbox" value="'+ row.id
+												+ '" checked="checked">  <div class="slider round"> </div></label>';
+
+									} else {
+										str += '<label class="switch"> <input type="checkbox" value="'+ row.id
+												+ '">  <div class="slider round"> </div></label>';
+									}
+
+									return str;
+								}
+							},
+							{
+								data : 'id',
+								bSortable : false,
+								mRender : function(data, type, row) {
+
+									var str = '';
+									str += '<a href="'+ window.contextRoot+'/employeemanage/'+data+ '/user" class="btn btn-success">';
+									str += '<span class="fa fa-pencil"> Edit</span></a>';
+
+									return str;
+								}
+							}
+
+					],
+
+					initComplete : function() {
+						var api = this.api();
+						api
+								.$('.switch input[type="checkbox"]')
+								.on(
+										'change',
+										function() {
+											var checkbox = $(this);
+											var checked = checkbox
+													.prop('checked');
+											var dMsg = (checked) ? 'Do You want to activate the User?'
+													: 'Do You want to deactivate the User?';
+											var value = checkbox.prop('value');
+
+											bootbox
+													.confirm({
+														size : "medium",
+														message : dMsg,
+														callback : function(
+																confirmed) {
+															if (confirmed) {
+
+																console
+																		.log(value);
+																var activationUrl = window.contextRoot
+																		+ '/employeemanage/user/'
+																		+ value
+																		+ '/activation';
+																$
+																		.post(
+																				activationUrl,
+																				function(
+																						data) {
+
+																					bootbox
+																							.alert({
+																								size : "medium",
+																								message : data
+																							});
+
+																				});
+															}
+
+															else {
+																checkbox
+																		.prop(
+																				'checked',
+																				!checked);
+															}
+														}
+
+													});
+
+										});
+					}
+					
+				});
+	}
+
+	// --------------------------
+	
+	
+	//Supplier Data Table for Admin
+		
+		var $adminSupplierTable = $("#adminSupplierTable");
+
+		if ($adminSupplierTable.length) {
+			// console.log('Inside the table!');
+
+			var jsonUrl = window.contextRoot + '/json/data/admin/all/supplier';
+
+			$adminSupplierTable
+					.DataTable({
+						lengthMenu : [ [ 3, 5, 10, -1 ],
+								[ '3 Records', '5 Records', '7 Records', 'ALL' ] ],
+						pageLength : 5,
+						ajax : {
+							url : jsonUrl,
+							dataSrc : ''
+						},
+						columns : [
+								{
+									data : 'id',
+								},
+								{
+									data : 'firstName'
+								},
+								{
+									data : 'lastName'
+								},
+								{
+									data : 'email'
+								},
+								{
+									data : 'contactNumber',
+								},
+								
+								{
+									data : 'enabled',
+									bSortable : false,
+									mRender : function(data, type, row) {
+										var str = '';
+										if (data) {
+											str += '<label class="switch"> <input type="checkbox" value="'+ row.id
+													+ '" checked="checked">  <div class="slider round"> </div></label>';
+
+										} else {
+											str += '<label class="switch"> <input type="checkbox" value="'+ row.id
+													+ '">  <div class="slider round"> </div></label>';
+										}
+
+										return str;
+									}
+								},
+								{
+									data : 'id',
+									bSortable : false,
+									mRender : function(data, type, row) {
+
+										var str = '';
+										str += '<a href="'+ window.contextRoot+'/manage/'+data+ '/supplier" class="btn btn-success">';
+										str += '<span class="fa fa-pencil"> Edit</span></a>';
+
+										return str;
+									}
+								}
+
+						],
+
+						initComplete : function() {
+							var api = this.api();
+							api
+									.$('.switch input[type="checkbox"]')
+									.on(
+											'change',
+											function() {
+												var checkbox = $(this);
+												var checked = checkbox
+														.prop('checked');
+												var dMsg = (checked) ? 'Do You want to activate the User?'
+														: 'Do You want to deactivate the User?';
+												var value = checkbox.prop('value');
+
+												bootbox
+														.confirm({
+															size : "medium",
+															message : dMsg,
+															callback : function(
+																	confirmed) {
+																if (confirmed) {
+
+																	console
+																			.log(value);
+																	var activationUrl = window.contextRoot
+																			+ '/manage/supplier/'
+																			+ value
+																			+ '/activation';
+																	$
+																			.post(
+																					activationUrl,
+																					function(
+																							data) {
+
+																						bootbox
+																								.alert({
+																									size : "medium",
+																									message : data
+																								});
+
+																					});
+																}
+
+																else {
+																	checkbox
+																			.prop(
+																					'checked',
+																					!checked);
+																}
+															}
+
+														});
+
+											});
+						}
+						
+					});
+		}
+
+		// --------------------------
 	
 // Category Data Table for Admin
 	
@@ -633,9 +867,7 @@ $(function() {
 					}
 					
 				});
-	}
-	
-	
+	}	
 	//---------------------------
 	/* handle refresh cart */
 	$('button[name="refreshCart"]')

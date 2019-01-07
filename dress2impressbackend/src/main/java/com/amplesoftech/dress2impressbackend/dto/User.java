@@ -15,6 +15,8 @@ import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "user_detail")
 public class User implements Serializable{
@@ -38,14 +40,18 @@ public class User implements Serializable{
 	@NotBlank(message = "Please enter contact number!")
 	@Column(name = "contact_number")
 	private String contactNumber;
+	@NotBlank(message = "Please enter Role!")
 	private String role;
 	@NotBlank(message = "Please enter password!")
+	@JsonIgnore
 	private String password;
 	private boolean enabled = true;
-	
+
 	@OneToOne(mappedBy="user",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@JsonIgnore
 	private Cart cart;
 	@Transient
+	@JsonIgnore
 	private String confirmPassword; 
 	
 	public String getConfirmPassword() {
@@ -114,13 +120,15 @@ public class User implements Serializable{
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
-	
-	//toString() method for logging and debuging activities
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", contactNumber=" + contactNumber + ", role=" + role + ", password=" + password + ", enabled="
-				+ enabled + "]";
+				+ enabled + ", cart=" + cart + ", confirmPassword=" + confirmPassword + "]";
 	}
+	
+	//toString() method for logging and debuging activities
+	
 	
 }

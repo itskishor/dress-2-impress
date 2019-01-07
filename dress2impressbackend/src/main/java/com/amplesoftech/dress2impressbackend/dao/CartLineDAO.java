@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.amplesoftech.dress2impressbackend.dto.Cart;
 import com.amplesoftech.dress2impressbackend.dto.CartLine;
+import com.amplesoftech.dress2impressbackend.dto.OrderDetail;
 
 public interface CartLineDAO {
 
@@ -23,7 +24,7 @@ public interface CartLineDAO {
 	public List<CartLine> listAvailable(int cartId);
 	
 	// adding order details
-	//boolean addOrderDetail(OrderDetail orderDetail);
+	boolean addOrderDetail(OrderDetail orderDetail);
 
 	
 }

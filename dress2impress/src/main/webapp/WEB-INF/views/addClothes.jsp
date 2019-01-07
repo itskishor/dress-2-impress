@@ -19,7 +19,7 @@
 			</div>
 		</c:if>
 
-		<div class="col-8">
+		<div class="col-6">
 			<div class="card ">
 				<div class="card-header bg-dark text-white">
 					<h5 class="card-title">Add Clothes</h5>

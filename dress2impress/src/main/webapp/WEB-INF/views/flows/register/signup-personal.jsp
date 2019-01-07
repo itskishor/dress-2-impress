@@ -82,11 +82,8 @@
 							<label class="control-label col-md-4"><b>Select Role:</b></label>
 							<div class="col-8">
 								<label class="radio-inline"> <sf:radiobutton path="role"
-										value="USER" checked="checked" /> <b>User</b> <%-- </label> <label class="radio-inline"> 
-								<sf:radiobutton path="role" value="ADMIN" /> Admin
-								</label> <label class="radio-inline"> 
-								<sf:radiobutton path="role" value="EMPLOYEE" /> Employee
-								</label> <label class="radio-inline">  --%> <sf:radiobutton
+										value="USER" checked="checked" /> <b>User</b>
+								  <sf:radiobutton
 										path="role" value="SUPPLIER" /> <b>Supplier</b>
 								</label>
 							</div>
@@ -108,54 +105,5 @@
 		</div>
 	</div>
 </div>
-<%-- 	<!-- Modal -->
-	<div class="modal fade" id="myCategoryModal" tabindex="-1"
-		role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">
-						<span>&times;</span>
-					</button>
-					<!-- 	        <h4 class="modal-title">New Category</h4>
- -->
-				</div>
-				<div class="modal-body">
 
-					<sf:form id="categoryForm" modelAttribute="category"
-						action="${contextRoot}/manage/category" method="POST">
-
-						<div class="form-group">
-							<label for="category_name" class="control-label col-md-4">Category
-								Name</label>
-							<div class="col-md-8">
-								<sf:input type="text" path="name" id="category_name"
-									class="form-control" />
-							</div>
-						</div>
-
-						<div class="form-group">
-							<label for="category_description" class="control-label col-md-4">Category
-								Description</label>
-							<div class="col-md-8 validate">
-								<sf:textarea cols="" rows="5" path="description"
-									id="category_description" class="form-control" />
-							</div>
-						</div>
-
-
-						<div class="form-group">
-							<div class="col-md-offset-4 col-md-4">
-								<input type="submit" value="Add Category"
-									class="btn btn-primary" />
-							</div>
-						</div>
-					</sf:form>
-				</div>
-			</div>
-		</div>
-	</div>
-
-</div>
- --%>
 <%@include file="../shared/flows-footer.jsp"%>

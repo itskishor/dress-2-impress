@@ -27,7 +27,7 @@
 
 				<div class="card-body">
                  <sf:form class="form-horizontal" modelAttribute="user"
-						action="${contextRoot}/manage/user" method="POST"
+						action="${contextRoot}/employeemanage/user" method="POST"
 						enctype="multipart/form-data">
 					<div class="form-group">
 						<label class="control-label col-md-4">First Name</label>
@@ -69,7 +69,7 @@
 							<div class="row justify-content-center">
 
 								<button type="submit" class="btn btn-primary btn-md"> Submit</button>
-								<!-- Hiddin Fields for User -->
+								<!-- Hidden Fields for User -->
 								<sf:hidden path="id" />
 								<sf:hidden path="enabled"/>
 								<sf:hidden path="password"/>

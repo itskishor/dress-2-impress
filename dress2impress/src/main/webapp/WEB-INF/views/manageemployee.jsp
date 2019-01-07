@@ -11,7 +11,7 @@
 
 		<c:if test="${not empty message}">
 
-			<div class="col-6">
+			<div class="col-8">
 				<div class="alert alert-success alert-dismissible">
 					<button type="button" class="close" data-dismiss="alert">&times;</button>
 					${message}
@@ -26,12 +26,12 @@
 				</div>
 
 				<div class="card-body">
-                 <sf:form class="form-horizontal" modelAttribute="employee"
+                 <sf:form class="form-horizontal" modelAttribute="user"
 						action="${contextRoot}/manage/employee" method="POST"
 						enctype="multipart/form-data">
 					<div class="form-group">
-						<label class="control-label col-md-4">Enter First Name</label>
-						<div class="col-12">
+						<label class="control-label col-md-4">First Name</label>
+						<div class="col-8">
 							<sf:input type="text" path="firstName" id="firstName"
 								class="form-control" placeholder="Fisrt Name" />
 							<sf:errors path="firstName" cssClass="help-block" element="em" />
@@ -39,8 +39,8 @@
 					</div>
 					
 					<div class="form-group">
-							<label class="control-label col-md-4">Enter The Last Name</label>
-							<div class="col-12">
+							<label class="control-label col-md-4">Last Name</label>
+							<div class="col-8">
 								<sf:input type="text" path="lastName"  id="lastname"
 									class="form-control" placeholder="Last Name" />
 								<sf:errors path="lastName" cssClass="help-block" element="em" />
@@ -49,82 +49,37 @@
 						
 						<div class="form-group">
 							<label class="control-label col-md-4">Email</label>
-							<div class="col-12">
+							<div class="col-8">
 								<sf:input type="email" path="email" id="email"
 									class="form-control" placeholder="Email" />
 								<sf:errors path="email" cssClass="help-block" element="em" />
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-md-4">Select Date Of Birth</label>
-							<div class="col-12">
-								<sf:input type="date" path="dob" id="dob" class="form-control" required="true"
-									placeholder="Enter Date Of Birth Here!"></sf:input>
-								<sf:errors path="dob" cssClass="help-block" element="em" />
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label class="control-label col-md-4">Address</label>
-							<div class="col-12">
-								<sf:textarea path="empaddr" id="empaddr" rows="4"
-									class="form-control" placeholder="Enter Address here!"></sf:textarea>
-								<sf:errors path="empaddr" cssClass="help-block" element="em" />
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label class="control-label col-md-4">Select Date Of Joining</label>
-							<div class="col-12">
-								<sf:input type="date" path="doj"  id="doj" class="form-control" required="true"
-									placeholder="Enter Date Of Joining Here!"></sf:input>
-								<sf:errors path="doj"  cssClass="help-block" element="em" />
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label class="control-label col-md-4">Salary</label>
-							<div class="col-6">
-								<sf:input type="number" path="salary"  id="salary"
-									class="form-control" placeholder="Enter The Salary" />
-								<sf:errors path="salary" cssClass="help-block" element="em" />
-							</div>
-						</div>
-						
-						<div class="form-group">
 							<label class="control-label col-md-4">Contact Number</label>
 							<div class="col-6">
-								<sf:input type="text" path="contactNumber"  id="contactNumber"
-									class="form-control" placeholder="XXXXXXXXXX" />
+								<sf:input type="text" path="contactNumber" id="contactNumber" class="form-control" required="true"
+									placeholder="Enter Contact Number Here!"></sf:input>
 								<sf:errors path="contactNumber" cssClass="help-block" element="em" />
 							</div>
 						</div>
 						
 						<div class="form-group">
+							<label class="control-label col-md-4">Role</label>
+							<div class="col-6">
+								<sf:input type="text" path="role" id="role" value="EMPLOYEE" class="form-control" required="true"
+									placeholder="Your Role is!"></sf:input>
+								<sf:errors path="role" cssClass="help-block" element="em" />
+							</div>
+						</div>
+						
+						
+						<div class="form-group">
 							<label class="control-label col-md-4">Password</label>
 							<div class="col-6">
-								<sf:input type="password" path="password"  id="password"
-									class="form-control"  placeholder="Password" />
+								<sf:input type="password" path="password" id="password" class="form-control" required="true"
+									placeholder="Enter Your Pasword!"></sf:input>
 								<sf:errors path="password" cssClass="help-block" element="em" />
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label class="control-label col-md-4">Confirm Password</label>
-							<div class="col-6">
-								<sf:input type="password" path="confirmPassword"  id="confirmPassword"
-									class="form-control"  placeholder="Re-Type Password" />
-								<sf:errors path="confirmPassword"  cssClass="help-block" element="em" />
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label class="control-label col-md-4">Department</label>
-							<div class="col-6">
-								<sf:select class="form-control" path="department" id="categoryId" items="${categories}" 
-								itemLabel="name" itemValue="id"/>
-								
-								
 							</div>
 						</div>
 						
@@ -133,10 +88,11 @@
 							<div class="row justify-content-center">
 
 								<button type="submit" class="btn btn-primary btn-md"> Submit</button>
-								<!-- Hiddin Fields for Employee -->
+								<!-- Hiddin Fields for User -->
 								<sf:hidden path="id" />
 								<sf:hidden path="enabled"/>
-								
+								 <sf:hidden path="password"/> 
+								<%--<sf:hidden path="role"/>--%>	
 							</div>
 						</div>
                  </sf:form>
@@ -144,9 +100,6 @@
 			</div>
 		</div>
 	</div>
-
-
-
 
 	<hr />
 	<h2 style="color: black;"align="center">
@@ -160,9 +113,9 @@
 
 			<div style="overflow: auto">
 			
-			<!-- Employee Table For Admin -->
+			<!--Employee Table For Admin -->
 			
-				<table id="adminEmoloyeeTable"
+				<table id="adminEmployeeTable"
 					class="table table-dark table-condensed table-bordered">
 
 					<thead>
@@ -171,33 +124,12 @@
 							<th>First Name</th>
 							<th>Last Name</th>
 							<th>Email</th>
-							<th>DOB</th>
-							<th>Address</th>
-							<th>DOJ</th>
-							<th>Salary</th>
 							<th>Contact</th>
-							<th>Department</th>
+							<th>Role</th>
 							<th>Activate</th>
 							<th>Edit</th>
 						</tr>
 					</thead>
-
-					<tfoot>
-						<tr>
-							<th>Id</th>
-							<th>First Name</th>
-							<th>Last Name</th>
-							<th>Email</th>
-							<th>DOB</th>
-							<th>Address</th>
-							<th>DOJ</th>
-							<th>Salary</th>
-							<th>Contact</th>
-							<th>Department</th>
-							<th>Activate</th>
-							<th>Edit</th>
-						</tr>
-					</tfoot>
 				</table>
 			</div>
 		</div>

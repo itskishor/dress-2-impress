@@ -164,4 +164,65 @@ public class CartService
         c.add(Calendar.DATE, days);
         return new Date(c.getTimeInMillis());
     }
+	
+
+	public String validateCartLine() {
+		Cart cart = this.getCart();
+		List<CartLine> cartLines = cartLineDAO.list(cart.getId());
+		double grandTotal = 0.0;
+		int lineCount = 0;
+		String response = "result=success";
+		boolean changed = false;
+		Clothes clothes = null;
+		for(CartLine cartLine : cartLines) {					
+			clothes = cartLine.getClothes();
+			changed = false;
+			// check if the product is active or not
+			// if it is not active make the availability of cartLine as false
+			if((!clothes.isActive() && clothes.getQuantity() == 0) && cartLine.isAvailable()) {
+				cartLine.setAvailable(false);
+				changed = true;
+			}			
+			// check if the cartLine is not available
+			// check whether the product is active and has at least one quantity available
+			if((clothes.isActive() && clothes.getQuantity() > 0) && !(cartLine.isAvailable())) {
+					cartLine.setAvailable(true);
+					changed = true;
+			}
+			
+			// check if the buying price of product has been changed
+			if(cartLine.getPricePerDay() != clothes.getUnitPrice()) {
+				// set the buying price to the new price
+				cartLine.setPricePerDay(clothes.getUnitPrice());
+				// calculate and set the new total
+				cartLine.setTotalPrice(cartLine.getClothesCount() * clothes.getUnitPrice());
+				changed = true;				
+			}
+			
+			// check if that much quantity of product is available or not
+			if(cartLine.getClothesCount() > clothes.getQuantity()) {
+				cartLine.setClothesCount(clothes.getQuantity());										
+				cartLine.setTotalPrice(cartLine.getClothesCount() * clothes.getUnitPrice());
+				changed = true;
+				
+			}
+			
+			// changes has happened
+			if(changed) {				
+				//update the cartLine
+				cartLineDAO.update(cartLine);
+				// set the result as modified
+				response = "result=modified";
+			}
+			
+			grandTotal += cartLine.getTotalPrice();
+			lineCount++;
+		}
+		
+		cart.setCartLines(lineCount++);
+		cart.setGrandTotal(grandTotal);
+		cartLineDAO.updateCart(cart);
+
+		return response;
+	}	
 }

@@ -11,7 +11,7 @@
 
 		<c:if test="${not empty message}">
 
-			<div class="col-6">
+			<div class="col-8">
 				<div class="alert alert-success alert-dismissible">
 					<button type="button" class="close" data-dismiss="alert">&times;</button>
 					${message}

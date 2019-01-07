@@ -20,17 +20,18 @@
 						href="${contextRoot}/add/clothes">Add Clothes</a></li>
 					</security:authorize>
 				<security:authorize access="hasAuthority('ADMIN')">
-					<li id="manageclothes"><a class="nav-link"
-						href="${contextRoot}/manage/clothes">Manage Clothes</a></li>
-
 					<li id="manageemployee"><a class="nav-link"
 						href="${contextRoot}/manage/employee">Manage Employees</a></li>
 						<li id="managesupplier"><a class="nav-link"
 						href="${contextRoot}/manage/supplier">Manage Supplier</a></li>
-						<li id="manageuser"><a class="nav-link"
-						href="${contextRoot}/manage/user">Manage User</a></li>
 						<li id="managecategories"><a class="nav-link"
 						href="${contextRoot}/manage/categories">Manage Categories</a></li>
+				</security:authorize>
+						<security:authorize access="hasAuthority('EMPLOYEE')">
+					    <li id="employeemanageclothes"><a class="nav-link"
+					href="${contextRoot}/employeemanage/clothes">Manage Clothes</a></li>
+						<li id="employeemanageuser"><a class="nav-link"
+						href="${contextRoot}/employeemanage/user">Manage User</a></li>
 				</security:authorize>
 			</ul>
 			<ul class="navbar-nav ml-auto">

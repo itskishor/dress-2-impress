@@ -11,7 +11,7 @@
 
 		<c:if test="${not empty message}">
 
-			<div class="col-6">
+			<div class="col-8">
 				<div class="alert alert-success alert-dismissible">
 					<button type="button" class="close" data-dismiss="alert">&times;</button>
 					${message}
@@ -27,7 +27,7 @@
 
 				<div class="card-body">
 					<sf:form class="form-horizontal" modelAttribute="clothes"
-						action="${contextRoot}/manage/clothes" method="POST"
+						action="${contextRoot}/employeemanage/clothes" method="POST"
 						enctype="multipart/form-data">
 						<div class="form-group">
 							<label class="control-label col-md-4">Enter Clothes Name</label>
@@ -158,7 +158,7 @@
 				<div class="modal-body">
 
 					<sf:form id="categoryForm" modelAttribute="category"
-						action="${contextRoot}/manage/category" method="POST">
+						action="${contextRoot}/employeemanage/category" method="POST">
 
 						<div class="form-group">
 							<label for="category_name" class="control-label col-md-4">Category
@@ -190,10 +190,6 @@
 			</div>
 		</div>
 	</div>
-
-
-
-
 	<hr />
 	<h2 style="color: black;"align="center">
 			<strong>Available Clothes</strong>

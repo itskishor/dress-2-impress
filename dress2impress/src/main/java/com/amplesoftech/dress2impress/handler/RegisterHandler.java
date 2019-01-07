@@ -16,8 +16,8 @@ import com.amplesoftech.dress2impressbackend.dto.User;
 public class RegisterHandler {
 
 	
-	  @Autowired 
-	  private BCryptPasswordEncoder passwordEncoder;
+	/*  @Autowired 
+	  private BCryptPasswordEncoder passwordEncoder;*/
 	 
 
 	@Autowired
@@ -64,7 +64,8 @@ public class RegisterHandler {
 		}
 
 		// encode the password
-		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		//user.setPassword(passwordEncoder.encode(user.getPassword()));
+		//user.setPassword(user.getPassword());
 
 		// save the user
 		userDAO.addUser(user);

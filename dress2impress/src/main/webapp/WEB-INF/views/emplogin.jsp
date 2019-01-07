@@ -28,11 +28,6 @@
 
 	window.contextRoot = '${contextRoot}';
 </script>
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> -->
-<!-- Bootstrap core CSS -->
 <link href="${css}/bootstrap.min.css" rel="stylesheet">
 
 <!-- Bootstrap DataTable-->
@@ -83,15 +78,15 @@
 
 						<div class="card card-primary">
 
-							<div class="card-heading bg-primary" >
+							<div class="card-heading bg-primary"  >
 								<h4 align="center">
-									<b>Login</b>
+										<b>Employee Login</b>
 								</h4>
 							</div>
 
 							<div class="card-body">
-								<form action="${contextRoot}/login" method="POST"
-									class="form-horizontal" id="loginForm">
+								<form action="${contextRoot}/emplogin" method="POST"
+									class="form-horizontal" id="emploginForm">
              
 									<div class="form-group row">
 										<label for="username" class="col-md-4 control-label"><b>Email:</b>
@@ -111,7 +106,7 @@
 									</div>
 									<div class="form-group">
 										<div class="col-12 text-center">
-											<input type="submit" value="Login" class="btn btn-primary" />
+											<input type="submit" value="emplogin" class="btn btn-primary" />
 											<input type="hidden" name="${_csrf.parameterName}"
 												value="${_csrf.token}" />
 										</div>
@@ -119,14 +114,6 @@
 								</form>
 								
 								</div>
-
-							</div>
-							<div class="card-footer">
-							    <div class="text-left">
-									Employee <a href="${contextRoot}/emplogin">Login Here</a>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-									New User - <a href="${contextRoot}/register">Register Here</a>
-							
-							</div>
 
 						</div>
 

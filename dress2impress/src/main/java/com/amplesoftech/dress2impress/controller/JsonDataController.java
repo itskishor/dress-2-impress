@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.amplesoftech.dress2impressbackend.dao.CategoryDAO;
 import com.amplesoftech.dress2impressbackend.dao.ClothesDAO;
-import com.amplesoftech.dress2impressbackend.dao.EmployeeDAO;
+import com.amplesoftech.dress2impressbackend.dao.UserDAO;
 import com.amplesoftech.dress2impressbackend.dto.Category;
 import com.amplesoftech.dress2impressbackend.dto.Clothes;
-import com.amplesoftech.dress2impressbackend.dto.Employee;
+import com.amplesoftech.dress2impressbackend.dto.User;
 
 @Controller
 @RequestMapping("/json/data")
@@ -24,7 +24,7 @@ public class JsonDataController
 	private ClothesDAO clothesDAO;
 	
 	@Autowired
-	private EmployeeDAO employeeDAO;
+	private UserDAO userDAO;
 	
 	@Autowired
 	private CategoryDAO categoryDAO;
@@ -43,6 +43,28 @@ public class JsonDataController
 		return clothesDAO.list();
 				
 	}
+
+	@RequestMapping("/admin/all/employees")
+	@ResponseBody
+	public List<User> getAllEmployeeListForAdmin() {		
+		return userDAO.listByRole("EMPLOYEE");
+				
+	}
+	
+	@RequestMapping("/admin/all/user")
+	@ResponseBody
+	public List<User> getAllUserListForAdmin() {		
+		return userDAO.listByRole("USER");
+				
+	}
+	
+	@RequestMapping("/admin/all/supplier")
+	@ResponseBody
+	public List<User> getAllSupplierListForAdmin() {		
+		return userDAO.listByRole("SUPPLIER");
+				
+	}
+	
 	
 	@RequestMapping("/category/{id}/clothes")
 	@ResponseBody
@@ -65,12 +87,6 @@ public class JsonDataController
 		return clothesDAO.getClothesByParam("rented", 5);				
 	}
 	
-	@RequestMapping("/admin/all/employee")
-	@ResponseBody
-	public List<Employee> getAllEmployeeListForAdmin() {		
-		return employeeDAO.list();
-				
-	}
 	
 
 	@RequestMapping("/admin/all/categories")
