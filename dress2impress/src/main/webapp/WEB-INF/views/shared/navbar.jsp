@@ -5,7 +5,8 @@
 </script>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 	<div class="container-fluid">
-		<a class="navbar-brand" href="${contextRoot}/home">Dress 2 Impress</a>
+	   
+		<a class="navbar-brand" href="${contextRoot}/home"> <img src="resources\images\favcon.png" alt="" width="42" height="42">Dress 2 Impress</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarResponsive" aria-controls="navbarResponsive"
 			aria-expanded="false" aria-label="Toggle navigation">

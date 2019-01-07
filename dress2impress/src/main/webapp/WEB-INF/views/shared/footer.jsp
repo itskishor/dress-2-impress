@@ -1,5 +1,5 @@
-<footer class="py-5 bg-dark">
-      <div class="container-fluid" class="footer">
-        <p class="m-0 text-right text-white">Copyright &copy; Dress 2 Impress 2019</p>
+<footer class="footer">
+      <div class="container-fluid" >
+       <h6>Copyright &copy; Dress 2 Impress 2019</h6>
       </div> 
 </footer> 
