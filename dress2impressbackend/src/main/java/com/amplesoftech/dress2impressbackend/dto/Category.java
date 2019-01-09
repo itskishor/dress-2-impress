@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 @Entity
 public class Category implements Serializable  
 {
@@ -19,7 +21,9 @@ public class Category implements Serializable
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 		private int id;
+	@NotBlank(message = "Please enter contact number!")
 		private String name;
+	@NotBlank(message = "Please enter contact number!")
 		private String description;
 		@Column(name = "is_active")
 		private boolean active = true;

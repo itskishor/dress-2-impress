@@ -29,8 +29,8 @@
 					<sf:form class="form-horizontal" modelAttribute="clothes"
 						action="${contextRoot}/employeemanage/clothes" method="POST"
 						enctype="multipart/form-data">
-						<div class="form-group">
-							<label class="control-label col-md-4">Enter Clothes Name</label>
+						<div class="form-group row">
+							<label class="control-label col-md-3"><b>Enter Name:</b></label>
 							<div class="col-8">
 								<sf:input type="text" path="name" id="name" class="form-control"
 									placeholder="Clothes Name" />
@@ -38,8 +38,8 @@
 							</div>
 						</div>
 
-						<div class="form-group">
-							<label class="control-label col-md-4">Enter The Brand</label>
+						<div class="form-group row">
+							<label class="control-label col-md-3"><b>Enter The Brand:</b></label>
 							<div class="col-8">
 								<sf:input type="text" path="brand" id="brand"
 									class="form-control" placeholder="Brand Name" />
@@ -47,8 +47,8 @@
 							</div>
 						</div>
 
-						<div class="form-group">
-							<label class="control-label col-md-4">Size</label>
+						<div class="form-group row">
+							<label class="control-label col-md-3"><b>Size:</b></label>
 							<div class="col-8">
 								<sf:input path="size" id="size" class="form-control"
 									placeholder="Enter clothes size here!"></sf:input>
@@ -56,8 +56,8 @@
 							</div>
 						</div>
 
-						<div class="form-group">
-							<label class="control-label col-md-4">Description</label>
+						<div class="form-group row">
+							<label class="control-label col-md-3"><b>Description:</b></label>
 							<div class="col-8">
 								<sf:textarea path="description" id="description" rows="4"
 									class="form-control" placeholder="Enter your description here!"></sf:textarea>
@@ -65,8 +65,8 @@
 							</div>
 						</div>
 
-						<div class="form-group">
-							<label class="control-label col-md-4">Unit Price</label>
+						<div class="form-group row">
+							<label class="control-label col-md-3"><b>Unit Price:</b></label>
 							<div class="col-8">
 								<sf:input type="number" path="unitPrice" id="unitPrice"
 									class="form-control" placeholder="Enter Unit Price" />
@@ -74,8 +74,8 @@
 							</div>
 						</div>
 
-						<div class="form-group">
-							<label class="control-label col-md-4">Price Per Day</label>
+						<div class="form-group row">
+							<label class="control-label col-md-3"><b>Price Per Day:</b></label>
 							<div class="col-8">
 								<sf:input type="number" path="pricePerDay" id="pricePerDay"
 									class="form-control" placeholder="Enter The Price/Day" />
@@ -83,8 +83,8 @@
 							</div>
 						</div>
 
-						<div class="form-group">
-							<label class="control-label col-md-4">Quantity Available</label>
+						<div class="form-group row">
+							<label class="control-label col-md-3"><b>Quantity:</b></label>
 							<div class="col-8">
 								<sf:input type="number" path="quantity" id="quantity"
 									class="form-control" placeholder="Enter Quantity Available" />
@@ -93,8 +93,8 @@
 						</div>
 
 
-						<div class="form-group">
-							<label class="control-label col-md-4">Upload a file</label>
+						<div class="form-group row">
+							<label class="control-label col-md-3"><b>Upload The File:</b></label>
 							<div class="col-8">
 								<sf:input type="file" path="file" class="form-control" />
 								<sf:errors path="file" cssClass="help-block" element="em" />
@@ -102,8 +102,8 @@
 						</div>
 
 
-						<div class="form-group">
-							<label class="control-label col-md-4">Category</label>
+						<div class="form-group row">
+							<label class="control-label col-md-3"><b>Category:</b></label>
 							<div class="col-8">
 								<sf:select class="form-control" id="categoryId"
 									path="categoryId" items="${categories}" itemLabel="name"
@@ -161,7 +161,7 @@
 						action="${contextRoot}/employeemanage/category" method="POST">
 
 						<div class="form-group">
-							<label for="category_name" class="control-label col-md-4">Category
+							<label for="category_name" class="control-label col-md-3">Category
 								Name</label>
 							<div class="col-md-8">
 								<sf:input type="text" path="name" id="category_name"
@@ -170,7 +170,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="category_description" class="control-label col-md-4">Category
+							<label for="category_description" class="control-label col-md-3">Category
 								Description</label>
 							<div class="col-md-8 validate">
 								<sf:textarea cols="" rows="5" path="description"
@@ -180,7 +180,7 @@
 
 
 						<div class="form-group">
-							<div class="col-md-offset-4 col-md-4">
+							<div class="col-md-offset-4 col-md-3">
 								<input type="submit" value="Add Category"
 									class="btn btn-primary" />
 							</div>

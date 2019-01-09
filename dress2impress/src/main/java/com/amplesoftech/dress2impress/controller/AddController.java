@@ -1,5 +1,7 @@
 package com.amplesoftech.dress2impress.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -17,7 +19,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.amplesoftech.dress2impress.util.FileUploadUtility;
 import com.amplesoftech.dress2impress.validator.ClothesValidator;
+import com.amplesoftech.dress2impressbackend.dao.CategoryDAO;
 import com.amplesoftech.dress2impressbackend.dao.ClothesDAO;
+import com.amplesoftech.dress2impressbackend.dto.Category;
 import com.amplesoftech.dress2impressbackend.dto.Clothes;
 
 @Controller
@@ -27,6 +31,8 @@ public class AddController {
 
 	@Autowired
 	private ClothesDAO clothesDAO;
+	@Autowired
+	private CategoryDAO categoryDAO;
 	
 	@RequestMapping(value = "/clothes", method = RequestMethod.GET)
 	public ModelAndView manageAddClothes(@RequestParam(name = "operation", required = false) String operation) {
@@ -60,6 +66,15 @@ public class AddController {
 		 */
 		return mv;
 
+	}
+	@ModelAttribute("categories")
+	public List<Category> modelCategories() {
+		return categoryDAO.listActiveCategory();
+	}
+
+	@ModelAttribute("category")
+	public Category getCategory() {
+		return new Category();
 	}
 	// handling clothes submission
 		@RequestMapping(value = "/clothes", method = RequestMethod.POST)

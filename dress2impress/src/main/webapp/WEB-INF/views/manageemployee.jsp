@@ -29,8 +29,8 @@
                  <sf:form class="form-horizontal" modelAttribute="user"
 						action="${contextRoot}/manage/employee" method="POST"
 						enctype="multipart/form-data">
-					<div class="form-group">
-						<label class="control-label col-md-4">First Name</label>
+					<div class="form-group row">
+						<label class="control-label col-md-3"><b>First Name:</b></label>
 						<div class="col-8">
 							<sf:input type="text" path="firstName" id="firstName"
 								class="form-control" placeholder="Fisrt Name" />
@@ -38,8 +38,8 @@
 						</div>
 					</div>
 					
-					<div class="form-group">
-							<label class="control-label col-md-4">Last Name</label>
+					<div class="form-group row">
+							<label class="control-label col-md-3"><b>Last Name:</b></label>
 							<div class="col-8">
 								<sf:input type="text" path="lastName"  id="lastname"
 									class="form-control" placeholder="Last Name" />
@@ -47,16 +47,53 @@
 							</div>
 						</div>
 						
-						<div class="form-group">
-							<label class="control-label col-md-4">Email</label>
+						<div class="form-group row">
+							<label class="control-label col-md-3"><b>Email:</b></label>
 							<div class="col-8">
 								<sf:input type="email" path="email" id="email"
 									class="form-control" placeholder="Email" />
 								<sf:errors path="email" cssClass="help-block" element="em" />
 							</div>
 						</div>
-						<div class="form-group">
-							<label class="control-label col-md-4">Contact Number</label>
+						
+						<div class="form-group row">
+							<label class="control-label col-md-3"><b>Date Of Birth:</b></label>
+							<div class="col-6">
+								<sf:input type="date" path="dob" id="dob"
+									class="form-control" placeholder="Select Date" />
+								<sf:errors path="dob" cssClass="help-block" element="em" />
+							</div>
+						</div>
+						
+						<div class="form-group row">
+							<label class="control-label col-md-3"><b>Address:</b></label>
+							<div class="col-8">
+								<sf:input type="text" path="empaddr" id="empaddr"
+									class="form-control" placeholder="Enter Address" />
+								<sf:errors path="empaddr" cssClass="help-block" element="em" />
+							</div>
+						</div>
+						
+						<div class="form-group row">
+							<label class="control-label col-md-3"><b>Date Of Joining:</b></label>
+							<div class="col-6">
+								<sf:input type="date" path="doj" id="doj"
+									class="form-control" placeholder="Select Joining Date" />
+								<sf:errors path="doj" cssClass="help-block" element="em" />
+							</div>
+						</div>
+						
+						<div class="form-group row">
+							<label class="control-label col-md-3"><b>Salary:</b></label>
+							<div class="col-4">
+								<sf:input type="number" path="salary" id="salary"
+									class="form-control" placeholder="Enter Salary" />
+								<sf:errors path="salary" cssClass="help-block" element="em" />
+							</div>
+						</div>
+						
+						<div class="form-group row">
+							<label class="control-label col-md-3"><b>Contact Number:</b></label>
 							<div class="col-6">
 								<sf:input type="text" path="contactNumber" id="contactNumber" class="form-control" required="true"
 									placeholder="Enter Contact Number Here!"></sf:input>
@@ -64,18 +101,16 @@
 							</div>
 						</div>
 						
-						<div class="form-group">
-							<label class="control-label col-md-4">Role</label>
+						<%-- <div class="form-group row">
+							<label class="control-label col-md-3"><b>Role:</b></label>
 							<div class="col-6">
-								<sf:input type="text" path="role" id="role" value="EMPLOYEE" class="form-control" required="true"
-									placeholder="Your Role is!"></sf:input>
+								<sf:input type="text" path="role" id="role" value="EMPLOYEE"  class="form-control" disabled="true"  required="true"></sf:input>
 								<sf:errors path="role" cssClass="help-block" element="em" />
 							</div>
-						</div>
-						
-						
-						<div class="form-group">
-							<label class="control-label col-md-4">Password</label>
+						</div> --%>
+											
+						<div class="form-group row">
+							<label class="control-label col-md-3"><b>Password:</b></label>
 							<div class="col-6">
 								<sf:input type="password" path="password" id="password" class="form-control" required="true"
 									placeholder="Enter Your Pasword!"></sf:input>
@@ -88,11 +123,10 @@
 							<div class="row justify-content-center">
 
 								<button type="submit" class="btn btn-primary btn-md"> Submit</button>
-								<!-- Hiddin Fields for User -->
+								<!-- Hidden Fields for User -->
 								<sf:hidden path="id" />
-								<sf:hidden path="enabled"/>
-								 <sf:hidden path="password"/> 
-								<%--<sf:hidden path="role"/>--%>	
+								<sf:hidden path="enabled"/> 
+								<sf:hidden path="role"/> 
 							</div>
 						</div>
                  </sf:form>
@@ -113,7 +147,7 @@
 
 			<div style="overflow: auto">
 			
-			<!--Employee Table For Admin -->
+			Employee Table For Admin
 			
 				<table id="adminEmployeeTable"
 					class="table table-dark table-condensed table-bordered">
@@ -125,7 +159,10 @@
 							<th>Last Name</th>
 							<th>Email</th>
 							<th>Contact</th>
-							<th>Role</th>
+							<th>Salary</th>
+							<th>Birth Date</th>
+							<th>Joining Date</th>
+							<th>Address</th>		
 							<th>Activate</th>
 							<th>Edit</th>
 						</tr>

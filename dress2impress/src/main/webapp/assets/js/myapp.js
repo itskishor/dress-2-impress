@@ -393,7 +393,7 @@ $(function() {
 				.DataTable({
 					lengthMenu : [ [ 3, 5, 10, -1 ],
 							[ '3 Records', '5 Records', '7 Records', 'ALL' ] ],
-					pageLength : 5,
+					pageLength : 30,
 					ajax : {
 						url : jsonUrl,
 						dataSrc : ''
@@ -415,8 +415,19 @@ $(function() {
 								data : 'contactNumber',
 							},
 							{
-								data : 'role',
-							},							
+								data : 'salary'
+							},
+							{
+								data : 'dob'
+							},
+							
+							{
+								data : 'doj'
+							},
+							{
+								data : 'empaddr'
+							},
+													
 							{
 								data : 'enabled',
 								bSortable : false,

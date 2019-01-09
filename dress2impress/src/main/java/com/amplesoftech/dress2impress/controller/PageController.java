@@ -1,5 +1,7 @@
 package com.amplesoftech.dress2impress.controller; 
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,7 +43,15 @@ public class PageController {
 	mv.addObject("userClickHome",true);
 	return mv;
 	}
-	
+	@ModelAttribute("categories")
+	public List<Category> modelCategories() {
+		return categoryDAO.listActiveCategory();
+	}
+
+	@ModelAttribute("category")
+	public Category getCategory() {
+		return new Category();
+	}
 	
 	@RequestMapping(value="/signin")
 	public ModelAndView signin()

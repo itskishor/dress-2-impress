@@ -3,7 +3,7 @@
 
 	<div class="row">
 			<!--  To display all the goods -->
-			<div class="col-md-6">
+			<div class="col-md-4">
 				
 				<div class="row">
 					<c:forEach items="${checkoutModel.cartLines}" var="cartLine">
@@ -13,7 +13,9 @@
 							<h3>${cartLine.clothes.name}</h3>
 							<hr/>
 							<h4>Quantity -${cartLine.clothesCount}</h4>
-							<h5>Buying Price - &#8377; ${cartLine.pricePerDay}/-</h5>							
+							<h5>Price Per Day - &#8377; ${cartLine.pricePerDay}/-</h5>
+						<h5> Issue Date- &#8377; ${cartLine.issueDate}/-</h5>	
+						<h5> Return Date- &#8377; ${cartLine.returnDate}/-</h5>					
 						</div>						
 						<hr/>
 						<div class="text-right">
@@ -26,22 +28,22 @@
 				
 			</div>
 			
-			<div class="col-md-6">
-	            <div class="panel panel-default">
-	                <div class="panel-heading">
-	                    <h3 class="panel-title">
+			<div class="col-md-8">
+	            <div class="card card-default">
+	                <div class="card-heading">
+	                    <h4 class="card-title">
 	                        Payment Details
-	                    </h3>
+	                    </h4>
 	                </div>
-	                <div class="panel-body">
+	                <div class="card-body">
 	                    <form role="form">
 	                    <div class="form-group">
 	                        <label for="cardNumber">
 	                            CARD NUMBER</label>
 	                        <div class="input-group">
-	                            <input type="text" class="form-control" id="cardNumber" placeholder="Valid Card Number"
-	                                required autofocus />
-	                            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+	                            <input type="text" class="form-control" path="validcardnumber" id="cardNumber" placeholder="Valid Card Number"
+	                                required autofocus />&ensp;&ensp;
+	                                <i class="fa fa-lock" style="font-size:38px;color:black"></i>
 	                        </div>
 	                    </div>
 	                    <div class="row">
@@ -61,6 +63,9 @@
 	                                <label for="cvCode">
 	                                    CV CODE</label>
 	                                <input type="password" class="form-control" id="cvCode" placeholder="CV" required />
+	                                  <i class="fa fa-cc-visa" style="font-size:38px;color:black"></i>
+	                                  <i class="fa fa-cc-mastercard" style="font-size:38px;color:black"></i>
+	                                  <i class="fa fa-credit-card" style="font-size:38px;color:black"></i>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -71,7 +76,7 @@
 	                <li class="active"><a href="#"><span class="badge pull-right"> &#8377; ${checkoutModel.checkoutTotal}/-</span> Final Payment</a></li>
 	            </ul>
 	            <br/>
-	            <a href="${flowExecutionUrl}&_eventId_pay" class="btn btn-success btn-lg btn-block" role="button">Pay</a>
+	            <a href="${flowExecutionUrl}&_eventId_pay" class="btn btn-success btn-sm btn-block" role="button">Pay</a>
 			
 			</div>
 

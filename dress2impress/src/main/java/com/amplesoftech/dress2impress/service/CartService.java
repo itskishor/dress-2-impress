@@ -67,7 +67,7 @@ public class CartService
             java.sql.Date returnDate = addDays(cartLine.getIssueDate(),cartLine.getNoOfDays());
 			
 			cartLine.setReturnDate(returnDate);
-			cartLine.setTotalPrice(cartLine.getClothes().getPricePerDay() * count*countdays +cartLine.getDeposite());
+			cartLine.setTotalPrice(cartLine.getClothes().getPricePerDay() * count*countdays +(cartLine.getDeposite()*count));
 			cartLineDAO.update(cartLine);
 			
 			// update the cart
@@ -114,10 +114,10 @@ public class CartService
 			LocalDate localDate = date.toLocalDate();
 			
 			Date sqldate = Date.valueOf(localDate);
-			// add a new cartLine if a new product is getting added
+			// add a new cartLine if a new clothes  is getting added
 			cartLine = new CartLine();
 			Clothes clothes =clothesDAO.get(clothesId);
-			// transfer the product details to cartLine
+			// transfer the clothes details to cartLine
 			cartLine.setCartId(cart.getId());
 			cartLine.setClothes(clothes);
 			cartLine.setClothesCount(1);
@@ -190,7 +190,7 @@ public class CartService
 					changed = true;
 			}
 			
-			// check if the buying price of product has been changed
+			// check if the renting price of clothes has been changed
 			if(cartLine.getPricePerDay() != clothes.getUnitPrice()) {
 				// set the buying price to the new price
 				cartLine.setPricePerDay(clothes.getUnitPrice());

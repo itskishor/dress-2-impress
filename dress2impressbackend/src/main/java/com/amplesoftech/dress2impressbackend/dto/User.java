@@ -40,8 +40,8 @@ public class User implements Serializable{
 	@NotBlank(message = "Please enter contact number!")
 	@Column(name = "contact_number")
 	private String contactNumber;
-	@NotBlank(message = "Please enter Role!")
-	private String role;
+	//@NotBlank(message = "Please enter Role!")
+	private String role="EMPLOYEE";
 	@NotBlank(message = "Please enter password!")
 	@JsonIgnore
 	private String password;
@@ -53,7 +53,44 @@ public class User implements Serializable{
 	@Transient
 	@JsonIgnore
 	private String confirmPassword; 
-	
+	//----------------------------
+	private double salary;
+	private String dob;
+	private String doj;
+	private String empaddr;
+	public double getSalary() {
+		return salary;
+	}
+
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+
+	public String getDob() {
+		return dob;
+	}
+
+	public void setDob(String dob) {
+		this.dob = dob;
+	}
+
+	public String getDoj() {
+		return doj;
+	}
+
+	public void setDoj(String doj) {
+		this.doj = doj;
+	}
+
+	public String getEmpaddr() {
+		return empaddr;
+	}
+
+	public void setEmpaddr(String empaddr) {
+		this.empaddr = empaddr;
+	}
+
+	//--------------------------
 	public String getConfirmPassword() {
 		return confirmPassword;
 	}
@@ -125,7 +162,8 @@ public class User implements Serializable{
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", contactNumber=" + contactNumber + ", role=" + role + ", password=" + password + ", enabled="
-				+ enabled + ", cart=" + cart + ", confirmPassword=" + confirmPassword + "]";
+				+ enabled + ", cart=" + cart + ", confirmPassword=" + confirmPassword + ", salary=" + salary + ", dob="
+				+ dob + ", doj=" + doj + ", empaddr=" + empaddr + "]";
 	}
 	
 	//toString() method for logging and debuging activities

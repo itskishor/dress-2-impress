@@ -29,8 +29,8 @@
                  <sf:form class="form-horizontal" modelAttribute="user"
 						action="${contextRoot}/manage/supplier" method="POST"
 						enctype="multipart/form-data">
-					<div class="form-group">
-						<label class="control-label col-md-4">First Name</label>
+					<div class="form-group row">
+						<label class="control-label col-md-3"><b>First Name:</b></label>
 						<div class="col-8">
 							<sf:input type="text" path="firstName" id="firstName"
 								class="form-control" placeholder="Fisrt Name" />
@@ -38,8 +38,8 @@
 						</div>
 					</div>
 					
-					<div class="form-group">
-							<label class="control-label col-md-4">Last Name</label>
+					<div class="form-group row">
+							<label class="control-label col-md-3"><b>Last Name:</b></label>
 							<div class="col-8">
 								<sf:input type="text" path="lastName"  id="lastname"
 									class="form-control" placeholder="Last Name" />
@@ -47,16 +47,16 @@
 							</div>
 						</div>
 						
-						<div class="form-group">
-							<label class="control-label col-md-4">Email</label>
+						<div class="form-group row">
+							<label class="control-label col-md-3"><b>Email:</b></label>
 							<div class="col-8">
 								<sf:input type="email" path="email" id="email"
 									class="form-control" placeholder="Email" />
 								<sf:errors path="email" cssClass="help-block" element="em" />
 							</div>
 						</div>
-						<div class="form-group">
-							<label class="control-label col-md-4">Contact Number</label>
+						<div class="form-group row">
+							<label class="control-label col-md-3"><b>Contact Number:</b></label>
 							<div class="col-6">
 								<sf:input type="text" path="contactNumber" id="contactNumber" class="form-control" required="true"
 									placeholder="Enter Contact Number Here!"></sf:input>
@@ -68,7 +68,7 @@
 
 							<div class="row justify-content-center">
 
-								<button type="submit" class="btn btn-primary btn-md"> Submit</button>
+								<button type="submit" class="btn btn-primary btn-md">Submit</button>
 								<!-- Hiddin Fields for User -->
 								<sf:hidden path="id" />
 								<sf:hidden path="enabled"/>

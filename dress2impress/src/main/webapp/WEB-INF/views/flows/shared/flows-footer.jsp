@@ -1,7 +1,6 @@
 </div>
-		<!--Footer Comes Here-->
+<!--Footer Comes Here-->
 		<%@include file="../../shared/footer.jsp"%>
-
 		<!-- JQuery -->
 		<script src="${js}/jquery.js"></script>
 
@@ -24,6 +23,7 @@
 		<!-- Self Coded Java Script -->
 		<script src="${js}/myapp.js"></script>
 	</div>
+	
 </body>
 
 </html>

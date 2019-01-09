@@ -110,7 +110,7 @@ public class ManagementController {
 	@RequestMapping(value = "/category", method = RequestMethod.POST)
 	public String handleCategorySubmission(@Valid @ModelAttribute("category") Category mcategory, BindingResult results,
 				Model model, HttpServletRequest request) {
-			// handle image validation for new clothes
+			// handle  validation for new category
 			if (mcategory.getId() == 0) {
 				new CategoryValidator().validate(mcategory, results);
 			} 
@@ -122,9 +122,9 @@ public class ManagementController {
 				return "page";
 			}
 			logger.info(mcategory.toString());
-			// Create a new employee Record
+			// Create a new Category Record
 			if (mcategory.getId() == 0) {
-				// create the employee if id is 0
+				// create the Category if id is 0
 				categoryDAO.add(mcategory);
 			} 
 			else 
@@ -195,9 +195,9 @@ public class ManagementController {
 			Model model, HttpServletRequest request) {
 		// check if there is any error
 		if (results.hasErrors()) {
-			model.addAttribute("userClickManageSupplier", true);
-			model.addAttribute("title", "Manage Supplier");
-			model.addAttribute("message", "Validation Failed For Supplier Submission!");
+			model.addAttribute("userClickManageEmployee", true);
+			model.addAttribute("title", "Manage Employee");
+			model.addAttribute("message", "Validation Failed For Employee Submission!");
 			return "page";
 		}
 		logger.info(muser.toString());
@@ -205,7 +205,8 @@ public class ManagementController {
 		if (muser.getId() == 0) {
 			// create the user if id is 0
 		userDAO.addUser(muser);
-		} else {
+		} 
+		else {
 			// update the user if id is not 0
 			userDAO.update(muser);
 		}
@@ -213,10 +214,6 @@ public class ManagementController {
 		return "redirect:/manage/employee?operation=employee";
 
 	}
-
-
-
-	
 			
 			//--------------------SUPPLIER Management Controller-------------
 

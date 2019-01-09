@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.amplesoftech.dress2impressbackend.dao.UserDAO;
 import com.amplesoftech.dress2impressbackend.dto.Address;
-import com.amplesoftech.dress2impressbackend.dto.Cart;
 import com.amplesoftech.dress2impressbackend.dto.Employee;
 import com.amplesoftech.dress2impressbackend.dto.User;
 

@@ -29,18 +29,18 @@
 					<sf:form class="form-horizontal" modelAttribute="category"
 						action="${contextRoot}/manage/category" method="POST"
 						enctype="multipart/form-data">
-						<div class="form-group">
-							<label class="control-label col-md-4">Enter Category Name</label>
-							<div class="col-12">
+						<div class="form-group row">
+							<label class="control-label col-md-4"><b>Enter Category Name:</b></label>
+							<div class="col-8">
 								<sf:input type="text" path="name" id="name" class="form-control"
 									placeholder="Category Name" />
 								<sf:errors path="name" cssClass="help-block" element="em" />
 							</div>
 						</div>
 
-						<div class="form-group">
-							<label class="control-label col-md-4">Description</label>
-							<div class="col-12">
+						<div class="form-group row">
+							<label class="control-label col-md-4"><b>Description:</b></label>
+							<div class="col-8">
 								<sf:textarea path="description" id="description" rows="4"
 									class="form-control" placeholder="Enter your description here!"></sf:textarea>
 								<sf:errors path="description" cssClass="help-block" element="em" />
