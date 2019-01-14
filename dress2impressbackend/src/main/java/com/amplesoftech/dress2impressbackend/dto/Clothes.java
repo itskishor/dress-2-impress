@@ -180,7 +180,6 @@ public class Clothes implements Serializable   {
 
 
 	public Clothes get(int clothesId) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	

@@ -34,6 +34,8 @@
 						<li id="employeemanageuser"><a class="nav-link"
 						href="${contextRoot}/employeemanage/user">Manage User</a></li>
 				</security:authorize>
+				<li id="contactus"><a class="nav-link"
+					href="${contextRoot}/show/contactus">Contact Us</a></li>
 			</ul>
 			<ul class="navbar-nav ml-auto">
 				<!-- class="nav-item" -->

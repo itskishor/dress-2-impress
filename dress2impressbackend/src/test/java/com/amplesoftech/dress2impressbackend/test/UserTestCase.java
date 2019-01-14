@@ -7,9 +7,9 @@ import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.amplesoftech.dress2impressbackend.dao.UserDAO;
-import com.amplesoftech.dress2impressbackend.dto.Address;
-import com.amplesoftech.dress2impressbackend.dto.Cart;
-import com.amplesoftech.dress2impressbackend.dto.Employee;
+//import com.amplesoftech.dress2impressbackend.dto.Address;
+//import com.amplesoftech.dress2impressbackend.dto.Cart;
+//import com.amplesoftech.dress2impressbackend.dto.Employee;
 //import com.amplesoftech.dress2impressbackend.dto.Address;
 // com.amplesoftech.dress2impressbackend.dto.Cart;
 import com.amplesoftech.dress2impressbackend.dto.User;
@@ -19,9 +19,9 @@ public class UserTestCase {
 	private static AnnotationConfigApplicationContext context;
 	private static UserDAO userDAO;
 	private User user=null;
-	private Cart cart = null;
-	private Address address = null;
-	private Employee employee = null;
+	//private Cart cart = null;
+	//private Address address = null;
+	//private Employee employee = null;
 	
 	@BeforeClass
 	public static void init() {

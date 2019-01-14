@@ -21,9 +21,9 @@ public class Category implements Serializable
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 		private int id;
-	@NotBlank(message = "Please enter contact number!")
+	@NotBlank(message = "Please enter category name!")
 		private String name;
-	@NotBlank(message = "Please enter contact number!")
+	@NotBlank(message = "Please enter the description!")
 		private String description;
 		@Column(name = "is_active")
 		private boolean active = true;

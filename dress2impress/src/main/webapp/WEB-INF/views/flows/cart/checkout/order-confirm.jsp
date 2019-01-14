@@ -66,10 +66,10 @@
 				<div class="alert alert-success">
 					<h3 class="text-center">Your Order is Confirmed!!</h3>
 				</div>
-				<div class="invoice-title" >
+				<div class="invoice-title">
 					<h2 style="color: tomato" align="center">
-							<u>	Invoice</u>
-						</h2>
+						<u> Invoice</u>
+					</h2>
 				</div>
 				<hr>
 				<div class="text-right">
@@ -144,9 +144,10 @@
 												<td class="text-center"><strong>Price</strong></td>
 												<td class="text-center"><strong>Quantity</strong></td>
 												<td class="text-center"><strong>Issue Date</strong></td>
-											<td class="text-center"><strong>Return Date</strong></td>
-												<td class="text-right"><strong>Totals</strong></td>
-												
+												<td class="text-center"><strong>Return Date</strong></td>
+												<td class="text-center"><strong>Deposit</strong></td>
+												<td class="text-right"><strong>Rent</strong></td>
+
 											</tr>
 										</thead>
 										<tbody>
@@ -157,15 +158,34 @@
 													<td class="text-center">&#8377;
 														${orderItem.pricePerDay}</td>
 													<td class="text-center">${orderItem.clothesCount}</td>
-									 <td class="text-center">${orderDetail.issueDate}</td>
-									 <td class="text-center">${orderDetail.returnDate}</td>
-										
-													
-													<td class="text-right">&#8377; ${orderItem.totalPrice}</td>
-													
+													<td class="text-center">${orderItem.issueDate}</td>
+													<td class="text-center">${orderItem.returnDate}</td>
+													<td class="text-center">${orderItem.deposite}</td>
+													<td class="text-right">&#8377; ${orderItem.totalRent}</td>
+
 												</tr>
 											</c:forEach>
 										</tbody>
+										<tfoot>
+										<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td class="text-right"><strong>Total Deposit- &#8377; ${checkoutModel.checkoutTotalDeposit}/-</strong></td>
+										<td class="text-right"><strong>Total Rent - &#8377; ${checkoutModel.checkoutTotalRent}/-</strong></td>
+										</tr>
+										<tr>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td class="text-right"><strong>Grand Total - &#8377; ${checkoutModel.checkoutTotal}/-</strong></td>
+										</tr>
+										</tfoot>
 									</table>
 								</div>
 							</div>
@@ -174,8 +194,8 @@
 				</div>
 				<div class="text-center">
 					<a href="${contextRoot}/show/all/clothes"
-						class="btn btn-lg btn-warning">Continue Shopping</a>
+						class="btn btn-lg btn-warning">Continue Renting</a>
 				</div>
-				</div>
-				</div>
-			<%@include file="../../shared/flows-footer.jsp"%>
+			</div>
+		</div>
+		<%@include file="../../shared/flows-footer.jsp"%>

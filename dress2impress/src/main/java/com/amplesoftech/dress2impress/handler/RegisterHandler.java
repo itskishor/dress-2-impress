@@ -3,7 +3,7 @@ package com.amplesoftech.dress2impress.handler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.amplesoftech.dress2impress.model.RegisterModel;
@@ -13,13 +13,11 @@ import com.amplesoftech.dress2impressbackend.dto.Cart;
 import com.amplesoftech.dress2impressbackend.dto.User;
 
 @Component
-public class RegisterHandler {
-
-	
+public class RegisterHandler 
+{	
 	/*  @Autowired 
 	  private BCryptPasswordEncoder passwordEncoder;*/
 	 
-
 	@Autowired
 	private UserDAO userDAO;
 

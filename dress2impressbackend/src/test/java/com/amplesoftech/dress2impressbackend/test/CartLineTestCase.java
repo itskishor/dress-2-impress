@@ -27,9 +27,9 @@ public class CartLineTestCase {
 	private static UserDAO userDAO;
 	
 	
-	private  Cart cart=null;
-	private  Clothes clothes=null;
-	private  User user=null;
+	//private  Cart cart=null;
+	//private  Clothes clothes=null;
+	//private  User user=null;
 	private CartLine cartLine = null;
 	
 	
@@ -75,7 +75,7 @@ public class CartLineTestCase {
 	}
 	
 	
-	/*
+	
 	@Test
 	public void testUpdateCartLine() {
 
@@ -95,5 +95,5 @@ public class CartLineTestCase {
 		cart.setGrandTotal(cart.getGrandTotal() + cartLine.getTotalPrice() - oldTotal);
 		assertEquals("Failed to update the cart!",true, cartLineDAO.updateCart(cart));	
 	}
-*/
+
 }

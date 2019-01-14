@@ -84,6 +84,16 @@ public class PageController {
 	mv.addObject("userClickViewClothes",true);
 	return mv;
 	}
+	
+	//methods to load contact us page
+		@RequestMapping(value="/show/contactus")
+		public ModelAndView showContactUs()
+		{
+		ModelAndView mv=new ModelAndView("page");
+		mv.addObject("title","Contact Us");
+		mv.addObject("userClickContactUs",true);
+		return mv;
+		}
 
 	@RequestMapping(value="/show/category/{id}/clothes")
 	public ModelAndView showCategoryClothes(@PathVariable("id") int id)

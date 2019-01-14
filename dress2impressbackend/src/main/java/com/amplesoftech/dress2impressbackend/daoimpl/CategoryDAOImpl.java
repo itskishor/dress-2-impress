@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.amplesoftech.dress2impressbackend.dao.CategoryDAO;
 import com.amplesoftech.dress2impressbackend.dto.Category;
 
-
 @Repository("categoryDAO")
 @Transactional
 public class CategoryDAOImpl implements CategoryDAO {

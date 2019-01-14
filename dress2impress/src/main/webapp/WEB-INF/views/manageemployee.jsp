@@ -1,7 +1,7 @@
 <%@taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<div class="container-fluid">
+<div class="container">
 	<hr />
 	<h2 style="text-align: center">
 		<strong>Manage Employee</strong>
@@ -160,7 +160,7 @@
 							<th>Email</th>
 							<th>Contact</th>
 							<th>Salary</th>
-							<th>Birth Date</th>
+							<th>Birth   Date</th>
 							<th>Joining Date</th>
 							<th>Address</th>		
 							<th>Activate</th>

@@ -43,7 +43,7 @@
 
 </head>
 <body>
-	<div class="wrapper">
+	<div class="container">
 		<!-- Navigation -->
 		<%@include file="./shared/navbar.jsp"%>
 
@@ -82,6 +82,11 @@
 			<!--Loading The Manage Categories Content -->
 			<c:if test="${userClickManageCategories==true}">
 				<%@include file="managecategory.jsp"%> 
+			</c:if>
+			
+			<!--Loading The Manage Categories Content -->
+			<c:if test="${userClickContactUs==true}">
+				<%@include file="contactus.jsp"%> 
 			</c:if>
 			
 			<!--Loading The Manage Clothes Content -->

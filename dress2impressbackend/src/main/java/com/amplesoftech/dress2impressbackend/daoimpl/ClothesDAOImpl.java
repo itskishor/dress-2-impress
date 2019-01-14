@@ -17,10 +17,6 @@ public class ClothesDAOImpl implements ClothesDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	/*
-	 * SINGLE
-	 * */
-	
 	@Override
 	public Clothes get(int clothesId) {
 		try {			

@@ -55,19 +55,21 @@ public class CartService
 		else {
 			Clothes clothes = cartLine.getClothes();
 			double oldTotal = cartLine.getTotalPrice();
-			//checking if the clothes quantity is available
+			//checking if the clothes quantity is available or not
 			if(clothes.getQuantity() < count) 
 			 {
 				return "result=unavailable";
 			}	
 			// update the cart line
+			cartLine.setPricePerDay(clothes.getPricePerDay());
 			cartLine.setClothesCount(count);
 			cartLine.setNoOfDays(countdays);
+			cartLine.setDeposite((cartLine.getClothes().getUnitPrice()/2)*count);
 			cartLine.setIssueDate(issuedate);
             java.sql.Date returnDate = addDays(cartLine.getIssueDate(),cartLine.getNoOfDays());
 			
 			cartLine.setReturnDate(returnDate);
-			cartLine.setTotalPrice(cartLine.getClothes().getPricePerDay() * count*countdays +(cartLine.getDeposite()*count));
+			cartLine.setTotalPrice(cartLine.getClothes().getPricePerDay() * count*countdays +(cartLine.getDeposite()));
 			cartLineDAO.update(cartLine);
 			
 			// update the cart
@@ -191,18 +193,18 @@ public class CartService
 			}
 			
 			// check if the renting price of clothes has been changed
-			if(cartLine.getPricePerDay() != clothes.getUnitPrice()) {
-				// set the buying price to the new price
-				cartLine.setPricePerDay(clothes.getUnitPrice());
+			if(cartLine.getPricePerDay() != clothes.getPricePerDay()) {
+				// set the renting price to the new price
+				cartLine.setPricePerDay(clothes.getPricePerDay());
 				// calculate and set the new total
-				cartLine.setTotalPrice(cartLine.getClothesCount() * clothes.getUnitPrice());
+				cartLine.setTotalPrice(cartLine.getClothesCount() * clothes.getPricePerDay());
 				changed = true;				
 			}
 			
 			// check if that much quantity of product is available or not
 			if(cartLine.getClothesCount() > clothes.getQuantity()) {
 				cartLine.setClothesCount(clothes.getQuantity());										
-				cartLine.setTotalPrice(cartLine.getClothesCount() * clothes.getUnitPrice());
+				cartLine.setTotalPrice(cartLine.getClothesCount() * clothes.getPricePerDay());
 				changed = true;
 				
 			}

@@ -1,9 +1,9 @@
 
-<div class="container-fluid"> 
+<div class="container"> 
 
 	<div class="row">
 
-		<!-- Would be the display sidebar -->
+		<!-- Would be the display side bar -->
 		<div class="col-lg-2">
 			<%@include file="./shared/sidebar.jsp"%>
 
@@ -43,10 +43,10 @@
 
 			<div class="row">
 				<div class="col-lg-12">
-					<div class="container-fluid">
+					<div class="container">
 						<div class="table-responsive">
 							<table id="clothesListTable"
-								class="table table-hover table-borderd">
+								class="table table-hover table-dark table-borderd">
 
 								<thead class="thead-dark">
 
@@ -57,33 +57,12 @@
 										<th>Size</th>
 										<th>UnitPrice</th>
 										<th>Price/Day</th>
-										<th>Qua.</th>
+										<th>Qty.</th>
 										<th></th>
 										<th></th>
 									</tr>
-
 								</thead>
-
-								<tfoot class="thead-dark">
-
-									<tr>
-										<th></th>
-										<th>Name</th>
-										<th>Brand</th>
-										<th>Size</th>
-										<th>Price</th>
-										<th>Price/Day</th>
-										<th>Qau.</th>
-										<th></th>
-										<th></th>
-
-
-									</tr>
-
-								</tfoot>
-
 							</table>
-
 						</div>
 					</div>
 				</div>

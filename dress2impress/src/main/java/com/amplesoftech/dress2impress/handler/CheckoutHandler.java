@@ -1,14 +1,15 @@
 package com.amplesoftech.dress2impress.handler;
 
 import java.io.Serializable;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -33,7 +34,7 @@ public class CheckoutHandler  implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private static final Logger logger = LoggerFactory.getLogger(CheckoutHandler.class);
+	//private static final Logger logger = LoggerFactory.getLogger(CheckoutHandler.class);
 	
 	@Autowired
 	private UserDAO userDAO;
@@ -59,6 +60,7 @@ public class CheckoutHandler  implements Serializable {
 			checkoutModel.setCart(user.getCart());
 			
 			double checkoutTotal = 0.0;
+			double checkoutTotalDeposit=0.0;
 			List<CartLine> cartLines = cartLineDAO.listAvailable(user.getCart().getId());
 
 			if(cartLines.size() == 0 ) {
@@ -67,10 +69,14 @@ public class CheckoutHandler  implements Serializable {
 			
 			for(CartLine cartLine: cartLines) {
 				checkoutTotal += cartLine.getTotalPrice();
+				checkoutTotalDeposit +=cartLine.getDeposite();
 			}
 			
 			checkoutModel.setCartLines(cartLines);
-			checkoutModel.setCheckoutTotal(checkoutTotal);			
+				
+			checkoutModel.setCheckoutTotalDeposit(checkoutTotalDeposit);
+			checkoutModel.setCheckoutTotal(checkoutTotal);
+			checkoutModel.setCheckoutTotalRent(checkoutTotal-checkoutTotalDeposit);
 		}			
 		
 		return checkoutModel;
@@ -154,7 +160,11 @@ public class CheckoutHandler  implements Serializable {
 			orderItem.setPricePerDay(cartLine.getPricePerDay());
 			orderItem.setClothes(cartLine.getClothes());
 			orderItem.setClothesCount(cartLine.getClothesCount());
+			orderItem.setIssueDate(cartLine.getIssueDate());
+			orderItem.setReturnDate(cartLine.getReturnDate());
 			orderItem.setTotalPrice(cartLine.getTotalPrice());
+			orderItem.setTotalRent(cartLine.getPricePerDay()*cartLine.getClothesCount());
+			orderItem.setDeposite(cartLine.getDeposite());
 			
 			orderItem.setOrderDetail(orderDetail);
 			orderDetail.getOrderItems().add(orderItem);
@@ -176,10 +186,13 @@ public class CheckoutHandler  implements Serializable {
 			
 		}
 		
-		orderDetail.setOrderTotal(orderTotal);
+		//orderDetail.setOrderTotal(orderTotal);
 		orderDetail.setOrderCount(orderCount);
-		orderDetail.setIssueDate(new Date());
-		orderDetail.setReturnDate(new Date());
+		orderDetail.setIssueDate(orderItem.getIssueDate());
+		orderDetail.setReturnDate(orderItem.getReturnDate());
+		orderDetail.setDeposite(checkoutModel.getCheckoutTotalDeposit());
+		orderDetail.setOrderTotal(checkoutModel.getCheckoutTotal());
+		orderDetail.setTotalRent(checkoutModel.getCheckoutTotalRent());
 
 		
 		// save the order
@@ -204,8 +217,6 @@ public class CheckoutHandler  implements Serializable {
 				
 		return transitionValue;		
 	}
-
-	
 	public OrderDetail getOrderDetail(CheckoutModel checkoutModel) {
 		return checkoutModel.getOrderDetail();
 	}

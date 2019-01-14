@@ -9,7 +9,6 @@ public class ClothesValidator implements Validator {
 
 	@Override
 	public boolean supports(Class<?> clazz) {
-		// TODO Auto-generated method stub
 		return Clothes.class.equals(clazz);
 	}
 

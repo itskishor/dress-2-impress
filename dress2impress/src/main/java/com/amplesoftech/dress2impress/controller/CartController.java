@@ -30,7 +30,7 @@ public class CartController {
 				mv.addObject("message", "Cart has been added successfully!");
 				break;
 			case "unavailable":
-				mv.addObject("message", "Product quantity is not available!");					
+				mv.addObject("message", "Clothes quantity is not available!");					
 				break;
 			case "deleted":
 				mv.addObject("message", "Cart has been Removed successfully!");

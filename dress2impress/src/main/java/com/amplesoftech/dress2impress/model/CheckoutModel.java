@@ -19,6 +19,20 @@ public class CheckoutModel implements Serializable {
 	private List<CartLine> cartLines;
 	private OrderDetail orderDetail;
 	private double checkoutTotal;
+	private double checkoutTotalRent;
+	public double getCheckoutTotalRent() {
+		return checkoutTotalRent;
+	}
+	public void setCheckoutTotalRent(double checkoutTotalRent) {
+		this.checkoutTotalRent = checkoutTotalRent;
+	}
+	private double checkoutTotalDeposit;
+	public double getCheckoutTotalDeposit() {
+		return checkoutTotalDeposit;
+	}
+	public void setCheckoutTotalDeposit(double checkoutTotalDeposit) {
+		this.checkoutTotalDeposit = checkoutTotalDeposit;
+	}
 	public User getUser() {
 		return user;
 	}
@@ -55,6 +69,5 @@ public class CheckoutModel implements Serializable {
 	public void setCheckoutTotal(double checkoutTotal) {
 		this.checkoutTotal = checkoutTotal;
 	}
-	
 	
 }

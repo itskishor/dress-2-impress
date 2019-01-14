@@ -27,7 +27,7 @@ private static AnnotationConfigApplicationContext context;
 		clothesDAO = (ClothesDAO)context.getBean("clothesDAO");
 	}
 	
-	/*@Test
+	@Test
 	public void testCRUDClothes() {
 		
 		// create operation
@@ -59,7 +59,7 @@ private static AnnotationConfigApplicationContext context;
 		assertEquals("Something went wrong while fetching the list of Clothes!",
 				5,clothesDAO.list().size());		
 				
-	}*/
+	}
 			
 	
 	@Test

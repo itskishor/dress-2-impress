@@ -24,21 +24,21 @@ public class CategoryTestCase {
 		categoryDAO = (CategoryDAO) context.getBean("categoryDAO");
 	}
 
-	/*
-	 * @Test public void testAddCategory() {
-	 * 
-	 * category = new Category();
-	 * 
-	 * category.setName("Men");
-	 * category.setDescription("This is some description for Men!");
-	 * category.setImageURL("CAT_101.png");
-	 * 
-	 * assertEquals("Successfully added a category inside the table!",true,
-	 * categoryDAO.add(category));
-	 * 
-	 * 
-	 * }
-	 */
+	
+	  @Test public void testAddCategory() {
+	  
+	  category = new Category();
+	  
+	  category.setName("Men");
+	  category.setDescription("This is some description for Men!");
+	 // category.setImageURL("CAT_101.png");
+	  
+	  assertEquals("Successfully added a category inside the table!",true,
+	  categoryDAO.add(category));
+	  
+	  
+	  }
+	 
 
 	/* @Test
 	public void testGetCategory() {
@@ -68,16 +68,16 @@ public class CategoryTestCase {
 	 categoryDAO.delete(category)); 
 	  }*/
 	 
-	/*
+	
 	  @Test public void testListCategory() {
 	  
 	  assertEquals("Successfully fetched the list of categories from the table!",3,categoryDAO.list().size());
 	  
 	  
-	  }*/
+	  }
 	  
 	 
-	
+	/*
 	  @Test public void testCRUDCategory() {
 	  
 	  // add operation 
@@ -120,7 +120,7 @@ public class CategoryTestCase {
 	  categoryDAO.list().size());
 	  
 	  
-	  }
+	  }*/
 	 
 
 }

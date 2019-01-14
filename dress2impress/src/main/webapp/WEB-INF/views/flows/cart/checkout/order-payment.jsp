@@ -1,4 +1,5 @@
 <%@include file="../../shared/flows-header.jsp" %>
+<%@taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <div class="container">
 
 	<div class="row">
@@ -10,19 +11,24 @@
 					<div class="col-xs-12 text-left">
 						
 						<div>
-							<h3>${cartLine.clothes.name}</h3>
+							<h4>${cartLine.clothes.name}</h4>
 							<hr/>
-							<h4>Quantity -${cartLine.clothesCount}</h4>
+							<h5>Quantity -${cartLine.clothesCount}</h5>
 							<h5>Price Per Day - &#8377; ${cartLine.pricePerDay}/-</h5>
+							<h5>Total Deposit- &#8377; ${cartLine.deposite}/-</h5>
 						<h5> Issue Date- &#8377; ${cartLine.issueDate}/-</h5>	
 						<h5> Return Date- &#8377; ${cartLine.returnDate}/-</h5>					
 						</div>						
 						<hr/>
 						<div class="text-right">
-							<h3>Grand Total - &#8377; ${cartLine.totalPrice}/-</h3>
-						</div>						
+							<h5>Total - &#8377; ${cartLine.totalPrice}/-</h5>
+						</div>				
 					</div>
 					</c:forEach>
+						<div class="text-right">
+						    <h5>Total Deposit - &#8377;	${checkoutModel.checkoutTotalDeposit}/-</h5>
+							<h5>Grand Total - &#8377;	${checkoutModel.checkoutTotal}/-</h5>
+						</div>	
 				</div>
 				
 				
@@ -61,8 +67,8 @@
 	                        <div class="col-xs-5 col-md-5 pull-right">
 	                            <div class="form-group">
 	                                <label for="cvCode">
-	                                    CV CODE</label>
-	                                <input type="password" class="form-control" id="cvCode" placeholder="CV" required />
+	                                    CVV CODE</label>
+	                                <input type="password" class="form-control" id="cvvCode" placeholder="CVV" required />
 	                                  <i class="fa fa-cc-visa" style="font-size:38px;color:black"></i>
 	                                  <i class="fa fa-cc-mastercard" style="font-size:38px;color:black"></i>
 	                                  <i class="fa fa-credit-card" style="font-size:38px;color:black"></i>
@@ -73,7 +79,7 @@
 	                </div>
 	            </div>
 	            <ul class="nav nav-pills nav-stacked">
-	                <li class="active"><a href="#"><span class="badge pull-right"> &#8377; ${checkoutModel.checkoutTotal}/-</span> Final Payment</a></li>
+	                <li class="active"><a href="#"><span class="badge pull-right"> <h5 style="color:Purple">&#8377; ${checkoutModel.checkoutTotal}/-</h5></span> Final Payment</a></li>
 	            </ul>
 	            <br/>
 	            <a href="${flowExecutionUrl}&_eventId_pay" class="btn btn-success btn-sm btn-block" role="button">Pay</a>

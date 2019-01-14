@@ -1,5 +1,6 @@
 <%@taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
+	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	
 <div class="container-fluid">
 
@@ -31,7 +32,7 @@
 		
 			<div class="thumbnail">
 							
-				<img src="${images}/${clothes.code}.jpeg" class="img img-responsive" width=100% height=100%/>
+				<img src="${images}/${clothes.code}.jpeg" class="img img-responsive" width=65% height=80%/>
 						
 			</div>
 		

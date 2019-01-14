@@ -2,9 +2,8 @@ package com.amplesoftech.dress2impressbackend.dto;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -52,6 +51,16 @@ public class OrderDetail implements Serializable {
 	@Column(name = "deposite")
 	private double deposite;
 	
+	@Column(name = "total_rent")
+	private double totalRent;
+	
+	public double getTotalRent() {
+		return totalRent;
+	}
+
+	public void setTotalRent(double totalRent) {
+		this.totalRent = totalRent;
+	}
 
 	public double getDeposite() {
 		return deposite;
@@ -116,7 +125,7 @@ public class OrderDetail implements Serializable {
 	public void setOrderCount(int orderCount) {
 		this.orderCount = orderCount;
 	}
-
+	
 	public Date getIssueDate() {
 		return issueDate;
 	}
@@ -132,9 +141,5 @@ public class OrderDetail implements Serializable {
 	public void setReturnDate(Date returnDate) {
 		this.returnDate = returnDate;
 	}
-	
-	
-	
-	
 
 }

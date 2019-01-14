@@ -1,6 +1,7 @@
 package com.amplesoftech.dress2impressbackend.dto;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,7 +31,6 @@ public class OrderItem implements Serializable {
 	@JoinColumn(name = "order_id")
 	private OrderDetail orderDetail;
 	
-	
 	@Column (name = "price_per_day")
 	private double pricePerDay;
 	
@@ -39,6 +39,50 @@ public class OrderItem implements Serializable {
 	
 	@Column(name = "total_price")
 	private double totalPrice;
+	
+	public double getTotalRent() {
+		return totalRent;
+	}
+
+	public void setTotalRent(double totalRent) {
+		this.totalRent = totalRent;
+	}
+
+	@Column(name = "total_rent")
+	private double totalRent;
+	
+	@Column(name="issue_date")
+	private Date issueDate;
+	
+	@Column(name="return_date")
+	private Date returnDate;
+	
+	@Column(name = "deposite")
+	private double deposite;
+
+	public Date getIssueDate() {
+		return issueDate;
+	}
+
+	public void setIssueDate(Date issueDate) {
+		this.issueDate = issueDate;
+	}
+
+	public Date getReturnDate() {
+		return returnDate;
+	}
+
+	public void setReturnDate(Date returnDate) {
+		this.returnDate = returnDate;
+	}
+
+	public double getDeposite() {
+		return deposite;
+	}
+
+	public void setDeposite(double deposite) {
+		this.deposite = deposite;
+	}
 
 	public int getId() {
 		return id;
@@ -87,6 +131,15 @@ public class OrderItem implements Serializable {
 	public void setTotalPrice(double totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+
+	@Override
+	public String toString() {
+		return "OrderItem [id=" + id + ", clothes=" + clothes + ", orderDetail=" + orderDetail + ", pricePerDay="
+				+ pricePerDay + ", clothesCount=" + clothesCount + ", totalPrice=" + totalPrice + ", issueDate="
+				+ issueDate + ", returnDate=" + returnDate + ", deposite=" + deposite + "]";
+	}
+
+	
 	
 	
 

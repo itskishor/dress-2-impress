@@ -5,6 +5,9 @@ $(function() {
 	case 'View Clothes':
 		$('#viewclothes').addClass('active');
 		break;
+	case 'Contact Us':
+		$('#contactus').addClass('active');
+		break;
 	case 'Manage Clothes':
 		$('#employeemanageclothes').addClass('active');
 		break;
@@ -79,7 +82,7 @@ $(function() {
 											+ window.contextRoot
 											+ '/resources/images/'
 											+ data
-											+ '.jpeg" class="imageTable" width="100" height="100"/>';
+											+ '.jpeg" class="imageTable" width="60" height="80"/>';
 
 								}
 							},
@@ -415,7 +418,10 @@ $(function() {
 								data : 'contactNumber',
 							},
 							{
-								data : 'salary'
+								data : 'salary',
+									mRender : function(data, type, row) {
+										return '&#8377;' + data
+									}
 							},
 							{
 								data : 'dob'
