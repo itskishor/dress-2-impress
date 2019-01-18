@@ -67,29 +67,22 @@
 					<h3 class="text-center">Your Order is Confirmed!!</h3>
 				</div>
 				<div class="invoice-title">
-					<h2 style="color: tomato" align="center">
-						<u> Invoice</u>
-					</h2>
+					<center><h2 style="color: tomato">
+						Invoice
+					</h2></center>
 				</div>
 				<hr>
-				<div class="text-right">
-					<h5 style="color: tomato">Order ${orderDetail.id}</h5>
-
-					<address>
-						<strong>Order Date:</strong><br> ${orderDetail.issueDate}<br>
-
-					</address>
+				<div>
+					<h5 class="pull-left" style="color: tomato">Order :<strong style="color:black">${orderDetail.id}</strong></h5>
+					<h5 class="pull-right" style="color: tomato">Order Date:<strong style="color:black">${orderDetail.issueDate}</strong></h5></br>
 				</div>
 
 				<div class="row">
 					<div class="col-12">
-						<hr>
 						<div class="row">
 							<div class="col-6 text-left">
 								<address>
-									<h5 style="color: tomato">
-										<strong>Billed To:</strong>
-									</h5>
+									<h5 style="color: tomato">Billed To:</h5>
 									${orderDetail.user.firstName} ${orderDetail.user.lastName}<br>
 									${orderDetail.billing.addressLineOne}<br>
 									${orderDetail.billing.addressLineTwo}<br>
@@ -100,7 +93,7 @@
 							<div class="col-6 text-right">
 								<address>
 									<h5 style="color: tomato">
-										<strong>Shipped To:</strong>
+										Shipped To:
 									</h5>
 									${orderDetail.user.firstName} ${orderDetail.user.lastName}<br>
 									${orderDetail.shipping.addressLineOne}<br>
@@ -112,10 +105,10 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-6 text-left">
+							<div class="col-12 text-center">
 								<address>
 									<h5 style="color: tomato">
-										<strong>Payment Method:</strong>
+										Payment Method:
 									</h5>
 									<br> Card Payment <br> ${orderDetail.user.email}
 								</address>
@@ -131,13 +124,13 @@
 							<div class="card-heading">
 
 								<h5 style="color: tomato" align="center">
-									<strong>Order summary</strong>
+									Order summary
 								</h5>
 
 							</div>
 							<div class="card-body">
 								<div class="table-responsive">
-									<table class="table table-condensed">
+									<table class="table table-hover table-info">
 										<thead>
 											<tr>
 												<td><strong>Item</strong></td>
@@ -155,35 +148,33 @@
 											<c:forEach items="${orderDetail.orderItems}" var="orderItem">
 												<tr>
 													<td>${orderItem.clothes.name}</td>
-													<td class="text-center">&#8377;
-														${orderItem.pricePerDay}</td>
+													<td class="text-center">&#8377;${orderItem.pricePerDay}</td>
 													<td class="text-center">${orderItem.clothesCount}</td>
 													<td class="text-center">${orderItem.issueDate}</td>
 													<td class="text-center">${orderItem.returnDate}</td>
-													<td class="text-center">${orderItem.deposite}</td>
+													<td class="text-center">&#8377;${orderItem.deposite}</td>
 													<td class="text-right">&#8377; ${orderItem.totalRent}</td>
-
 												</tr>
 											</c:forEach>
 										</tbody>
 										<tfoot>
 										<tr>
+										<td style="color:black"><strong>Total:</strong></td>
 										<td></td>
 										<td></td>
 										<td></td>
 										<td></td>
-										<td></td>
-										<td class="text-right"><strong>Total Deposit- &#8377; ${checkoutModel.checkoutTotalDeposit}/-</strong></td>
-										<td class="text-right"><strong>Total Rent - &#8377; ${checkoutModel.checkoutTotalRent}/-</strong></td>
+										<td class="text-right"><strong style="color:green">&#8377; ${checkoutModel.checkoutTotalDeposit}/-</strong></td>
+										<td class="text-right"><strong style="color:green"> &#8377; ${checkoutModel.checkoutTotalRent}/-</strong></td>
 										</tr>
 										<tr>
+										<td style="color:black"><strong>Grand Total:</strong></td>
 										<td></td>
 										<td></td>
 										<td></td>
 										<td></td>
 										<td></td>
-										<td></td>
-										<td class="text-right"><strong>Grand Total - &#8377; ${checkoutModel.checkoutTotal}/-</strong></td>
+										<td class="text-right"><strong style="color:green">&#8377; ${checkoutModel.checkoutTotal}/-</strong></td>
 										</tr>
 										</tfoot>
 									</table>
@@ -194,7 +185,7 @@
 				</div>
 				<div class="text-center">
 					<a href="${contextRoot}/show/all/clothes"
-						class="btn btn-lg btn-warning">Continue Renting</a>
+						class="btn btn-lg btn-primary">Continue Renting</a>
 				</div>
 			</div>
 		</div>

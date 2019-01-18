@@ -19,7 +19,7 @@
 			</div>
 		</c:if>
 
-		<div class="col-6">
+			<div class="col-md-8 col-sm-8 col-lg-8">
 			<div class="card ">
 				<div class="card-header bg-dark text-white">
 					<h5 class="card-title">Manage User</h5>
@@ -57,7 +57,7 @@
 						</div>
 						<div class="form-group row">
 							<label class="control-label col-md-3"><b>Contact Number:</b></label>
-							<div class="col-6">
+							<div class="col-8">
 								<sf:input type="text" path="contactNumber" id="contactNumber" class="form-control" required="true"
 									placeholder="Enter Contact Number Here!"></sf:input>
 								<sf:errors path="contactNumber" cssClass="help-block" element="em" />
@@ -92,15 +92,15 @@
 	<hr />
 	<div class="row justify-content-center">
 
-		<div class="col-xs-12"></div>
-		<div class="col-xs-12">
+		<!-- <div class="col-xs-12"></div> -->
+		<div class="col-8">
 
 			<div style="overflow: auto">
 			
 			<!-- Employee Table For Admin -->
 			
 				<table id="adminUserTable"
-					class="table table-dark table-condensed table-bordered">
+					class="table table-dark table-condensed table-hover table-responsive">
 
 					<thead>
 						<tr>

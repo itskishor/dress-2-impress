@@ -21,8 +21,10 @@ import com.amplesoftech.dress2impress.util.FileUploadUtility;
 import com.amplesoftech.dress2impress.validator.ClothesValidator;
 import com.amplesoftech.dress2impressbackend.dao.CategoryDAO;
 import com.amplesoftech.dress2impressbackend.dao.ClothesDAO;
+import com.amplesoftech.dress2impressbackend.dao.ContactusDAO;
 import com.amplesoftech.dress2impressbackend.dto.Category;
 import com.amplesoftech.dress2impressbackend.dto.Clothes;
+import com.amplesoftech.dress2impressbackend.dto.Contactus;
 
 @Controller
 @RequestMapping("/add")
@@ -33,6 +35,9 @@ public class AddController {
 	private ClothesDAO clothesDAO;
 	@Autowired
 	private CategoryDAO categoryDAO;
+	
+	@Autowired
+	private ContactusDAO contactUsDAO;
 	
 	@RequestMapping(value = "/clothes", method = RequestMethod.GET)
 	public ModelAndView manageAddClothes(@RequestParam(name = "operation", required = false) String operation) {
@@ -112,6 +117,62 @@ public class AddController {
 			return "redirect:/add/clothes?operation=clothes";
 
 		}
+		
+		//Add Query By User
+		/*
+		@RequestMapping(value = "/contactus", method = RequestMethod.GET)
+		public ModelAndView manageAddQuery(@RequestParam(name = "operation", required = false) String operation) {
+
+			ModelAndView mv = new ModelAndView("page");
+			mv.addObject("title", "Contact Us");
+			mv.addObject("userClickContactUs", true);
+
+			Contactus contactus = new Contactus();
+
+			mv.addObject("contactus", contactus);
+
+			if (operation != null) {
+				if (operation.equals("contactus")) {
+					mv.addObject("message", "Query Sent Successfully!");
+				} 
+			}
+			return mv;
+
+		}
+		// handling clothes submission
+			@RequestMapping(value = "/contactus", method = RequestMethod.POST)
+			public String handleAddQuerySubmission(@Valid @ModelAttribute("contactus") Contactus mcontactus, BindingResult results,
+					Model model, HttpServletRequest request) {
+				// handle image validation for new clothes
+				if (mcontactus.getId() == 0) {
+					new ClothesValidator().validate(mclothes, results);
+				} else {
+					if (!mclothes.getFile().getOriginalFilename().equals("")) {
+						// FileUtil.uploadFile(request, mProduct.getFile(), mProduct.getCode());
+						new ClothesValidator().validate(mclothes, results);
+					}
+				}
+				// check if there is any error
+				if (results.hasErrors()) {
+					model.addAttribute("userClickContactUs", true);
+					model.addAttribute("title", "Contact Us");
+					model.addAttribute("message", "Validation Failed For Product Submission!");
+					return "page";
+				}
+				logger.info(mcontactus.toString());
+				// Create a new Clothes Record
+				if (mcontactus.getId() == 0) {
+					// create the clothes if id is 0
+					contactUsDAO.add(mcontactus);
+				} 
+				else {
+					// update the clothes if id is not 0
+					contactUsDAO.update(mcontactus);
+				}
+				return "redirect:/add/contactus?operation=contactus";
+
+			}
+*/
 
 
 }

@@ -23,9 +23,11 @@ import com.amplesoftech.dress2impress.util.FileUploadUtility;
 import com.amplesoftech.dress2impress.validator.ClothesValidator;
 import com.amplesoftech.dress2impressbackend.dao.CategoryDAO;
 import com.amplesoftech.dress2impressbackend.dao.ClothesDAO;
+import com.amplesoftech.dress2impressbackend.dao.OrderDetailsDAO;
 import com.amplesoftech.dress2impressbackend.dao.UserDAO;
 import com.amplesoftech.dress2impressbackend.dto.Category;
 import com.amplesoftech.dress2impressbackend.dto.Clothes;
+import com.amplesoftech.dress2impressbackend.dto.OrderDetail;
 import com.amplesoftech.dress2impressbackend.dto.User;
 
 @Controller
@@ -40,6 +42,8 @@ public class EmployeeManagementController
 	private UserDAO userDAO;
 	@Autowired
 	private CategoryDAO categoryDAO;
+	@Autowired
+	private OrderDetailsDAO orderDetailsDAO;
     
 	//--------------------Clothes Management Controller-------------
 	
@@ -233,6 +237,69 @@ public class EmployeeManagementController
 
 				return "redirect:/employeemanage/user?operation=user";
 
-			}		
+			}
+			
+			//--------------Transaction Management Control--------------------
+			@RequestMapping(value = "/transactions", method = RequestMethod.GET)
+			public ModelAndView showManageTransaction(@RequestParam(name = "operation", required = false) String operation) {
+
+				ModelAndView mv = new ModelAndView("page");
+				mv.addObject("title", "Manage Transaction");
+				mv.addObject("userClickEmployeeManageTransaction", true);
+
+				OrderDetail orderDetail = new OrderDetail();
+				// assuming that the user is ADMIN
+
+				mv.addObject("transactions",orderDetail);
+
+				if (operation != null) {
+					if (operation.equals("transactions")) {
+						mv.addObject("message", "Transaction Information Submitted Successfully!");
+					}
+				}
+				return mv;
+			}
+			
+			@RequestMapping(value = "/transactions/{id}/activation", method = RequestMethod.POST)
+			@ResponseBody
+			public String managePostTransactionsActivation(@PathVariable int id) {
+				// Is going to fetch the Transactions from database
+				OrderDetail orderDetail = orderDetailsDAO.get(id);
+				boolean isActive = orderDetail.isActive();
+				// activation and De-Activation based on the values of the active field
+				orderDetail.setActive(!orderDetail.isActive());
+				// update the Transaction
+				orderDetailsDAO.update(orderDetail);
+				return (isActive) ? "You have successfully Closed Transaction with " + orderDetail.getId()
+						: "You have successfully Activated Transaction with: " + orderDetail.getId();
+			}
+			
+			// handling Transaction submission
+			@RequestMapping(value = "/transactions", method = RequestMethod.POST)
+			public String handleTransactionSubmission(@Valid @ModelAttribute("transactions") OrderDetail orderDetail, BindingResult results,
+					Model model, HttpServletRequest request) { 
+				// check if there is any error
+				if (results.hasErrors()) {
+					model.addAttribute("userClickEmployeeManagetransaction", true);
+					model.addAttribute("title", "Manage Transactions");
+					model.addAttribute("message", "Validation Failed For Transaction Submission!");
+					return "page";
+				}
+				logger.info(orderDetail.toString());
+				// Create a new Transaction Record
+				if (orderDetail.getId() == 0) 
+				{
+					model.addAttribute("message", "You Can't Add Order Details From Here!");
+				}
+				else 
+				{
+					// update the Transaction if id is not 0
+					orderDetailsDAO.update(orderDetail);
+				}
+
+				return "redirect:/employeemanage/transactions?operation=transactions";
+
+			}
+
 
 }

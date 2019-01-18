@@ -1,8 +1,6 @@
 package com.amplesoftech.dress2impress.handler;
 
 import java.io.Serializable;
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -185,11 +183,11 @@ public class CheckoutHandler  implements Serializable {
 
 			
 		}
-		
-		//orderDetail.setOrderTotal(orderTotal);
+		java.sql.Date idate = new java.sql.Date(orderItem.getIssueDate().getTime());
+		java.sql.Date rdate = new java.sql.Date(orderItem.getReturnDate().getTime());
 		orderDetail.setOrderCount(orderCount);
-		orderDetail.setIssueDate(orderItem.getIssueDate());
-		orderDetail.setReturnDate(orderItem.getReturnDate());
+		orderDetail.setIssueDate(idate.toString());
+		orderDetail.setReturnDate(rdate.toString());
 		orderDetail.setDeposite(checkoutModel.getCheckoutTotalDeposit());
 		orderDetail.setOrderTotal(checkoutModel.getCheckoutTotal());
 		orderDetail.setTotalRent(checkoutModel.getCheckoutTotalRent());

@@ -68,25 +68,25 @@
 							<label class="control-label col-md-4"><b>Unit Price:</b></label>
 							<div class="col-8">
 								<sf:input type="number" path="unitPrice" id="unitPrice"
-									class="form-control" placeholder="Enter Unit Price" />
+									class="form-control" required="true" placeholder="Enter Unit Price" />
 								<sf:errors path="unitPrice" cssClass="help-block" element="em" />
 							</div>
 						</div>
 
-						<div class="form-group row">
+						<%-- <div class="form-group row">
 							<label class="control-label col-md-4"><b>Price Per Day:</b></label>
 							<div class="col-8">
 								<sf:input type="number" path="pricePerDay" id="pricePerDay"
-									class="form-control" placeholder="Enter The Price/Day" />
+									class="form-control" required="true" placeholder="Enter The Price/Day" />
 								<sf:errors path="pricePerDay" cssClass="help-block" element="em" />
 							</div>
-						</div>
+						</div> --%>
 
 						<div class="form-group row">
 							<label class="control-label col-md-4"><b>Quantity Available:</b></label>
 							<div class="col-8">
 								<sf:input type="number" path="quantity" id="quantity"
-									class="form-control" placeholder="Enter Quantity Available" />
+									class="form-control" required="true" placeholder="Enter Quantity Available" />
 								<sf:errors path="quantity" cssClass="help-block" element="em" />
 							</div>
 						</div>
@@ -122,6 +122,7 @@
 								<sf:hidden path="active" />
 								<sf:hidden path="rented" />
 								<sf:hidden path="views" />
+								<sf:hidden path="pricePerDay" />
 
 							</div>
 						</div>

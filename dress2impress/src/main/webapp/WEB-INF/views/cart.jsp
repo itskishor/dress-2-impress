@@ -15,12 +15,12 @@
 	</c:if>
 	<c:choose>
 		<c:when test="${not empty cartLines}">
-	<table id="cart" class="table table-hover table-condensed">
+	<table id="cart" class="table table-hover table-responsible-xs table-sm table-condensed">
     				<thead>
 						<tr>
 							<th style="width:24%">Clothes</th>
 							<th style="width:10%">Price/Day</th>
-							<th style="width:8%">Quantity</th>
+			       			<th style="width:8%">Quantity</th>
 							<th style="width:8%">Deposit</th>
 							<th style="width:18%">No.Of Days</th>
 							<th style="width:8%">Issue Date</th>
@@ -40,7 +40,7 @@
 										<c:if test="${cartLine.available == false}">
 											<strong style="color:red">(Not Available)</strong> 
 										</c:if> </h6>
-										<p><%-- Brand : ${cartLine.clothes.brand} </br>  --%>Size: ${cartLine.clothes.size}</p>
+										<p>Size: ${cartLine.clothes.size}</p>
 									</div>
 								</div>
 							</td>
@@ -62,20 +62,17 @@
 					</tbody>
 					
 						<tfoot>
-					<%-- <tr class="visible-xs">
-						<td class="text-center"><strong>Total &#8377; ${userModel.cart.grandTotal}</strong></td>
-					</tr> --%>
 					<tr>
-						<td><a href="${contextRoot}/show/all/clothes" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left"></span> Continue Shopping</a></td>
+						<td><a href="${contextRoot}/show/all/clothes" class="btn btn-warning"><i class="fa fa-angle-left" style="font-size:24px;color:red"></i> Continue Shopping</a></td>
 						<td colspan="2" class="hidden-xs"></td>
-						<td class="hidden-xs text-center"><strong>Grand Total &#8377; ${userModel.cart.grandTotal}/-</strong></td>
+						<td class="hidden-xs pull-right"><strong>Grand Total &#8377; ${userModel.cart.grandTotal}/-</strong></td>
 						
 						<c:choose>
 							<c:when test="${availableCount != 0}">
-								<td><a href="${contextRoot}/cart/validate" class="btn btn-success btn-block">Checkout <span class="glyphicon glyphicon-chevron-right"></span></a></td>
+								<td><a href="${contextRoot}/cart/validate" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right" style="font-size:24px;color:red"></i></a></td>
 							</c:when>							
 							<c:otherwise>
-								<td><a href="javascript:void(0)" class="btn btn-success btn-block disabled"><strike>Checkout <span class="glyphicon glyphicon-chevron-right"></span></strike></a></td>
+								<td><a href="javascript:void(0)" class="btn btn-success btn-block disabled"><strike>Checkout  <i class="fa fa-angle-right" style="font-size:24px;color:red"></i></strike></a></td>
 							</c:otherwise>
 						</c:choose>						
 					</tr>

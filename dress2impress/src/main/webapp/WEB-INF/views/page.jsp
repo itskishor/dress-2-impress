@@ -79,6 +79,16 @@
 				<%@include file="managesupplier.jsp"%> 
 			</c:if>
 			
+			<!--Loading The Manage transactions Content -->
+			<c:if test="${userClickEmployeeManageTransaction==true}">
+				<%@include file="managetransactions.jsp"%> 
+			</c:if>
+			
+			<!--Loading The View transactions Content -->
+			<c:if test="${userClickAdminViewTransaction==true}">
+				<%@include file="viewtransactions.jsp"%> 
+			</c:if>
+			
 			<!--Loading The Manage Categories Content -->
 			<c:if test="${userClickManageCategories==true}">
 				<%@include file="managecategory.jsp"%> 
@@ -87,6 +97,10 @@
 			<!--Loading The Manage Categories Content -->
 			<c:if test="${userClickContactUs==true}">
 				<%@include file="contactus.jsp"%> 
+			</c:if>
+			<!--Loading The Manage Categories Content -->
+			<c:if test="${userClickAboutUs==true}">
+				<%@include file="aboutus.jsp"%> 
 			</c:if>
 			
 			<!--Loading The Manage Clothes Content -->

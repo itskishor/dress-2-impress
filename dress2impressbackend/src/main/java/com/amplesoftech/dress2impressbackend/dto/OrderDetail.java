@@ -1,8 +1,6 @@
 package com.amplesoftech.dress2impressbackend.dto;
-
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.sql.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -15,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "order_detail")
@@ -33,20 +33,23 @@ public class OrderDetail implements Serializable {
 	@Column(name = "order_total")
 	private double orderTotal;
 	@ManyToOne
+	@JsonIgnore
 	private Address shipping;
 	@ManyToOne
+	@JsonIgnore
 	private Address billing;
 	@OneToMany(mappedBy="orderDetail", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<OrderItem> orderItems = new ArrayList<>();
 	
 	@Column(name = "order_count")
 	private int orderCount;
 	
 	@Column(name="issue_date")
-	private Date issueDate;
+	private String issueDate;
 	
 	@Column(name="return_date")
-	private Date returnDate;
+	private String returnDate;
 	
 	@Column(name = "deposite")
 	private double deposite;
@@ -54,6 +57,17 @@ public class OrderDetail implements Serializable {
 	@Column(name = "total_rent")
 	private double totalRent;
 	
+	@Column(name = "is_active")
+	private boolean active = true;
+	
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
 	public double getTotalRent() {
 		return totalRent;
 	}
@@ -101,7 +115,6 @@ public class OrderDetail implements Serializable {
 	public void setShipping(Address shipping) {
 		this.shipping = shipping;
 	}
-
 	public Address getBilling() {
 		return billing;
 	}
@@ -125,21 +138,31 @@ public class OrderDetail implements Serializable {
 	public void setOrderCount(int orderCount) {
 		this.orderCount = orderCount;
 	}
-	
-	public Date getIssueDate() {
+
+	public String getIssueDate() {
 		return issueDate;
 	}
 
-	public void setIssueDate(Date issueDate) {
+	public void setIssueDate(String issueDate) {
 		this.issueDate = issueDate;
 	}
 
-	public Date getReturnDate() {
+	public String getReturnDate() {
 		return returnDate;
 	}
 
-	public void setReturnDate(Date returnDate) {
+	public void setReturnDate(String returnDate) {
 		this.returnDate = returnDate;
 	}
+
+
+	/*@Override
+	public String toString() {
+		return "OrderDetail [id=" + id + ", user=" + user + ", orderTotal=" + orderTotal + ", shipping=" + shipping
+				+ ", billing=" + billing + ", orderItems=" + orderItems + ", orderCount=" + orderCount + ", issueDate="
+				+ issueDate.toString() + ", returnDate=" + returnDate.toString() + ", deposite=" + deposite + ", totalRent=" + totalRent
+				+ "]";
+	}
+	*/
 
 }

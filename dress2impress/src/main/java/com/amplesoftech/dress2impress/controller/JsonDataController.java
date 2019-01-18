@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.amplesoftech.dress2impressbackend.dao.CategoryDAO;
 import com.amplesoftech.dress2impressbackend.dao.ClothesDAO;
+import com.amplesoftech.dress2impressbackend.dao.OrderDetailsDAO;
 import com.amplesoftech.dress2impressbackend.dao.UserDAO;
 import com.amplesoftech.dress2impressbackend.dto.Category;
 import com.amplesoftech.dress2impressbackend.dto.Clothes;
+import com.amplesoftech.dress2impressbackend.dto.OrderDetail;
 import com.amplesoftech.dress2impressbackend.dto.User;
 
 @Controller
@@ -27,6 +29,9 @@ public class JsonDataController
 	private UserDAO userDAO;
 	
 	@Autowired
+	private OrderDetailsDAO orderDetailsDAO;
+	
+	@Autowired
 	private CategoryDAO categoryDAO;
 	
 	@RequestMapping("/all/clothes")
@@ -36,6 +41,14 @@ public class JsonDataController
 		return clothesDAO.listActiveClothes();
 				
 	}
+	
+	@RequestMapping("/all/activetransactions")
+	@ResponseBody
+	public List<OrderDetail> getAllActiveTransactions() {		
+		return orderDetailsDAO.listActiveTransactions();
+				
+	}
+	
 	
 	@RequestMapping("/admin/all/clothes")
 	@ResponseBody
@@ -93,6 +106,13 @@ public class JsonDataController
 	@ResponseBody
 	public List<Category> getAllCategoryListForAdmin() {		
 		return categoryDAO.list();
+				
+	}
+	
+	@RequestMapping("/admin/all/transactions")
+	@ResponseBody
+	public List<OrderDetail> getAllTransactionsListForAdmin() {		
+		return orderDetailsDAO.list();
 				
 	}
 

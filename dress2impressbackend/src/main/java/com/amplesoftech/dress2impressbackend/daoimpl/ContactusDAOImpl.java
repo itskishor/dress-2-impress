@@ -63,4 +63,16 @@ public class ContactusDAOImpl implements ContactusDAO {
 		return false;
 	}
 
+	@Override
+	public boolean update(Contactus contactus) {
+		 try {
+				// call the update method
+				return this.update(contactus);
+			}
+			catch(Exception ex) {		
+				ex.printStackTrace();			
+			}		
+			return false;
+	}
+
 }

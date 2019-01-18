@@ -19,7 +19,7 @@
 			</div>
 		</c:if>
 
-		<div class="col-6">
+		<div class="col-md-8 col-sm-8 col-lg-8">
 			<div class="card ">
 				<div class="card-header bg-dark text-white">
 					<h5 class="card-title">Manage Clothes</h5>
@@ -69,7 +69,7 @@
 							<label class="control-label col-md-3"><b>Unit Price:</b></label>
 							<div class="col-8">
 								<sf:input type="number" path="unitPrice" id="unitPrice"
-									class="form-control" placeholder="Enter Unit Price" />
+									class="form-control" required="true" placeholder="Enter Unit Price" />
 								<sf:errors path="unitPrice" cssClass="help-block" element="em" />
 							</div>
 						</div>
@@ -78,7 +78,7 @@
 							<label class="control-label col-md-3"><b>Price Per Day:</b></label>
 							<div class="col-8">
 								<sf:input type="number" path="pricePerDay" id="pricePerDay"
-									class="form-control" placeholder="Enter The Price/Day" />
+									class="form-control" required="true" placeholder="Enter The Price/Day" />
 								<sf:errors path="pricePerDay" cssClass="help-block" element="em" />
 							</div>
 						</div>
@@ -87,7 +87,7 @@
 							<label class="control-label col-md-3"><b>Quantity:</b></label>
 							<div class="col-8">
 								<sf:input type="number" path="quantity" id="quantity"
-									class="form-control" placeholder="Enter Quantity Available" />
+									class="form-control" required="true" placeholder="Enter Quantity Available" />
 								<sf:errors path="quantity" cssClass="help-block" element="em" />
 							</div>
 						</div>
@@ -197,14 +197,14 @@
 	<hr />
 	<div class="row justify-content-center">
 
-		<div class="col-xs-12"></div>
-		<div class="col-xs-12">
+	<!-- 	<div class="col-xs-12"></div> -->
+		<div class="col-10">
 
 			<div style="overflow: auto">
 				<table id="adminClothesTable"
-					class="table table-dark table-condensed table-bordered">
+					class="table table-condensed table-responsive table-sm table-bordered">
 
-					<thead>
+					<thead class="thead-dark">
 						<tr>
 							<th>Id</th>
 							<th>&#160;</th>
@@ -218,23 +218,6 @@
 							<th>Edit</th>
 						</tr>
 					</thead>
-
-					<tfoot>
-						<tr>
-							<th>Id</th>
-							<th>&#160;</th>
-							<th>Name</th>
-							<th>Brand</th>
-							<th>Size</th>
-							<th>Unit Price</th>
-							<th>Price Per Day</th>
-							<th>Qty. Avail</th>
-							<th>Activate</th>
-							<th>Edit</th>
-						</tr>
-					</tfoot>
-
-
 				</table>
 
 

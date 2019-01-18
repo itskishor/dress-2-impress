@@ -19,8 +19,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.amplesoftech.dress2impress.validator.CategoryValidator;
 import com.amplesoftech.dress2impressbackend.dao.CategoryDAO;
+import com.amplesoftech.dress2impressbackend.dao.OrderDetailsDAO;
 import com.amplesoftech.dress2impressbackend.dao.UserDAO;
 import com.amplesoftech.dress2impressbackend.dto.Category;
+import com.amplesoftech.dress2impressbackend.dto.OrderDetail;
 import com.amplesoftech.dress2impressbackend.dto.User;
 
 @Controller
@@ -35,6 +37,8 @@ public class ManagementController {
 	private CategoryDAO categoryDAO;
 	@Autowired
 	private UserDAO userDAO;
+	@Autowired
+	private OrderDetailsDAO orderDetailsDAO;
 	/*
 	 * @RequestMapping(value = "/category", method=RequestMethod.POST) public String
 	 * managePostCategory(@ModelAttribute("category") Category mCategory,
@@ -298,8 +302,52 @@ public class ManagementController {
 
 			}
 		
-	
+			//--------------Transaction Management Control--------------------
+			@RequestMapping(value = "/viewtransactions", method = RequestMethod.GET)
+			public ModelAndView showManageTransaction(@RequestParam(name = "operation", required = false) String operation) {
 
-		
+				ModelAndView mv = new ModelAndView("page");
+				mv.addObject("title", "View Transactions");
+				mv.addObject("userClickAdminViewTransaction", true);
+
+				OrderDetail orderDetail = new OrderDetail();
+				// assuming that the user is ADMIN
+
+				mv.addObject("transactions",orderDetail);
+
+				if (operation != null) {
+					if (operation.equals("transactions")) {
+						mv.addObject("message", "Transaction Information Submitted Successfully!");
+					}
+				}
+				return mv;
+			}
+			
+			// handling Transaction submission
+			@RequestMapping(value = "/viewtransactions", method = RequestMethod.POST)
+			public String handleTransactionSubmission(@Valid @ModelAttribute("transactions") OrderDetail orderDetail, BindingResult results,
+					Model model, HttpServletRequest request) { 
+				// check if there is any error
+				if (results.hasErrors()) {
+					model.addAttribute("userClickEmployeeManagetransaction", true);
+					model.addAttribute("title", "Manage Transactions");
+					model.addAttribute("message", "Validation Failed For Transaction Submission!");
+					return "page";
+				}
+				logger.info(orderDetail.toString());
+				// Create a new Transaction Record
+				if (orderDetail.getId() == 0) 
+				{
+					model.addAttribute("message", "You Can't Add Order Details From Here!");
+				}
+				else 
+				{
+					// update the Transaction if id is not 0
+					orderDetailsDAO.update(orderDetail);
+				}
+
+				return "redirect:/employeemanage/transactions?operation=transactions";
+
+			}		
 
 }

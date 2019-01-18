@@ -5,8 +5,17 @@ $(function() {
 	case 'View Clothes':
 		$('#viewclothes').addClass('active');
 		break;
+	case 'Manage Transactions':
+		$('#managetransactions').addClass('active');
+		break;
+	case 'View Transactions':
+		$('#adminviewtransactions').addClass('active');
+		break;
 	case 'Contact Us':
 		$('#contactus').addClass('active');
+		break;
+	case 'About Us':
+		$('#aboutus').addClass('active');
 		break;
 	case 'Manage Clothes':
 		$('#employeemanageclothes').addClass('active');
@@ -129,7 +138,7 @@ $(function() {
 											+ window.contextRoot
 											+ '/show/'
 											+ data
-											+ '/clothes" class="btn btn-info btn-sm">View <span class="fa fa-eye"></span></a> &#160;';
+											+ '/clothes" class="btn btn-info btn-sm">View<span class="fa fa-eye"></span></a>';
 									return str;
 								}
 
@@ -784,6 +793,285 @@ $(function() {
 		}
 
 		// --------------------------
+		
+		//Transaction for Admin
+		
+		var $adminViewTransaction = $("#adminViewTransaction");
+
+		if ($adminViewTransaction.length) {
+			// console.log('Inside the table!');
+
+			var jsonUrl = window.contextRoot + '/json/data/admin/all/transactions';
+
+			$adminViewTransaction
+					.DataTable({
+						lengthMenu : [ [ 3, 5, 10, -1 ],
+								[ '3 Records', '5 Records', '7 Records', 'ALL' ] ],
+						pageLength : 5,
+						ajax : {
+							url : jsonUrl,
+							dataSrc : ''
+						},
+						columns : [
+								{
+									data : 'id',
+								},
+								{
+									data :'user.id',
+								},						
+								{
+									data :'user.firstName',
+								},
+								{
+									data :'user.lastName',
+								},
+								{
+									data : 'orderCount'
+								},
+								{
+									data : 'issueDate'
+								},
+								{
+									data : 'returnDate',
+								},
+								{
+									data : 'deposite',
+										mRender : function(data, type, row) {
+											return '&#8377;' + data
+										}
+								},
+								{
+									data : 'totalRent',
+										mRender : function(data, type, row) {
+											return '&#8377;' + data
+										}
+								},
+								{
+									data : 'orderTotal',
+										mRender : function(data, type, row) {
+											return '&#8377;' + data
+										}
+								},
+								
+								{
+									data : 'active',
+									bSortable : false,
+									mRender : function(data, type, row) {
+										var str = '';
+										if (data) {
+											str += '<label class="switch"> <input type="checkbox" value="'+ row.id
+													+ '" checked="checked">  <div class="slider round"> </div></label>';
+
+										} else {
+											str += '<label class="switch"> <input type="checkbox" value="'+ row.id
+													+ '">  <div class="slider round"> </div></label>';
+										}
+
+										return str;
+									}
+								},
+						]
+						/*,
+
+						initComplete : function() {
+							var api = this.api();
+							api
+									.$('.switch input[type="checkbox"]')
+									.on(
+											'change',
+											function() {
+												var checkbox = $(this);
+												var checked = checkbox
+														.prop('checked');
+												var dMsg = (checked) ? 'Do You want to Close the Transaction?'
+														: 'Do You want to Activat the Transaction?';
+												var value = checkbox.prop('value');
+
+												bootbox
+														.confirm({
+															size : "medium",
+															message : dMsg,
+															callback : function(
+																	confirmed) {
+																if (confirmed) {
+
+																	console
+																			.log(value);
+																	var activationUrl = window.contextRoot
+																			+ '/employeemanage/transactions/'
+																			+ value
+																			+ '/activation';
+																	$
+																			.post(
+																					activationUrl,
+																					function(
+																							data) {
+
+																						bootbox
+																								.alert({
+																									size : "medium",
+																									message : data
+																								});
+
+																					});
+																}
+
+																else {
+																	checkbox
+																			.prop(
+																					'checked',
+																					!checked);
+																}
+															}
+
+														});
+
+											});
+						}*/
+						
+					});
+		}
+		
+// --------------------------
+		
+		//Transaction Management for Employee
+		
+		var $employeeManageTransaction = $("#employeeManageTransaction");
+
+		if ($employeeManageTransaction.length) {
+			// console.log('Inside the table!');
+
+			var jsonUrl = window.contextRoot + '/json/data/all/activetransactions';
+
+			$employeeManageTransaction
+					.DataTable({
+						lengthMenu : [ [ 3, 5, 10, -1 ],
+								[ '3 Records', '5 Records', '7 Records', 'ALL' ] ],
+						pageLength : 5,
+						ajax : {
+							url : jsonUrl,
+							dataSrc : ''
+						},
+						columns : [
+								{
+									data : 'id',
+								},
+								{
+									data :'user.id',
+								},						
+								{
+									data :'user.firstName',
+								},
+								{
+									data :'user.lastName',
+								},
+								{
+									data : 'orderCount'
+								},
+								{
+									data : 'issueDate'
+								},
+								{
+									data : 'returnDate',
+								},
+								{
+									data : 'deposite',
+										mRender : function(data, type, row) {
+											return '&#8377;' + data
+										}
+								},
+								{
+									data : 'totalRent',
+										mRender : function(data, type, row) {
+											return '&#8377;' + data
+										}
+								},
+								{
+									data : 'orderTotal',
+										mRender : function(data, type, row) {
+											return '&#8377;' + data
+										}
+								},
+								
+								{
+									data : 'active',
+									bSortable : false,
+									mRender : function(data, type, row) {
+										var str = '';
+										if (data) {
+											str += '<label class="switch"> <input type="checkbox" value="'+ row.id
+													+ '" checked="checked">  <div class="slider round"> </div></label>';
+
+										} else {
+											str += '<label class="switch"> <input type="checkbox" value="'+ row.id
+													+ '">  <div class="slider round"> </div></label>';
+										}
+
+										return str;
+									}
+								},
+						],
+
+						initComplete : function() {
+							var api = this.api();
+							api
+									.$('.switch input[type="checkbox"]')
+									.on(
+											'change',
+											function() {
+												var checkbox = $(this);
+												var checked = checkbox
+														.prop('checked');
+												var dMsg = (checked) ? 'Do You want to Active the Transaction?'
+														: 'Do You want to Close the Transaction?';
+												var value = checkbox.prop('value');
+
+												bootbox
+														.confirm({
+															size : "medium",
+															message : dMsg,
+															callback : function(
+																	confirmed) {
+																if (confirmed) {
+
+																	console
+																			.log(value);
+																	var activationUrl = window.contextRoot
+																			+ '/employeemanage/transactions/'
+																			+ value
+																			+ '/activation';
+																	$
+																			.post(
+																					activationUrl,
+																					function(
+																							data) {
+
+																						bootbox
+																								.alert({
+																									size : "medium",
+																									message : data
+																								});
+
+																					});
+																}
+
+																else {
+																	checkbox
+																			.prop(
+																					'checked',
+																					!checked);
+																}
+															}
+
+														});
+
+											});
+						}
+						
+					});
+		}
+
+		//---------------------------
 	
 // Category Data Table for Admin
 	

@@ -9,5 +9,6 @@ public interface ContactusDAO {
 	Contactus get(int id);
 	boolean add(Contactus contactus);
 	boolean delete(Contactus contactus);
+	boolean update(Contactus contactus);
 
 }

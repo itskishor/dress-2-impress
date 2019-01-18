@@ -19,7 +19,7 @@ public class Category implements Serializable
 	private static final long serialVersionUID = 1L;
 	//private fields
 	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@GeneratedValue(strategy= GenerationType.AUTO)
 		private int id;
 	@NotBlank(message = "Please enter category name!")
 		private String name;

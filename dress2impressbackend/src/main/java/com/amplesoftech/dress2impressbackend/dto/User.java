@@ -12,8 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.Range;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -39,6 +42,7 @@ public class User implements Serializable{
 	private String email;
 	@NotBlank(message = "Please enter contact number!")
 	@Column(name = "contact_number")
+	@Pattern(regexp="(^$|[0-9]{10})")
 	private String contactNumber;
 	//@NotBlank(message = "Please enter Role!")
 	private String role="EMPLOYEE";
@@ -54,6 +58,9 @@ public class User implements Serializable{
 	@JsonIgnore
 	private String confirmPassword; 
 	//----------------------------
+	@Column(name = "salary", nullable = false)
+	@NotNull(message= "salary may not be empty")
+	@Range(min = 1)
 	private double salary;
 	private String dob;
 	private String doj;

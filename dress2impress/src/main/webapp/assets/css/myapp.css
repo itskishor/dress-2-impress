@@ -54,9 +54,9 @@ body {
     color: #333;
 }
 
-footer {
+/* footer {
     margin: 0;
-}
+} */
 
 
 /*
@@ -73,17 +73,29 @@ footer {
 	padding-bottom: 60px; /*height of the footer*/	
 }
 
+/* .footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
+} */
 
-.footer {
+
+
+/* .footer {
 	width:200%;
-	position:Relative;
+	position:fixed;
 	bottom:0px;
 	left:0px;
+	right:0px;
 	background-color:#0F0F0F;
 	height: 60px;
 	text-align:center;
 	color: white;	
-}
+} */
 
 .dataTableImg {
 	

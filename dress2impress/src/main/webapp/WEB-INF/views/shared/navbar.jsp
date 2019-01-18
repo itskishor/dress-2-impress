@@ -27,15 +27,21 @@
 						href="${contextRoot}/manage/supplier">Manage Supplier</a></li>
 						<li id="managecategories"><a class="nav-link"
 						href="${contextRoot}/manage/categories">Manage Categories</a></li>
+						<li id="adminviewtransactions"><a class="nav-link"
+						href="${contextRoot}/manage/viewtransactions">View Transactions</a></li>
 				</security:authorize>
 						<security:authorize access="hasAuthority('EMPLOYEE')">
 					    <li id="employeemanageclothes"><a class="nav-link"
 					href="${contextRoot}/employeemanage/clothes">Manage Clothes</a></li>
 						<li id="employeemanageuser"><a class="nav-link"
 						href="${contextRoot}/employeemanage/user">Manage User</a></li>
+						<li id="employeemanagetransactions"><a class="nav-link"
+						href="${contextRoot}/employeemanage/transactions">Manage Transactions</a></li>
 				</security:authorize>
 				<li id="contactus"><a class="nav-link"
-					href="${contextRoot}/show/contactus">Contact Us</a></li>
+					href="${contextRoot}/contactus">Contact Us</a></li>
+					<li id="aboutus"><a class="nav-link"
+					href="${contextRoot}/aboutus">About Us</a></li>
 			</ul>
 			<ul class="navbar-nav ml-auto">
 				<!-- class="nav-item" -->

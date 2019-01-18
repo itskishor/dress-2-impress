@@ -4,23 +4,29 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.amplesoftech.dress2impress.excepiton.ClothesNotFoundException;
 import com.amplesoftech.dress2impressbackend.dao.CategoryDAO;
 import com.amplesoftech.dress2impressbackend.dao.ClothesDAO;
+import com.amplesoftech.dress2impressbackend.dao.ContactusDAO;
 import com.amplesoftech.dress2impressbackend.dto.Category;
 import com.amplesoftech.dress2impressbackend.dto.Clothes;
+import com.amplesoftech.dress2impressbackend.dto.Contactus;
 
 @Controller
 public class PageController {
@@ -31,6 +37,8 @@ public class PageController {
 	
 	@Autowired
 	private ClothesDAO clothesDAO;
+	@Autowired
+	private ContactusDAO contactUsDAO;
 	
 	@RequestMapping(value= {"/","/home","/index"})
 	public ModelAndView index()
@@ -92,6 +100,15 @@ public class PageController {
 		ModelAndView mv=new ModelAndView("page");
 		mv.addObject("title","Contact Us");
 		mv.addObject("userClickContactUs",true);
+		return mv;
+		}
+		
+		@RequestMapping(value="/aboutus")
+		public ModelAndView AboutUs()
+		{
+		ModelAndView mv=new ModelAndView("page");
+		mv.addObject("title","About Us");
+		mv.addObject("userClickAboutUs",true);
 		return mv;
 		}
 
@@ -178,4 +195,55 @@ public class PageController {
 		mv.addObject("title", "403 Access Denied");		
 		return mv;
 	}	
+	
+// Contact Us Controller
+	@RequestMapping(value = "/contactus", method = RequestMethod.GET)
+	public ModelAndView manageAddQuery(@RequestParam(name = "operation", required = false) String operation) {
+
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "Contact Us");
+		mv.addObject("userClickContactUs", true);
+
+		Contactus contactus = new Contactus();
+
+		mv.addObject("contactus", contactus);
+
+		if (operation != null) {
+			if (operation.equals("contactus")) {
+				mv.addObject("message", "Query Sent Successfully!");
+			} 
+			else if(operation.equals("contactus")) {
+				mv.addObject("message", "Query Sent Successfully!");
+			} 
+		}
+		return mv;
+
+	}
+	// handling clothes submission
+		@RequestMapping(value = "/contactus", method = RequestMethod.POST)
+		public String handleAddQuerySubmission(@Valid @ModelAttribute("contactus") Contactus mcontactus, BindingResult results,
+				Model model, HttpServletRequest request) {
+			// handle image validation for new clothes
+			/*if (mcontactus.getId() == 0) {
+				new ClothesValidator().validate(mclothes, results);
+			} else {
+				if (!mclothes.getFile().getOriginalFilename().equals("")) {
+					// FileUtil.uploadFile(request, mProduct.getFile(), mProduct.getCode());
+					new ClothesValidator().validate(mclothes, results);
+				}
+			}*/
+			// check if there is any error
+			if (results.hasErrors()) {
+				model.addAttribute("userClickContactUs", true);
+				model.addAttribute("title", "Contact Us");
+				model.addAttribute("message", "Validation Failed For Product Submission!");
+				return "page";
+			}
+			// Create a new contact Us Record
+				contactUsDAO.add(mcontactus);
+			
+			return "redirect:/contactus?operation=contactus";
+
+		}
+
 }

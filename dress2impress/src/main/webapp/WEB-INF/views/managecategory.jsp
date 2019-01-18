@@ -19,7 +19,7 @@
 			</div>
 		</c:if>
 
-		<div class="col-6">
+			<div class="col-md-8 col-sm-8 col-lg-8">
 			<div class="card ">
 				<div class="card-header bg-dark text-white">
 					<h5 class="card-title">Manage Categories</h5>
@@ -32,7 +32,7 @@
 						<div class="form-group row">
 							<label class="control-label col-md-4"><b>Enter Category Name:</b></label>
 							<div class="col-8">
-								<sf:input type="text" path="name" id="name" class="form-control"
+								<sf:input type="text" path="name" id="name" class="form-control" required="true" 
 									placeholder="Category Name" />
 								<sf:errors path="name" cssClass="help-block" element="em" />
 							</div>
@@ -42,7 +42,7 @@
 							<label class="control-label col-md-4"><b>Description:</b></label>
 							<div class="col-8">
 								<sf:textarea path="description" id="description" rows="4"
-									class="form-control" placeholder="Enter your description here!"></sf:textarea>
+									class="form-control" required="true" placeholder="Enter your description here!"></sf:textarea>
 								<sf:errors path="description" cssClass="help-block" element="em" />
 							</div>
 						</div>
@@ -73,8 +73,8 @@
 	<hr />
 	<div class="row justify-content-center">
 
-		<div class="col-xs-12"></div>
-		<div class="col-xs-12">
+		<!-- <div class="col-xs-12"></div> -->
+		<div class="col-12">
 
 			<div style="overflow: auto">
 				<table id="adminCategoryTable"

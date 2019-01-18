@@ -1,91 +1,95 @@
-<%@include file="../../shared/flows-header.jsp" %>
-<%@taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
+<%@include file="../../shared/flows-header.jsp"%>
 <div class="container">
 
 	<div class="row">
-			<!--  To display all the goods -->
-			<div class="col-md-4">
-				
-				<div class="row">
-					<c:forEach items="${checkoutModel.cartLines}" var="cartLine">
-					<div class="col-xs-12 text-left">
-						
-						<div>
-							<h4>${cartLine.clothes.name}</h4>
-							<hr/>
-							<h5>Quantity -${cartLine.clothesCount}</h5>
-							<h5>Price Per Day - &#8377; ${cartLine.pricePerDay}/-</h5>
-							<h5>Total Deposit- &#8377; ${cartLine.deposite}/-</h5>
-						<h5> Issue Date- &#8377; ${cartLine.issueDate}/-</h5>	
-						<h5> Return Date- &#8377; ${cartLine.returnDate}/-</h5>					
-						</div>						
-						<hr/>
-						<div class="text-right">
-							<h5>Total - &#8377; ${cartLine.totalPrice}/-</h5>
-						</div>				
+		<!--  To display all the goods -->
+		<div class="col-12">
+
+			<table class="table table-dark table-hover" style="width: 100%">
+				<tr>
+					<th>Clothes Name</th>
+					<th>Clothes Count</th>
+					<th>Price Per Day</th>
+					<th>Deposite</th>
+					<th>Issue Date</th>
+					<th>Return Date</th>
+					<th>Grand Total</th>
+				</tr>
+				<c:forEach items="${checkoutModel.cartLines}" var="cartLine">
+					<tr>
+						<td>${cartLine.clothes.name}</td>
+						<td>${cartLine.clothesCount}</td>
+						<td>&#8377; ${cartLine.pricePerDay}/-</td>
+						<td>&#8377; ${cartLine.deposite}</td>
+						<td>${cartLine.issueDate}/-</td>
+						<td>${cartLine.returnDate}/-</td>
+						<td>&#8377; ${cartLine.totalPrice}/-</td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
+		<div class="col-12">
+			<center>
+				<div class="card card-default pull-center"
+					style="width: 30rem; height: 23rem;">
+					<div class="card-heading">
+						<h4 class="card-title">
+							<u>Payment Details</u>
+						</h4>
 					</div>
-					</c:forEach>
-						<div class="text-right">
-						    <h5>Total Deposit - &#8377;	${checkoutModel.checkoutTotalDeposit}/-</h5>
-							<h5>Grand Total - &#8377;	${checkoutModel.checkoutTotal}/-</h5>
-						</div>	
+					<div class="card-body">
+						<form role="form">
+							<div class="form-group">
+								<label for="cardNumber"> CARD NUMBER</label>
+								<div class="input-group">
+									<input type="text" class="form-control" path="validcardnumber"
+										id="cardNumber" placeholder="Valid Card Number" required
+										autofocus />&ensp;&ensp; <i class="fa fa-lock"
+										style="font-size: 38px; color: black"></i>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-7 col-md-7">
+									<div class="form-group">
+										<label for="expityMonth">EXPIRY DATE</label> <br />
+										<div class="col-xs-6 col-lg-6 pl-ziro">
+											<input type="text" class="form-control" id="expityMonth"
+												placeholder="MM" required />
+										</div>
+										<div class="col-xs-6 col-lg-6 pl-ziro">
+											<input type="text" class="form-control" id="expityYear"
+												placeholder="YY" required />
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-5 col-md-5 pull-right">
+									<div class="form-group">
+										<label for="cvCode"> CV CODE</label> <input type="password"
+											class="form-control" id="cvCode" placeholder="CV" required />
+										<i class="fa fa-cc-visa" style="font-size: 38px; color: black"></i>
+										<i class="fa fa-cc-mastercard"
+											style="font-size: 38px; color: black"></i> <i
+											class="fa fa-credit-card"
+											style="font-size: 38px; color: black"></i>
+									</div>
+								</div>
+							</div>
+							<ul class="nav nav-pills nav-stacked">
+								<li class="active"><a href="#"><span
+										class="badge pull-right bg-danger"><h6 style="color:white">&#8377; ${checkoutModel.checkoutTotal}/-</h6></span> Final Payment : </a></li>
+							</ul>
+							<br/>
+						</form>
+						<center>
+						<a href="${flowExecutionUrl}&_eventId_pay"
+							class="btn btn-success btn-xs btn-block" role="button">Pay</a>
+					</center>
+					</div>
 				</div>
-				
-				
-			</div>
-			
-			<div class="col-md-8">
-	            <div class="card card-default">
-	                <div class="card-heading">
-	                    <h4 class="card-title">
-	                        Payment Details
-	                    </h4>
-	                </div>
-	                <div class="card-body">
-	                    <form role="form">
-	                    <div class="form-group">
-	                        <label for="cardNumber">
-	                            CARD NUMBER</label>
-	                        <div class="input-group">
-	                            <input type="text" class="form-control" path="validcardnumber" id="cardNumber" placeholder="Valid Card Number"
-	                                required autofocus />&ensp;&ensp;
-	                                <i class="fa fa-lock" style="font-size:38px;color:black"></i>
-	                        </div>
-	                    </div>
-	                    <div class="row">
-	                        <div class="col-xs-7 col-md-7">
-	                            <div class="form-group">
-	                                <label for="expityMonth">EXPIRY DATE</label>
-	                                <br/>
-	                                <div class="col-xs-6 col-lg-6 pl-ziro">
-	                                    <input type="text" class="form-control" id="expityMonth" placeholder="MM" required />
-	                                </div>
-	                                <div class="col-xs-6 col-lg-6 pl-ziro">
-	                                    <input type="text" class="form-control" id="expityYear" placeholder="YY" required /></div>
-	                            </div>
-	                        </div>
-	                        <div class="col-xs-5 col-md-5 pull-right">
-	                            <div class="form-group">
-	                                <label for="cvCode">
-	                                    CVV CODE</label>
-	                                <input type="password" class="form-control" id="cvvCode" placeholder="CVV" required />
-	                                  <i class="fa fa-cc-visa" style="font-size:38px;color:black"></i>
-	                                  <i class="fa fa-cc-mastercard" style="font-size:38px;color:black"></i>
-	                                  <i class="fa fa-credit-card" style="font-size:38px;color:black"></i>
-	                            </div>
-	                        </div>
-	                    </div>
-	                    </form>
-	                </div>
-	            </div>
-	            <ul class="nav nav-pills nav-stacked">
-	                <li class="active"><a href="#"><span class="badge pull-right"> <h5 style="color:Purple">&#8377; ${checkoutModel.checkoutTotal}/-</h5></span> Final Payment</a></li>
-	            </ul>
-	            <br/>
-	            <a href="${flowExecutionUrl}&_eventId_pay" class="btn btn-success btn-sm btn-block" role="button">Pay</a>
-			
-			</div>
+			</center>
+
+		</div>
 
 	</div>
 </div>
-<%@include file="../../shared/flows-footer.jsp" %>
+<%@include file="../../shared/flows-footer.jsp"%>

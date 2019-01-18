@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
-
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -21,7 +20,7 @@ public class Clothes implements Serializable   {
 	
 	// private fields
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String code;
 	private String name;
@@ -29,9 +28,11 @@ public class Clothes implements Serializable   {
 	private String size;
 	@JsonIgnore
 	private String description;
-	@Column(name = "unit_price")
+/*	@NotBlank(message = "Please enter unit price!")
+*/	@Column(name = "unit_price")
 	private double unitPrice;
-	@Column(name = "price_per_day")
+/*	@NotBlank(message = "Please enter price per day!")
+*/	@Column(name = "price_per_day")
 	private double pricePerDay;
 	private int quantity;
 	@Column(name = "is_active")	
