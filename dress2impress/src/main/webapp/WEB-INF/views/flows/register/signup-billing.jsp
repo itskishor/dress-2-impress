@@ -73,14 +73,14 @@
 							</div>
 
 							<div class="form-group row">
-								<div class="row justify-content-center">
+								<div class="row justify-content-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<!-- Submit Button to move to the personal -->
-									<button type="submit" class="btn btn-primary btn-md"
+									<button type="submit"  class="btn btn-primary btn-md"
 										name="_eventId_personal">
 										<span class="fa fa-angle-left"></span> Previous-Personal
-									</button>
+									</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<!-- Submit Button to move to the confirm -->
-									<button type="submit" class="btn btn-primary btn-md"
+									<button type="submit"  class="btn btn-primary btn-md"
 										name="_eventId_confirm">
 										Next-Confirm <span class="fa fa-angle-right"></span>
 									</button>

@@ -59,8 +59,6 @@ public class User implements Serializable{
 	private String confirmPassword; 
 	//----------------------------
 	@Column(name = "salary", nullable = false)
-	@NotNull(message= "salary may not be empty")
-	@Range(min = 1)
 	private double salary;
 	private String dob;
 	private String doj;

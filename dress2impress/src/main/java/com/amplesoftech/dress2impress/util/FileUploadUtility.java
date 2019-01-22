@@ -14,7 +14,7 @@ import ch.qos.logback.core.util.FileUtil;
 public class FileUploadUtility 
 {
 
-	private static final String ABS_PATH = "E:/Ample SofTech Project/dress-2-impress/dress2impress/src/main/webapp/assets/images/";
+	private static final String ABS_PATH = "C:/Users/Kishor/git/dress-2-impress/dress2impress/src/main/webapp/assets/images/";
 	private static String REAL_PATH = null;
 	private static final Logger logger = LoggerFactory.getLogger(FileUtil.class);
 	public static boolean uploadFile(HttpServletRequest request, MultipartFile file, String code) 

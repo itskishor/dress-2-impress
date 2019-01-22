@@ -12,10 +12,22 @@
         <div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1">
 
           <!-- Content -->
-          <h5 class="font-weight-bold text-uppercase mb-4">Footer Content</h5>
-          <p>Integrate your online and offline rental inventories
-Mass upload and download spreadsheets of clothing, purse, or dress rentals
-</p>
+          <h5 class="font-weight-bold text-uppercase mb-4">Why Us</h5>
+           <ul class="list-unstyled">
+            <li>
+              <p>
+                <i class="fa fa-truck mr-3" aria-hidden="true"></i>Fast Delivery</p>
+            </li>
+            <li>
+              <p>
+                <i class="fa fa-clock-o mr-3"></i>24 x 7 Hours Open</p>
+            </li>
+            <li>
+              <p>
+                <i class="fa fa-heart mr-3 aria-hidden="true""></i>Best Quality</p>
+            </li>
+           
+          </ul>
           
 
         </div>
@@ -32,12 +44,12 @@ Mass upload and download spreadsheets of clothing, purse, or dress rentals
           <ul class="list-unstyled">
             <li>
               <p>
-                <a href="http://localhost:8080/dress2impress/show/contactus">CONTACT US</a>
+             <i class="fa fa-phone" aria-hidden="true"></i> <a href="http://localhost:3030/dress2impress/contactus">Contact Us</a>
               </p>
             </li>
             <li>
               <p>
-                <a href="http://localhost:8080/dress2impress/show/about/us">ABOUT US</a>
+               <i class="fa fa-pencil-square-o" aria-hidden="true"></i> <a href="http://localhost:3030/dress2impress/aboutus">About Us</a>
               </p>
             </li>
           </ul>
@@ -56,7 +68,7 @@ Mass upload and download spreadsheets of clothing, purse, or dress rentals
           <ul class="list-unstyled">
             <li>
               <p>
-                <i class="fa fa-home mr-3" aria-hidden="true"></i> Shantiban,kothrud</p>
+                <i class="fa fa-home fa-2x mr-3" aria-hidden="true"></i>Kothrud, Pune</p>
             </li>
             <li>
               <p>
@@ -78,20 +90,24 @@ Mass upload and download spreadsheets of clothing, purse, or dress rentals
         <div class="col-md-2 col-lg-2 text-center mx-auto my-4">
 
           <!-- Social buttons -->
-          <h5 class="font-weight-bold text-uppercase mb-4">Follow Us</h5>
-
-          <!-- Facebook -->
-          <a type="button" class="btn-floating btn-fb">
-              <a href="https://www.facebook.com/"><i class="fa fa-facebook-f"></i>
-          </a>
-          <!-- Twitter -->
-          <a type="button" class="btn-floating btn-tw">
-             <a href="https://www.twitter.com/"><i class="fa fa-twitter"></i>
-          </a>
-          <!-- Google +-->
-          <a type="button" class="btn-floating btn-gplus">
-          <a href="https://plus.google.com/discover"><i class="fa fa-google-plus"></i>
-          </a>
+          <h5 class="font-weight-bold text-uppercase mb-4">Follow Us</h5>   
+          <ul class="list-unstyled">
+            <li>
+              <p>
+             <i class="fa fa-twitter" aria-hidden="true"></i> <a href="href="https://www.twitter.com/"">Twitter</a>
+              </p>
+            </li>
+            <li>
+              <p>
+               <i class="fa fa-facebook-f" aria-hidden="true"></i> <a href="https://www.facebook.com/">Facebook</a>
+              </p>
+            </li>
+             <li>
+              <p>
+               <i class="fa fa-google-plus" aria-hidden="true"></i> <a href="https://plus.google.com/discover">Google Plus</a>
+              </p>
+            </li>
+          </ul>
        
         </div>
         <!-- Grid column -->
