@@ -59,6 +59,11 @@
 				<%@include file="viewclothes.jsp"%>
 			</c:if>
 			
+			 <!--Loading The Manage Clothes Content -->
+			<c:if test="${userClickEmployeePurchaseClothes==true}">
+				<%@include file="purchaseclothes.jsp"%> 
+			</c:if>
+			
 			<!--Loading The Manage Clothes Content -->
 			<c:if test="${userClickEmployeeManageClothes==true}">
 				<%@include file="manageclothes.jsp"%> 
@@ -112,6 +117,21 @@
 			<c:if test="${userClickShowClothes==true}">
 				<%@include file="singleClothes.jsp"%>
 			</c:if>
+			
+			<!--Loading The View Single Supplier Clothes Content -->
+			<c:if test="${userClickShowSupplierClothes==true}">
+				<%@include file="singlesupplierclothes.jsp"%>
+			</c:if>
+			
+			<!--Loading The View Single Supplier Payment Content -->
+			<c:if test="${userClickEmployeeProceedPayment==true}">
+				<%@include file="supplierorderinvoice.jsp"%>
+			</c:if>	
+			
+			<!--Loading The View Single Supplier Payment Content -->
+			<c:if test="${userClickSupplierPayment==true}">
+				<%@include file="proceedsupplierpayment.jsp"%>
+			</c:if>	
 
 			<!--Loads Only when Users Click On Cart-->
 			<c:if test="${userClickShowCart==true}">

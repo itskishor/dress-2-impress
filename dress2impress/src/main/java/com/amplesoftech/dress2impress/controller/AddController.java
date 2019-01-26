@@ -18,13 +18,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.amplesoftech.dress2impress.util.FileUploadUtility;
-import com.amplesoftech.dress2impress.validator.ClothesValidator;
+import com.amplesoftech.dress2impress.validator.SupplierClothesValidator;
 import com.amplesoftech.dress2impressbackend.dao.CategoryDAO;
-import com.amplesoftech.dress2impressbackend.dao.ClothesDAO;
-import com.amplesoftech.dress2impressbackend.dao.ContactusDAO;
+import com.amplesoftech.dress2impressbackend.dao.SupplierClothesDAO;
 import com.amplesoftech.dress2impressbackend.dto.Category;
-import com.amplesoftech.dress2impressbackend.dto.Clothes;
-import com.amplesoftech.dress2impressbackend.dto.Contactus;
+import com.amplesoftech.dress2impressbackend.dto.SupplierClothes;
 
 @Controller
 @RequestMapping("/add")
@@ -32,32 +30,32 @@ public class AddController {
 	private static final Logger logger = LoggerFactory.getLogger(ManagementController.class);
 
 	@Autowired
-	private ClothesDAO clothesDAO;
+	private SupplierClothesDAO supplierClothesDAO;
 	@Autowired
 	private CategoryDAO categoryDAO;
 	
-	@Autowired
-	private ContactusDAO contactUsDAO;
+	/*@Autowired
+	private ContactusDAO contactUsDAO;*/
 	
-	@RequestMapping(value = "/clothes", method = RequestMethod.GET)
+	@RequestMapping(value = "/supplierclothes", method = RequestMethod.GET)
 	public ModelAndView manageAddClothes(@RequestParam(name = "operation", required = false) String operation) {
 
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title", "Add Clothes");
 		mv.addObject("userClickAddClothes", true);
 
-		Clothes nClothes = new Clothes();
+		SupplierClothes nSupplierClothes = new SupplierClothes();
 
 		// assuming that the user is ADMIN
 		// later we will fixed it based on user is SUPPLIER or ADMIN
-		nClothes.setSupplierId(1);
-		nClothes.setActive(true);
+		nSupplierClothes.setSupplierId(1);
+		nSupplierClothes.setActive(true);
 
-		mv.addObject("clothes", nClothes);
+		mv.addObject("supplierclothes", nSupplierClothes);
 
 		if (operation != null) {
-			if (operation.equals("clothes")) {
-				mv.addObject("message", "Clothes Inserted Successfully!");
+			if (operation.equals("supplierclothes")) {
+				mv.addObject("message", "Your Clothes Inserted Successfully!");
 			} else if (operation.equals("category")) {
 				mv.addObject("message", "Category Inserted Successfully!");
 
@@ -82,39 +80,39 @@ public class AddController {
 		return new Category();
 	}
 	// handling clothes submission
-		@RequestMapping(value = "/clothes", method = RequestMethod.POST)
-		public String handleAddClothesSubmission(@Valid @ModelAttribute("clothes") Clothes mclothes, BindingResult results,
+		@RequestMapping(value = "/supplierclothes", method = RequestMethod.POST)
+		public String handleAddSupplierClothesSubmission(@Valid @ModelAttribute("supplierclothes") SupplierClothes mSupplierClothes, BindingResult results,
 				Model model, HttpServletRequest request) {
 			// handle image validation for new clothes
-			if (mclothes.getId() == 0) {
-				new ClothesValidator().validate(mclothes, results);
+			if (mSupplierClothes.getId() == 0) {
+				new SupplierClothesValidator().validate(mSupplierClothes, results);
 			} else {
-				if (!mclothes.getFile().getOriginalFilename().equals("")) {
+				if (!mSupplierClothes.getFile().getOriginalFilename().equals("")) {
 					// FileUtil.uploadFile(request, mProduct.getFile(), mProduct.getCode());
-					new ClothesValidator().validate(mclothes, results);
+					new SupplierClothesValidator().validate(mSupplierClothes, results);
 				}
 			}
 			// check if there is any error
 			if (results.hasErrors()) {
 				model.addAttribute("userClickAddClothes", true);
 				model.addAttribute("title", "Add Clothes");
-				model.addAttribute("message", "Validation Failed For Product Submission!");
+				model.addAttribute("message", "Validation Failed For your Clothes Submission!");
 				return "page";
 			}
-			logger.info(mclothes.toString());
+			logger.info(mSupplierClothes.toString());
 			// Create a new Clothes Record
-			if (mclothes.getId() == 0) {
+			if (mSupplierClothes.getId() == 0) {
 				// create the clothes if id is 0
-				clothesDAO.add(mclothes);
+				supplierClothesDAO.add(mSupplierClothes);
 			} else {
 				// update the clothes if id is not 0
-				clothesDAO.update(mclothes);
+				supplierClothesDAO.update(mSupplierClothes);
 			}
 
-			if (!mclothes.getFile().getOriginalFilename().equals("")) {
-				FileUploadUtility.uploadFile(request, mclothes.getFile(), mclothes.getCode());
+			if (!mSupplierClothes.getFile().getOriginalFilename().equals("")) {
+				FileUploadUtility.uploadFile(request, mSupplierClothes.getFile(), mSupplierClothes.getCode());
 			}
-			return "redirect:/add/clothes?operation=clothes";
+			return "redirect:/add/supplierclothes?operation=supplierclothes";
 
 		}
 		

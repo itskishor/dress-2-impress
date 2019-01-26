@@ -12,7 +12,7 @@
         <div class="col-md-4 col-lg-3 mr-auto my-md-4 my-0 mt-4 mb-1">
 
           <!-- Content -->
-          <h5 class="font-weight-bold text-uppercase mb-4">Why Us</h5>
+          <h5 class="font-weight-bold text-uppercase mb-4">Why Us?</h5>
            <ul class="list-unstyled">
             <li>
               <p>
@@ -20,11 +20,11 @@
             </li>
             <li>
               <p>
-                <i class="fa fa-clock-o mr-3"></i>24 x 7 Hours Open</p>
+                <i class="fa fa-clock-o mr-3" aria-hidden="true"></i>24 x 7 Hours Available</p>
             </li>
             <li>
               <p>
-                <i class="fa fa-heart mr-3 aria-hidden="true""></i>Best Quality</p>
+                <i class="fa fa-heart mr-3" aria-hidden="true"></i>Best Quality</p>
             </li>
            
           </ul>

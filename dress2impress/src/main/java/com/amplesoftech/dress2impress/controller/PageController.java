@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -21,19 +23,33 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.amplesoftech.dress2impress.excepiton.ClothesNotFoundException;
+import com.amplesoftech.dress2impress.excepiton.SupplierClothesNotFoundException;
+import com.amplesoftech.dress2impress.validator.CardValidator;
 import com.amplesoftech.dress2impressbackend.dao.CategoryDAO;
 import com.amplesoftech.dress2impressbackend.dao.ClothesDAO;
 import com.amplesoftech.dress2impressbackend.dao.ContactusDAO;
+import com.amplesoftech.dress2impressbackend.dao.DebitCardDetailsDAO;
+import com.amplesoftech.dress2impressbackend.dao.SupplierClothesDAO;
 import com.amplesoftech.dress2impressbackend.dto.Category;
 import com.amplesoftech.dress2impressbackend.dto.Clothes;
 import com.amplesoftech.dress2impressbackend.dto.Contactus;
+import com.amplesoftech.dress2impressbackend.dto.DebitCardDetails;
+import com.amplesoftech.dress2impressbackend.dto.SupplierClothes;
 
 @Controller
 public class PageController {
+	private static final Logger logger = LoggerFactory.getLogger(PageController.class);
 	
 	
 	@Autowired
 	private CategoryDAO categoryDAO;
+	
+	
+	@Autowired
+	private SupplierClothesDAO supplierClothesDAO;
+	
+	@Autowired
+	private DebitCardDetailsDAO debitCardDetailsDAO ;
 	
 	@Autowired
 	private ClothesDAO clothesDAO;
@@ -80,7 +96,7 @@ public class PageController {
 	return mv;
 	}
 	 
-	//methods to load all the clothes based on category
+	//methods to load all the supplier clothes based on category
 	@RequestMapping(value="/show/all/clothes")
 	public ModelAndView showAllClothes()
 	{
@@ -154,11 +170,95 @@ public class PageController {
 		
 	}
 	
+	//Show single Supplier Clothes to Employee
+	
+	@RequestMapping(value = "/show/{id}/supplierclothes") 
+	public ModelAndView showSingleSupplierClothes(@PathVariable int id) throws SupplierClothesNotFoundException
+	{
+		
+		ModelAndView mv = new ModelAndView("page");
+			// update the view count
+		SupplierClothes supplierClothes = supplierClothesDAO.get(id);
+	//	DebitCardDetails ndebitCardDetails = new DebitCardDetails();
+
+		
+		mv.addObject("title", supplierClothes.getName());
+		mv.addObject("supplierClothes", supplierClothes);
+		
+		mv.addObject("userClickShowSupplierClothes", true);
+	//	mv.addObject("debitcarddetail", ndebitCardDetails);
+		return mv;
+		
+	}
+
+	
+	//--------------Supplier Payment Management Control--------------------
+	@RequestMapping(value = "/proceed/debitcarddetails", method = RequestMethod.GET)
+	public ModelAndView showmanageCardDetails(@RequestParam(name = "operation", required = false) String operation) {
+
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "Manage Payment");
+		mv.addObject("userClickEmployeeProceedPayment", true);
+		DebitCardDetails ndebitCardDetails = new DebitCardDetails();
+		mv.addObject("debitcarddetail", ndebitCardDetails);
+		
+		if (operation != null) {
+			if (operation.equals("debitcarddetails")) {
+				mv.addObject("message", "Payment Done Successfully!");
+			}
+		}
+		return mv;
+
+	}
+
+	// handling Card Details submission
+	@RequestMapping(value = "/proceed/debitcarddetails", method = RequestMethod.POST)
+	public String handleCardSubmission(@Valid @ModelAttribute("debitcarddetail") DebitCardDetails mcarddetails, BindingResult results,
+			Model model, HttpServletRequest request) {
+		
+		// handle card validation for new card
+		if (mcarddetails.getId() == 0) 
+		{
+			new CardValidator().validate(mcarddetails, results);
+		} 
+		// check if there is any error
+		if (results.hasErrors()) {
+			model.addAttribute("userClickEmployeeProceedPayment", true);
+			model.addAttribute("title", "Manage Payment");
+			model.addAttribute("message", "Validation Failed For Payment Submission!");
+			return "page";
+		}
+		logger.info(mcarddetails.toString());
+		// Create a new Card Record
+		if (mcarddetails.getId() == 0) {
+			// create the card if id is 0
+			debitCardDetailsDAO.add(mcarddetails);
+		}
+			
+		return "redirect:/proceed/debitcarddetails?operation=debitcarddetails";
+
+	}
+	
 	@RequestMapping(value="/register")
 	public ModelAndView register()
 	{
 	ModelAndView mv=new ModelAndView("page");
 	mv.addObject("title","Employee");
+	return mv;
+	}
+	
+	@RequestMapping(value="/{id}/supplierpayment")
+	public ModelAndView supplierPayment(@PathVariable("id") int id, HttpServletRequest request)
+	{
+	ModelAndView mv=new ModelAndView("page");
+	mv.addObject("title","Payment");
+	mv.addObject("userClickSupplierPayment", true);
+	DebitCardDetails ndebitCardDetails = new DebitCardDetails();
+	mv.addObject("debitcarddetail", ndebitCardDetails);
+	SupplierClothes supplierClothes=supplierClothesDAO.get(id);
+	double payAmount=supplierClothes.getUnitPrice();
+	request.setAttribute("clothId", id);
+	request.setAttribute("payable", payAmount);
 	return mv;
 	}
 	
@@ -219,24 +319,15 @@ public class PageController {
 		return mv;
 
 	}
-	// handling clothes submission
+	// handling Query submission
 		@RequestMapping(value = "/contactus", method = RequestMethod.POST)
 		public String handleAddQuerySubmission(@Valid @ModelAttribute("contactus") Contactus mcontactus, BindingResult results,
 				Model model, HttpServletRequest request) {
-			// handle image validation for new clothes
-			/*if (mcontactus.getId() == 0) {
-				new ClothesValidator().validate(mclothes, results);
-			} else {
-				if (!mclothes.getFile().getOriginalFilename().equals("")) {
-					// FileUtil.uploadFile(request, mProduct.getFile(), mProduct.getCode());
-					new ClothesValidator().validate(mclothes, results);
-				}
-			}*/
 			// check if there is any error
 			if (results.hasErrors()) {
 				model.addAttribute("userClickContactUs", true);
 				model.addAttribute("title", "Contact Us");
-				model.addAttribute("message", "Validation Failed For Product Submission!");
+				model.addAttribute("message", "Validation Failed For Query Submission!");
 				return "page";
 			}
 			// Create a new contact Us Record

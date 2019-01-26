@@ -22,7 +22,7 @@
 							<th style="width:10%">Price/Day</th>
 			       			<th style="width:8%">Quantity</th>
 							<th style="width:8%">Deposit</th>
-							<th style="width:18%">No.Of Days</th>
+							<th style="width:20%">No.Of Days</th>
 							<th style="width:8%">Issue Date</th>
 							<th style="width:8%">Return Date</th>
 							<th style="width:10%" class="text-center">SubTotal</th>
@@ -64,8 +64,8 @@
 						<tfoot>
 					<tr>
 						<td><a href="${contextRoot}/show/all/clothes" class="btn btn-warning"><i class="fa fa-angle-left" style="font-size:24px;color:red"></i> Continue Shopping</a></td>
-						<td colspan="2" class="hidden-xs"></td>
-						<td class="hidden-xs pull-right"><strong>Grand Total &#8377; ${userModel.cart.grandTotal}/-</strong></td>
+						<td colspan="6" class="hidden-xs"></td>
+						<td class="pull-right"><strong>GrandTotal &#8377; ${userModel.cart.grandTotal}/-</strong></td>
 						
 						<c:choose>
 							<c:when test="${availableCount != 0}">

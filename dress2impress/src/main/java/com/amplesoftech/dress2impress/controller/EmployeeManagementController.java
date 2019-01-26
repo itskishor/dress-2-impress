@@ -20,13 +20,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.amplesoftech.dress2impress.util.FileUploadUtility;
+import com.amplesoftech.dress2impress.validator.CardValidator;
 import com.amplesoftech.dress2impress.validator.ClothesValidator;
 import com.amplesoftech.dress2impressbackend.dao.CategoryDAO;
 import com.amplesoftech.dress2impressbackend.dao.ClothesDAO;
+import com.amplesoftech.dress2impressbackend.dao.DebitCardDetailsDAO;
 import com.amplesoftech.dress2impressbackend.dao.OrderDetailsDAO;
 import com.amplesoftech.dress2impressbackend.dao.UserDAO;
 import com.amplesoftech.dress2impressbackend.dto.Category;
 import com.amplesoftech.dress2impressbackend.dto.Clothes;
+import com.amplesoftech.dress2impressbackend.dto.DebitCardDetails;
 import com.amplesoftech.dress2impressbackend.dto.OrderDetail;
 import com.amplesoftech.dress2impressbackend.dto.User;
 
@@ -34,7 +37,7 @@ import com.amplesoftech.dress2impressbackend.dto.User;
 @RequestMapping("/employeemanage")
 public class EmployeeManagementController 
 {
-	private static final Logger logger = LoggerFactory.getLogger(ManagementController.class);
+	private static final Logger logger = LoggerFactory.getLogger(EmployeeManagementController.class);
 
 	@Autowired
 	private ClothesDAO clothesDAO;
@@ -44,6 +47,9 @@ public class EmployeeManagementController
 	private CategoryDAO categoryDAO;
 	@Autowired
 	private OrderDetailsDAO orderDetailsDAO;
+	
+	@Autowired
+	private DebitCardDetailsDAO debitCardDetailsDAO;
     
 	//--------------------Clothes Management Controller-------------
 	
@@ -239,6 +245,18 @@ public class EmployeeManagementController
 
 			}
 			
+			//-----------Supplier Clothes Purchase Management------------------
+			
+			//methods to load all the supplier clothes
+			@RequestMapping(value="/purchase")
+			public ModelAndView showAllSupplierClothes()
+			{
+			ModelAndView mv=new ModelAndView("page");
+			mv.addObject("title","Purchase Clothes");
+			mv.addObject("userClickEmployeePurchaseClothes",true);
+			return mv;
+			}
+			
 			//--------------Transaction Management Control--------------------
 			@RequestMapping(value = "/transactions", method = RequestMethod.GET)
 			public ModelAndView showManageTransaction(@RequestParam(name = "operation", required = false) String operation) {
@@ -299,7 +317,6 @@ public class EmployeeManagementController
 
 				return "redirect:/employeemanage/transactions?operation=transactions";
 
-			}
-
-
+			}			
+						
 }

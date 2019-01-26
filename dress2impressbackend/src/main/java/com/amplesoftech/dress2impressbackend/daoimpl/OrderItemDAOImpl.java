@@ -1,7 +1,6 @@
 package com.amplesoftech.dress2impressbackend.daoimpl;
 
 import com.amplesoftech.dress2impressbackend.dao.OrderItemDAO;
-import com.amplesoftech.dress2impressbackend.dto.OrderDetail;
 import com.amplesoftech.dress2impressbackend.dto.OrderItem;
 
 public class OrderItemDAOImpl implements OrderItemDAO {

@@ -18,15 +18,15 @@
 			</div>
 		</c:if>
 
-		<div class="col-6">
+		<div class="col-7">
 			<div class="card ">
 				<div class="card-header bg-dark text-white">
 					<h5 class="card-title">Add Clothes</h5>
 				</div>
 
 				<div class="card-body">
-					<sf:form class="form-horizontal" modelAttribute="clothes"
-						action="${contextRoot}/add/clothes" method="POST"
+					<sf:form class="form-horizontal" modelAttribute="supplierclothes"
+						action="${contextRoot}/add/supplierclothes" method="POST"
 						enctype="multipart/form-data">
 						<div class="form-group row">
 							<label class="control-label col-md-4"><b>Enter Clothes Name:</b></label>
@@ -115,13 +115,11 @@
 							<div class="row justify-content-center">
 
 								<button type="submit" class="btn btn-primary btn-md">Submit</button>
-								<!-- Hiddin Fields for Clothes -->
+								<!-- Hidden Fields for Clothes -->
 								<sf:hidden path="id" />
 								<sf:hidden path="code" />
 								<sf:hidden path="supplierId" />
 								<sf:hidden path="active" />
-								<sf:hidden path="rented" />
-								<sf:hidden path="views" />
 								<sf:hidden path="pricePerDay" />
 
 							</div>

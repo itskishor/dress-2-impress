@@ -2,11 +2,9 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div class="container-fluid">
-	<hr />
-	<h2 style="text-align:center">
+	<h2 style="color: green; text-align:center">
 			<strong>Manage Transaction</strong>	
 	</h2>
-	<hr />
 	<div class="row justify-content-center">
 
 		<c:if test="${not empty message}">
@@ -20,9 +18,9 @@
 		</c:if>
 	</div>
 	<hr />
-	<h2 style="color: black;"align="center">
+	<h4 style="color: black;"align="center">
 			<strong>Active Transactions</strong>
-	</h2>
+	</h4>
 	<hr />
 	<div class="row justify-content-center">
 
