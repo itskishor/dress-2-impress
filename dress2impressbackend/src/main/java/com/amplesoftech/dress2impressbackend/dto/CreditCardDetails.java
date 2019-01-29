@@ -8,14 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
-@Table(name = "debitcarddetail")
-public class DebitCardDetails implements Serializable {
-	
+@Table(name = "creditcarddetails")
+public class CreditCardDetails implements Serializable
+{
 	private static final long serialVersionUID = 1L;
 	//private fields
 	@Id
@@ -74,9 +71,9 @@ public class DebitCardDetails implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "DebitCardDetails [id=" + id + ", name=" + name + ", cardNumber=" + cardNumber + ", expiryMonth="
+		return "CreditCardDetails [id=" + id + ", name=" + name + ", cardNumber=" + cardNumber + ", expiryMonth="
 				+ expiryMonth + ", expiryYear=" + expiryYear + ", cvvNumber=" + cvvNumber + "]";
 	}
 		
-	
+
 }

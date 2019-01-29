@@ -124,7 +124,7 @@
 			</c:if>
 			
 			<!--Loading The View Single Supplier Payment Content -->
-			<c:if test="${userClickEmployeeProceedPayment==true}">
+			<c:if test="${userClickProceedPayment==true}">
 				<%@include file="supplierorderinvoice.jsp"%>
 			</c:if>	
 			

@@ -6,6 +6,7 @@ import java.util.List;
 import com.amplesoftech.dress2impressbackend.dto.Address;
 import com.amplesoftech.dress2impressbackend.dto.Cart;
 import com.amplesoftech.dress2impressbackend.dto.CartLine;
+import com.amplesoftech.dress2impressbackend.dto.CreditCardDetails;
 import com.amplesoftech.dress2impressbackend.dto.OrderDetail;
 import com.amplesoftech.dress2impressbackend.dto.User;
 
@@ -15,6 +16,13 @@ public class CheckoutModel implements Serializable {
 
 	private User user;
 	private Address shipping;
+	private CreditCardDetails credit;
+	public CreditCardDetails getCredit() {
+		return credit;
+	}
+	public void setCredit(CreditCardDetails credit) {
+		this.credit = credit;
+	}
 	private Cart cart;
 	private List<CartLine> cartLines;
 	private OrderDetail orderDetail;

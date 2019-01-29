@@ -1,4 +1,7 @@
 <%@include file="../../shared/flows-header.jsp"%>
+<%@taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
+	<%@taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <div class="container">
 
 	<div class="row">
@@ -28,68 +31,85 @@
 				</c:forEach>
 			</table>
 		</div>
-		<div class="col-12">
-			<center>
-				<div class="card card-default pull-center"
-					style="width: 30rem; height: 23rem;">
-					<div class="card-heading">
-						<h4 class="card-title">
-							<u>Payment Details</u>
+		<div class="col-lg-6">
+		
+			<div class="thumbnail">
+							
+			<div class="card border-secondary">
+				<div class="card-body ">
+						<h4 class="card-title" style="color:Blue;">
+							<center><u><strong>Payment Details</strong></u></center>
 						</h4>
 					</div>
-					<div class="card-body">
-						<form role="form">
-							<div class="form-group">
-								<label for="cardNumber"> CARD NUMBER</label>
-								<div class="input-group">
-									<input type="text" class="form-control" path="validcardnumber"
-										id="cardNumber" placeholder="Valid Card Number" required
-										autofocus />&ensp;&ensp; <i class="fa fa-lock"
-										style="font-size: 38px; color: black"></i>
-								</div>
+					<div class="col-10">
+					<sf:form class="form-horizontal" id="paymentForm"
+						modelAttribute="credit" method="POST">
+						<div class="form-group row">
+							<label class="control-label col-sm-4" ><b>Card Number</b></label>
+							<div class="col-lg-7">
+								<sf:input type="number" path="cardNumber" id="cardNumber"  class="form-control"
+									placeholder="Enter Your Card Number" required="required"/>
+								<sf:errors path="cardNumber" cssClass="help-block" element="em" />
 							</div>
-							<div class="row">
-								<div class="col-xs-7 col-md-7">
-									<div class="form-group">
-										<label for="expityMonth">EXPIRY DATE</label> <br />
-										<div class="col-xs-6 col-lg-6 pl-ziro">
-											<input type="text" class="form-control" id="expityMonth"
-												placeholder="MM" required />
-										</div>
-										<div class="col-xs-6 col-lg-6 pl-ziro">
-											<input type="text" class="form-control" id="expityYear"
-												placeholder="YY" required />
-										</div>
-									</div>
-								</div>
-								<div class="col-xs-5 col-md-5 pull-right">
-									<div class="form-group">
-										<label for="cvCode"> CV CODE</label> <input type="password"
-											class="form-control" id="cvCode" placeholder="CV" required />
-										<i class="fa fa-cc-visa" style="font-size: 38px; color: black"></i>
-										<i class="fa fa-cc-mastercard"
-											style="font-size: 38px; color: black"></i> <i
-											class="fa fa-credit-card"
-											style="font-size: 38px; color: black"></i>
-									</div>
-								</div>
+						</div>
+
+						<div class="form-group row">
+							<label class="control-label col-md-4"><b>Expiry Date</b></label>
+							<div class="col-lg-3">
+								<sf:input type="number" path="expiryMonth" id="expirymonth"
+									class="form-control" min="1" max="12" placeholder="Month" required="required"/>
+								<sf:errors path="expiryMonth" cssClass="help-block" element="em" />
 							</div>
-							<ul class="nav nav-pills nav-stacked">
+							<div class="col-lg-3">
+								<sf:input type="number" path="expiryYear" id="expiryYear" class="form-control" min="2018" max="4000" required="required"
+									placeholder="Year"></sf:input>
+								<sf:errors path="expiryYear" cssClass="help-block" element="em" />
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label class="control-label col-md-4"><b>CVV Number</b></label>
+							<div class="col-3">
+								<sf:input type="number" path="cvvNumber" id="cvvNumber" class="form-control"
+									placeholder="CVV" required="required"></sf:input>
+								<sf:errors path="cvvNumber" cssClass="help-block" element="em" />
+							</div>
+							<i class="fa fa-cc-visa" style="font-size: 38px; color: black"></i>&nbsp;&nbsp;
+										<i class="fa fa-cc-mastercard" style="font-size: 38px; color: black"></i> &nbsp;&nbsp;
+										<i class="fa fa-credit-card" style="font-size: 38px; color: black"></i>
+						</div>
+
+						<div class="form-group row">
+							<label class="control-label col-md-4"><b>Card Holder Name</b></label>
+							<div class="col-7">
+								<sf:input type="text" path="name" id="name" rows="4"
+									class="form-control" required="required" placeholder="Enter Card Holder Name!"></sf:input>
+								<sf:errors path="name" cssClass="help-block" element="em" />
+							</div>
+						</div>
+						<%-- <ul class="nav nav-pills nav-stacked">
 								<li class="active"><a href="#"><span
-										class="badge pull-right bg-danger"><h6 style="color:white">&#8377; ${checkoutModel.checkoutTotal}/-</h6></span> Final Payment : </a></li>
-							</ul>
-							<br/>
-						</form>
-						<center>
-						<a href="${flowExecutionUrl}&_eventId_pay"
-							class="btn btn-success btn-xs btn-block" role="button">Pay</a>
-					</center>
-					</div>
+										class="badge pull-right bg-danger"><h6 style="color:white">&#8377; ${payable} /-</h6></span> <strong>Final Payment :</strong> </a></li>
+							</ul><br> --%>
+						
+						<div class="form-group">
+
+							<div class="row justify-content-center">
+
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<button type="submit" name="_eventId_saveOrder" class="btn btn-primary">
+										Next -Pay <span class="glyphicon glyphicon-chevron-right"></span>
+							</div>
+						</div>
+
+					</sf:form>
+
 				</div>
-			</center>
-
-		</div>
-
+				</div>
+			</div>
+						
+			</div>
 	</div>
+	
 </div>
 <%@include file="../../shared/flows-footer.jsp"%>

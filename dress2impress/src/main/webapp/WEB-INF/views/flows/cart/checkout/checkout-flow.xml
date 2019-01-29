@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <flow xmlns="http://www.springframework.org/schema/webflow"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
       xsi:schemaLocation="http://www.springframework.org/schema/webflow
                           http://www.springframework.org/schema/webflow/spring-webflow.xsd">
 	
 
 	<var name="shipping" class="com.amplesoftech.dress2impressbackend.dto.Address"/>
+	<var name="credit" class="com.amplesoftech.dress2impressbackend.dto.CreditCardDetails"/>
 	
 	<on-start>
 		<evaluate expression="checkoutHandler.init(currentUser.name)" result="flowScope.checkoutModel"/>
@@ -34,9 +35,19 @@
 	</action-state>
 
 	<!-- view the payment mode page-->
-	<view-state id="payment" view="flows/cart/checkout/order-payment" model="flowScope.checkoutModel">		
-		<transition on="pay" to="saveOrder" />	
+	<view-state id="payment" view="flows/cart/checkout/order-payment" model="credit">		
+		<transition on="success" to="validate" />	
+		<!-- <on-exit>
+			<evaluate expression="checkoutHandler.addCard(flowScope.checkoutModel, credit)" />			
+		</on-exit> -->
 	</view-state>
+	
+		<!-- validate signup-personal page-->
+	<action-state id="validate">
+		<evaluate expression="checkoutHandler.validateCard(credit, messageContext)" />
+		<transition on="success" to="saveOrder"/>
+		<transition on="failure" to="payment"/>
+	</action-state>
 
 	<!-- action state to save the address -->
 	<action-state id="saveOrder">		

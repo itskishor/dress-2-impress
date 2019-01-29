@@ -179,14 +179,12 @@ public class PageController {
 		ModelAndView mv = new ModelAndView("page");
 			// update the view count
 		SupplierClothes supplierClothes = supplierClothesDAO.get(id);
-	//	DebitCardDetails ndebitCardDetails = new DebitCardDetails();
 
 		
 		mv.addObject("title", supplierClothes.getName());
 		mv.addObject("supplierClothes", supplierClothes);
 		
 		mv.addObject("userClickShowSupplierClothes", true);
-	//	mv.addObject("debitcarddetail", ndebitCardDetails);
 		return mv;
 		
 	}
@@ -194,16 +192,16 @@ public class PageController {
 	
 	//--------------Supplier Payment Management Control--------------------
 	@RequestMapping(value = "/proceed/debitcarddetails", method = RequestMethod.GET)
-	public ModelAndView showmanageCardDetails(@RequestParam(name = "operation", required = false) String operation) {
+	public ModelAndView showCardDetails(@RequestParam(name = "operation", required = false) String operation) {
 
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title", "Manage Payment");
-		mv.addObject("userClickEmployeeProceedPayment", true);
 		DebitCardDetails ndebitCardDetails = new DebitCardDetails();
 		mv.addObject("debitcarddetail", ndebitCardDetails);
+		mv.addObject("userClickProceedPayment", true);
 		
 		if (operation != null) {
-			if (operation.equals("debitcarddetails")) {
+			if (operation.equals("mcarddetails")) {
 				mv.addObject("message", "Payment Done Successfully!");
 			}
 		}
@@ -211,19 +209,19 @@ public class PageController {
 
 	}
 
-	// handling Card Details submission
+	// Handling Card Details submission
 	@RequestMapping(value = "/proceed/debitcarddetails", method = RequestMethod.POST)
 	public String handleCardSubmission(@Valid @ModelAttribute("debitcarddetail") DebitCardDetails mcarddetails, BindingResult results,
 			Model model, HttpServletRequest request) {
 		
-		// handle card validation for new card
-		if (mcarddetails.getId() == 0) 
+		// Handle card validation for new card
+		if (mcarddetails.getId()==0) 
 		{
 			new CardValidator().validate(mcarddetails, results);
 		} 
 		// check if there is any error
 		if (results.hasErrors()) {
-			model.addAttribute("userClickEmployeeProceedPayment", true);
+			model.addAttribute("userClickSupplierPayment", true);
 			model.addAttribute("title", "Manage Payment");
 			model.addAttribute("message", "Validation Failed For Payment Submission!");
 			return "page";
@@ -234,8 +232,7 @@ public class PageController {
 			// create the card if id is 0
 			debitCardDetailsDAO.add(mcarddetails);
 		}
-			
-		return "redirect:/proceed/debitcarddetails?operation=debitcarddetails";
+		return "redirect:/proceed/debitcarddetails?operation=mcarddetails";
 
 	}
 	
@@ -259,6 +256,9 @@ public class PageController {
 	double payAmount=supplierClothes.getUnitPrice();
 	request.setAttribute("clothId", id);
 	request.setAttribute("payable", payAmount);
+	request.setAttribute("ClothName", supplierClothes.getName());
+	request.setAttribute("Description", supplierClothes.getDescription());
+	request.setAttribute("Quantity",1);
 	return mv;
 	}
 	

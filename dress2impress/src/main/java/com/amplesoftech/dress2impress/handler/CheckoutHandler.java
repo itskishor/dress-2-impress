@@ -9,17 +9,22 @@ import javax.servlet.http.HttpSession;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.binding.message.MessageBuilder;
+import org.springframework.binding.message.MessageContext;
 import org.springframework.stereotype.Component;
 
 import com.amplesoftech.dress2impress.model.CheckoutModel;
+import com.amplesoftech.dress2impress.model.RegisterModel;
 import com.amplesoftech.dress2impress.model.UserModel;
 import com.amplesoftech.dress2impressbackend.dao.CartLineDAO;
 import com.amplesoftech.dress2impressbackend.dao.ClothesDAO;
+import com.amplesoftech.dress2impressbackend.dao.CreditCardDetailsDAO;
 import com.amplesoftech.dress2impressbackend.dao.UserDAO;
 import com.amplesoftech.dress2impressbackend.dto.Address;
 import com.amplesoftech.dress2impressbackend.dto.Cart;
 import com.amplesoftech.dress2impressbackend.dto.CartLine;
 import com.amplesoftech.dress2impressbackend.dto.Clothes;
+import com.amplesoftech.dress2impressbackend.dto.CreditCardDetails;
 import com.amplesoftech.dress2impressbackend.dto.OrderDetail;
 import com.amplesoftech.dress2impressbackend.dto.OrderItem;
 import com.amplesoftech.dress2impressbackend.dto.User;
@@ -42,6 +47,9 @@ public class CheckoutHandler  implements Serializable {
 
 	@Autowired
 	private CartLineDAO cartLineDAO;
+	
+	@Autowired
+	private CreditCardDetailsDAO creditCardDetailsDAO;
 	
 	@Autowired
 	private HttpSession session;
@@ -78,6 +86,10 @@ public class CheckoutHandler  implements Serializable {
 		}			
 		
 		return checkoutModel;
+	}
+	
+	public void addCard(CheckoutModel checkoutModel, CreditCardDetails credit) {
+		checkoutModel.setCredit(credit);
 	}
 	
 	
@@ -125,6 +137,35 @@ public class CheckoutHandler  implements Serializable {
 		
 		return transitionValue;
 		
+	}
+	
+	public String saveCreditCardDetails(CheckoutModel checkoutModel, CreditCardDetails credit) {
+
+		String transitionValue = "success";	
+		// set the user id
+		// set shipping as true
+		creditCardDetailsDAO.add(credit);
+		checkoutModel.setCredit(credit);
+		
+		return transitionValue;
+		
+	}
+	public String validateCard(CreditCardDetails credit, MessageContext error) {
+		String transitionValue = "success";
+
+		// checking if card number is 16 digit or not
+		if (credit.getCardNumber().length()!=16) {
+			error.addMessage(new MessageBuilder().error().source("cardNumber")
+					.defaultText("Please Enter the 16 Digit Card Number!").build());
+			transitionValue = "failure";
+		}
+		if (credit.getCvvNumber().length()!=3) {
+			error.addMessage(new MessageBuilder().error().source("cvvNumber")
+					.defaultText("Please Enter the 3 Digit CVV Number!").build());
+			transitionValue = "failure";
+		}
+		
+		return transitionValue;
 	}
 		
 

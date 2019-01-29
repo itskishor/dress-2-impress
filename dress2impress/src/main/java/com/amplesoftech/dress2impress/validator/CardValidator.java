@@ -19,14 +19,29 @@ public class CardValidator implements Validator{
 			errors.rejectValue("name",null,"Please Enter The Card Holder Name");
 			return;
 		}
-		if(debitCardDetails.getCardNumber().isEmpty())
+		if(debitCardDetails.getCardNumber().length()!=16)
 		{
-			errors.rejectValue("cardNumber",null,"Please Enter The card Number");
+			errors.rejectValue("cardNumber",null,"Please Enter The Valid 16 Digits card Number");
+			return;
+		}
+		if(debitCardDetails.getCvvNumber().isEmpty()||debitCardDetails.getCvvNumber().length()!=3)
+		{
+			errors.rejectValue("cvvNumber",null,"Please Enter The Valid CVV Number");
+			return;
+		}
+		if(debitCardDetails.getCvvNumber().length()!=3)
+		{
+			errors.rejectValue("cvvNumber",null,"Please Enter The Valid CVV Number");
 			return;
 		}
 		if(debitCardDetails.getExpiryMonth()>12 || debitCardDetails.getExpiryMonth()<0)
 		{
 			errors.rejectValue("expiryMonth",null,"Please Enter The Valid Expiry Month");
+			return;
+		}
+		if(debitCardDetails.getExpiryYear()<2018)
+		{
+			errors.rejectValue("expiryYear",null,"Please Enter The Valid Expiry Year");
 			return;
 		}
 		

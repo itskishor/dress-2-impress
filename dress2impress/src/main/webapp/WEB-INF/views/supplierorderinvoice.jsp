@@ -7,6 +7,9 @@
 <title>Supplier Order Invoice</title>
 </head>
 <body>
-<h2>Order SuccessFully!</h2>
+<center><h2 style="color:green">Order Successfully Done!</h2></center><br><br>
+<div>
+<center><a href="${contextRoot}/employeemanage/purchase" class="btn btn-primary">Continue Purchasing</a></center>
+</div>
 </body>
 </html>
