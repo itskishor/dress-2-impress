@@ -71,11 +71,20 @@ public class PageController {
 	public List<Category> modelCategories() {
 		return categoryDAO.listActiveCategory();
 	}
+	@ModelAttribute("popularcategories")
+	public List<Category> modelPopularCategories() {
+		return categoryDAO.listActiveCategory();
+	}
 
 	@ModelAttribute("category")
 	public Category getCategory() {
 		return new Category();
 	}
+	
+	/*@ModelAttribute("popularcategory")
+	public Category getPopularCategory() {
+		return new Category();
+	}*/
 	
 	@RequestMapping(value="/signin")
 	public ModelAndView signin()
@@ -106,6 +115,18 @@ public class PageController {
 	//passing the list of categories
 	mv.addObject("categories",categoryDAO.listActiveCategory());
 	mv.addObject("userClickViewClothes",true);
+	return mv;
+	}
+	
+	@RequestMapping(value="/show/all/popularclothes")
+	public ModelAndView showAllPopularClothes()
+	{
+	ModelAndView mv=new ModelAndView("page");
+	mv.addObject("title","Most Popular");
+	
+	//passing the list of categories
+	mv.addObject("popularcategories",categoryDAO.listActiveCategory());
+	mv.addObject("userClickPopularClothes",true);
 	return mv;
 	}
 	
@@ -141,6 +162,22 @@ public class PageController {
 	//passing the single category
 	mv.addObject("category",category);
 	mv.addObject("userClickCategoryClothes",true);
+	return mv;
+	}
+	
+	@RequestMapping(value="/show/category/{id}/popularclothes")
+	public ModelAndView showCategoryPopularClothes(@PathVariable("id") int id)
+	{
+	ModelAndView mv=new ModelAndView("page");
+	//categoryDAO to fetch a single category
+	Category category=null;
+	category=categoryDAO.get(id);
+	mv.addObject("title",category.getName());
+	//passing the list of categories
+	mv.addObject("categories",categoryDAO.listActiveCategory());
+	//passing the single category
+	mv.addObject("category",category);
+	mv.addObject("userClickCategoryPopularClothes",true);
 	return mv;
 	}
 	

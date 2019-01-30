@@ -58,6 +58,10 @@
 			<c:if test="${userClickViewClothes==true or userClickCategoryClothes==true}">
 				<%@include file="viewclothes.jsp"%>
 			</c:if>
+			<!--Loading The View Clothes Content -->
+			<c:if test="${userClickPopularClothes==true or userClickCategoryPopularClothes==true}">
+				<%@include file="mostpopular.jsp"%>
+			</c:if>
 			
 			 <!--Loading The Manage Clothes Content -->
 			<c:if test="${userClickEmployeePurchaseClothes==true}">

@@ -41,14 +41,23 @@ public class JsonDataController
 	
 	@RequestMapping("/all/clothes")
 	@ResponseBody
-	public List<Clothes> getAllProducts() {
+	public List<Clothes> getAllClothes() {
 		
 		return clothesDAO.listActiveClothes();
 				
 	}
+	
+	@RequestMapping("/all/popular/clothes")
+	@ResponseBody
+	public List<Clothes> getAllpopularClothes() {
+		
+		return clothesDAO.getClothesByParam("views");
+				
+	}
+	
 	@RequestMapping("/all/supplierclothes")
 	@ResponseBody
-	public List<SupplierClothes> getAllClothes() {
+	public List<SupplierClothes> getAllSupplierClothes() {
 		
 		return supplierClothesDAO.listActiveSupplierClothes();
 				
@@ -98,18 +107,11 @@ public class JsonDataController
 		return clothesDAO.listActiveClothesByCategory(id);
 				
 	}
-	
-	
-	@RequestMapping("/mv/products")
-	@ResponseBody
-	public List<Clothes> getMostViewedClothes() {		
-		return clothesDAO.getClothesByParam("views", 5);				
-	}
 		
 	@RequestMapping("/mp/clothes")
 	@ResponseBody
 	public List<Clothes> getMostRentedClothes() {		
-		return clothesDAO.getClothesByParam("rented", 5);				
+		return clothesDAO.getClothesByParam("rented");				
 	}
 	
 	

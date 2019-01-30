@@ -22,7 +22,7 @@
 		<div class="col-md-8 col-sm-8 col-lg-8">
 			<div class="card ">
 				<div class="card-header bg-dark text-white">
-					<h5 class="card-title">Manage Clothes</h5>
+					<h5 class="card-title"><center>Manage Clothes</center></h5>
 				</div>
 
 				<div class="card-body">

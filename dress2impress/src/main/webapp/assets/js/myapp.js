@@ -5,6 +5,9 @@ $(function() {
 	case 'View Clothes':
 		$('#viewclothes').addClass('active');
 		break;
+	case 'Most Popular':
+		$('#popularclothes').addClass('active');
+		break;
 	case 'Manage Transactions':
 		$('#employeemanagetransactions').addClass('active');
 		break;
@@ -151,10 +154,12 @@ $(function() {
 								bSortable : false,
 								mRender : function(data, type, row) {
 									var str = '';
-									if (userRole !== 'ADMIN') {
+									if ((userRole !== 'ADMIN')||(userRole !== 'EMPLOYEE')||(userRole !== 'SUPPLIER')) {
 										if (row.quantity < 1) {
 											str += '<a href="javascript:void(0)" class="btn btn-success btn-sm disabled">Cart<span class="fa fa-shopping-cart"></span></a>';
-										} else {
+										} 
+										else 
+										{
 											str += '<a href="'
 													+ window.contextRoot
 													+ '/cart/add/'
@@ -162,13 +167,23 @@ $(function() {
 													+ '/clothes" class="btn btn-success btn-sm">Cart <span class="fa fa-shopping-cart"></span></a>';
 
 										}
-									} else {
+									} 
+									else {
+										if (userRole== 'ADMIN') {
+											str += '<a href="'
+												+ window.contextRoot
+												+ '/manage/'
+												+ data
+												+ '/clothes" class="btn btn-success btn-sm disabled">Cart <span class="fa fa-shopping-cart"></span></a>';
+											
+										}
+										else{
 										str += '<a href="'
 												+ window.contextRoot
 												+ '/manage/'
 												+ data
 												+ '/clothes" class="btn btn-success btn-sm">Edit <span class="fa fa-pencil"></span></a>';
-
+										}
 									}
 									return str;
 								}
@@ -178,6 +193,142 @@ $(function() {
 					]
 				});
 	}
+	
+	// Code For Popular Clothes JQery Table
+	var $table = $("#popularClothesListTable");
+
+	if ($table.length) {
+		// console.log('Inside the table!');
+
+		var jsonUrl = '';
+		if (window.categoryId == '') {
+			jsonUrl = window.contextRoot + '/json/data/all/popular/clothes';
+		} 
+		else 
+		{
+			jsonUrl = window.contextRoot + '/json/data/category/'
+					+ window.categoryId + '/popularclothes';
+		}
+
+		$table
+				.DataTable({
+					lengthMenu : [ [ 3, 5, 10, -1 ],
+							[ '3 Records', '5 Records', '10 Records', 'ALL' ] ],
+					pageLength : 3,
+					ajax : {
+						url : jsonUrl,
+						dataSrc : ''
+					},
+					columns : [
+							{
+								data : 'code',
+								bSortable : false,
+								mRender : function(data, type, row) {
+
+									return '<img src="'
+											+ window.contextRoot
+											+ '/resources/images/'
+											+ data
+											+ '.jpeg" class="imageTable" width="60" height="80"/>';
+
+								}
+							},
+							{
+								data : 'name'
+							},
+							{
+								data : 'brand'
+							},
+							{
+								data : 'size'
+							},
+							{
+								data : 'unitPrice',
+								mRender : function(data, type, row) {
+									return '&#8377;' + data
+								}
+							},
+							{
+								data : 'pricePerDay',
+								mRender : function(data, type, row) {
+									return '&#8377;' + data
+								}
+							},
+
+							{
+								data : 'quantity',
+								mRender : function(data, type, row) {
+
+									if (data < 1) {
+										return '<span style="color:red">Out of Stock!</span>';
+									}
+
+									return data;
+
+								}
+							},
+							{
+								data : 'views'
+							},
+							{
+								data : 'id',
+								bSortable : false,
+								mRender : function(data, type, row) {
+									var str = '';
+									str += '<a href="'
+											+ window.contextRoot
+											+ '/show/'
+											+ data
+											+ '/clothes" class="btn btn-info btn-sm">View <span class="fa fa-eye"></span></a>';
+									return str;
+								}
+
+							},
+							{
+								data : 'id',
+								bSortable : false,
+								mRender : function(data, type, row) {
+									var str = '';
+									if ((userRole !== 'ADMIN')||(userRole !== 'EMPLOYEE')||(userRole !== 'SUPPLIER')) {
+										if (row.quantity < 1) {
+											str += '<a href="javascript:void(0)" class="btn btn-success btn-sm disabled">Cart<span class="fa fa-shopping-cart"></span></a>';
+										} 
+										else 
+										{
+											str += '<a href="'
+													+ window.contextRoot
+													+ '/cart/add/'
+													+ data
+													+ '/clothes" class="btn btn-success btn-sm">Cart <span class="fa fa-shopping-cart"></span></a>';
+
+										}
+									} 
+									else {
+										if (userRole== 'ADMIN') {
+											str += '<a href="'
+												+ window.contextRoot
+												+ '/manage/'
+												+ data
+												+ '/clothes" class="btn btn-success btn-sm disabled">Cart <span class="fa fa-shopping-cart"></span></a>';
+											
+										}
+										else{
+										str += '<a href="'
+												+ window.contextRoot
+												+ '/manage/'
+												+ data
+												+ '/clothes" class="btn btn-success btn-sm">Edit <span class="fa fa-pencil"></span></a>';
+										}
+									}
+									return str;
+								}
+
+							}
+
+					]
+				});
+	}
+
 
 	// dismissing the alert after 3 seconds
 	var $alert = $('.alert');
@@ -199,10 +350,10 @@ $(function() {
 
 		var jsonUrl = window.contextRoot + '/json/data/admin/all/clothes';
 		$adminClothesTable
-				.DataTable({
-					lengthMenu : [ [ 10, 20, 30, -1 ],
-							[ '10 Records', '20 Records', '30 Records', 'ALL' ] ],
-					pageLength : 20,
+		.DataTable({
+			lengthMenu : [ [ 3, 5, 10, -1 ],
+					[ '3 Records', '5 Records', '7 Records', 'ALL' ] ],
+			pageLength : 3,
 					ajax : {
 						url : jsonUrl,
 						dataSrc : ''
@@ -408,7 +559,7 @@ $(function() {
 				.DataTable({
 					lengthMenu : [ [ 3, 5, 10, -1 ],
 							[ '3 Records', '5 Records', '7 Records', 'ALL' ] ],
-					pageLength : 30,
+					pageLength : 3,
 					ajax : {
 						url : jsonUrl,
 						dataSrc : ''

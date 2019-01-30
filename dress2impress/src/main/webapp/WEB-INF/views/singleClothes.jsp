@@ -87,10 +87,12 @@
 			</c:choose>
 			</security:authorize>
 					
-					<security:authorize access="hasAuthority('ADMIN')">
+					<%-- <security:authorize access="hasAuthority('ADMIN')">
 				<a href="${contextRoot}/manage/${clothes.id}/clothes" class="btn btn-success">
 				<span class="fa fa-pencil"></span> Edit</a>
-			</security:authorize>
+			</security:authorize> --%>
+			
+			
 						
 		        
 				<a href="${contextRoot}/show/all/clothes" class="btn btn-primary">Back</a>

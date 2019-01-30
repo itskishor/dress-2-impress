@@ -127,15 +127,15 @@ public class ClothesDAOImpl implements ClothesDAO {
 	}
 
 	@Override
-	public List<Clothes> getClothesByParam(String param, int count) {
+	public List<Clothes> getClothesByParam(String views) {
 		
-		String query = "FROM Clothes WHERE active = true ORDER BY " + param + " DESC";
+		String query = "FROM Clothes WHERE active = true ORDER BY " + views + " DESC";
 		
 		return sessionFactory
 					.getCurrentSession()
 					.createQuery(query,Clothes.class)
 					.setFirstResult(0)
-					.setMaxResults(count)
+				/*	.setMaxResults(count)*/
 					.getResultList();
 					
 		

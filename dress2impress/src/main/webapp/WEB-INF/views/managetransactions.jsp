@@ -40,8 +40,8 @@
 							<th>Clothes Count</th>
 							<th>Issue Date</th>
 							<th>Return Date</th>
-							<th>Total Rent</th>
 							<th>Total Deposit</th>
+							<th>Total Rent</th>
 							<th>Grand Total</th>
 							<th>Delete</th>
 						</tr>

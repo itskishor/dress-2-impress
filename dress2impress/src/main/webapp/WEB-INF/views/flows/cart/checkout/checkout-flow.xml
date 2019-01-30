@@ -36,7 +36,7 @@
 
 	<!-- view the payment mode page-->
 	<view-state id="payment" view="flows/cart/checkout/order-payment" model="credit">		
-		<transition on="success" to="validate" />	
+		<transition on="saveOrder" to="validate" />	
 		<!-- <on-exit>
 			<evaluate expression="checkoutHandler.addCard(flowScope.checkoutModel, credit)" />			
 		</on-exit> -->

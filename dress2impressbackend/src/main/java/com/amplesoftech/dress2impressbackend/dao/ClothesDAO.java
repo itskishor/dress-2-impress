@@ -13,7 +13,7 @@ public interface ClothesDAO {
 	boolean update(Clothes clothes);
 	boolean delete(Clothes clothes);
 
-	List<Clothes> getClothesByParam(String param, int count);	
+	List<Clothes> getClothesByParam(String param);	
 	
 	
 	// business methods

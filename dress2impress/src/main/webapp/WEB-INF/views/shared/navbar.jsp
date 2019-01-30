@@ -16,6 +16,8 @@
 			<ul class="navbar-nav justify-content-center">
 				<li id="viewclothes"><a class="nav-link"
 					href="${contextRoot}/show/all/clothes"><i class="fa fa-female" aria-hidden="true"></i> View Clothes</a></li>
+					<li id="popularclothes"><a class="nav-link"
+						href="${contextRoot}/show/all/popularclothes"><i class="fa fa-eye" aria-hidden="true"></i> Most Popular</a></li>
 					<security:authorize access="hasAuthority('SUPPLIER')">
 					<li id="addclothes"><a class="nav-link"
 						href="${contextRoot}/add/supplierclothes"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Clothes</a></li>
