@@ -14,15 +14,28 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav justify-content-center">
+			<security:authorize access="isAnonymous()">
 				<li id="viewclothes"><a class="nav-link"
 					href="${contextRoot}/show/all/clothes"><i class="fa fa-female" aria-hidden="true"></i> View Clothes</a></li>
 					<li id="popularclothes"><a class="nav-link"
 						href="${contextRoot}/show/all/popularclothes"><i class="fa fa-eye" aria-hidden="true"></i> Most Popular</a></li>
+			</security:authorize>
+				
+						<security:authorize access="hasAuthority('USER')">
+						<li id="viewclothes"><a class="nav-link"
+					href="${contextRoot}/show/all/clothes"><i class="fa fa-female" aria-hidden="true"></i> View Clothes</a></li>
+					<li id="popularclothes"><a class="nav-link"
+						href="${contextRoot}/show/all/popularclothes"><i class="fa fa-eye" aria-hidden="true"></i> Most Popular</a></li>
+					</security:authorize>
 					<security:authorize access="hasAuthority('SUPPLIER')">
 					<li id="addclothes"><a class="nav-link"
 						href="${contextRoot}/add/supplierclothes"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Clothes</a></li>
 					</security:authorize>
 				<security:authorize access="hasAuthority('ADMIN')">
+				<li id="viewclothes"><a class="nav-link"
+					href="${contextRoot}/show/all/clothes"><i class="fa fa-female" aria-hidden="true"></i> View Clothes</a></li>
+					<li id="popularclothes"><a class="nav-link"
+						href="${contextRoot}/show/all/popularclothes"><i class="fa fa-eye" aria-hidden="true"></i> Most Popular</a></li>
 					<li id="manageemployee"><a class="nav-link"
 						href="${contextRoot}/manage/employee">Manage Employees</a></li>
 						<li id="managesupplier"><a class="nav-link"
@@ -33,6 +46,10 @@
 						href="${contextRoot}/manage/viewtransactions">Transactions</a></li>
 				</security:authorize>
 						<security:authorize access="hasAuthority('EMPLOYEE')">
+						<li id="viewclothes"><a class="nav-link"
+					href="${contextRoot}/show/all/clothes"><i class="fa fa-female" aria-hidden="true"></i> View Clothes</a></li>
+					<li id="popularclothes"><a class="nav-link"
+						href="${contextRoot}/show/all/popularclothes"><i class="fa fa-eye" aria-hidden="true"></i> Most Popular</a></li>
 					    <li id="employeemanageclothes"><a class="nav-link"
 					href="${contextRoot}/employeemanage/clothes">Manage Clothes</a></li>
 						<li id="employeemanageuser"><a class="nav-link"

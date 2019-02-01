@@ -93,8 +93,11 @@
 			   <h2><strong><u><b><center>About Us</center></b></u></strong></h2>
 			</h3>
 			<div class="row">
-				<div class="col-lg-6 about-txt-left">
-					<img src="${images}/ab1.jpeg" alt="" class="img-fluid">
+			    <div class="col-lg-3 about-txt-left">
+			    <img src="${images}/bg5.jpg" alt="" width="150px" hieght="250%">
+				</div>
+				<div class="col-lg-3 about-txt-left">
+					<img src="${images}/bg3.jpeg" alt="" width="110px" hieght="210%">
 				</div>
 				<div class="col-lg-6 about-txt-right">
 					<div class="jst-wthree-text">
@@ -103,22 +106,37 @@
 						</h2>
 					</div>
 					<div class="info-sub-w3">
-					<strong><p>About Dress-2-Impress  – India’s Ultimate Online Dress Rental Site
-							 vision is to create India’s most reliable and
-							frictionless commerce ecosystem that creates life-changing
-							experiences for buyers and sellers. In February 2010, Suhel Sande
-							along with Kishor More, started Dress2Impress.com - India’s largest
+					<strong><p>About Dress-2-Impress is India's Ultimate Online Dress Rental Site
+							 vision is to create India's most reliable and
+							frictionless commerce system that creates life-changing
+							experiences for buyers and sellers. In February 2010, Kishor More
+							along with Suhel Sande, started Dress2Impress.com - India's largest
 							 Online Dress Rental marketplace, with the widest assortment of 35
 							million plus products across 800 plus diverse categories from
 							over 125,000 regional, national, and international brands and
 							retailers. With millions of users and more than 300,000 sellers,
 							Dress2Impress is the online shopping site for Internet users across
 							the country, delivering to 6000+ cities and towns in India. In
-							its journey till now, Dress2Impress has partnered with several global
-							marquee investors and individuals such as SoftBank, BlackRock,
-							Temasek, Foxconn, Alibaba, eBay Inc., Premji Invest, Intel
+							its journey till now.</p></strong>
+						<p class="pt-2">
+						
+					</div>
+					</div>
+				</div>
+				
+				<div class="row">
+				<div class="col-lg-6 about-txt-left">
+					<div class="jst-wthree-text">
+						<h2>
+							<br>
+						</h2>
+					</div>
+					<div class="info-sub-w3">
+					<strong><p>Dress2Impress has partnered with several global
+							marquee investors and individuals such as Nike, Adidas,
+							Reebok, Foxconn, Alibaba, eBay Inc., Premji Invest, Intel
 							Capital, Bessemer Venture Partners, Mr. Ratan Tata, among others.
-							Online Dress Rental – A Boon The trend of Online Dress Rental  is becoming
+							Online Dress Rental is A Boon The trend of Online Dress Rental  is becoming
 							a household name and so is Dress2Impress. Dress2Impress is the preferred
 							choice of hundreds of thousands of online shoppers given its
 							mammoth assortment of 15 million+ products, quick delivery even
@@ -136,50 +154,16 @@
 						<p class="pt-2">
 						
 					</div>
-				
-					<%-- 	<div class="col-4">
-							<img src="${images}/ab3.jpg" alt=" " class="img-fluid"  style="width:40%">
-						</div> --%>
 					</div>
+				<div class="col-lg-3 about-txt-right">
+					<img src="${images}/bg4.jpg" alt="" width="250px" hieght="350px">
+				</div>
+				<div class="col-lg-3 about-txt-right">
+					<img src="${images}/bg6.jpeg" alt="" width="180px" hieght="280px">
 				</div>
 			</div>
-		</div>
+				</div>
 	</section>
-
-	<div class="row">
-					<div class="column">
-						<img src="${images}/ab2.jpeg" class="img-circle" alt="Cinque Terre" style="width:30%" >
-						<img src="${images}/ab3.jpg" alt=" " class="img-fluid"  style="width:30%">
-						<img src="${images}/ab4.jpeg" class="img-circle" alt="Cinque Terre" style="width:20%" >
-<%-- 						<img src="${images}/ab5.jpeg" class="img-circle" alt="Cinque Terre" style="width:20%" >
- --%>						</div>
-
-<%-- 	<!-- JQuery -->
-	<script src="${js}/jquery.js"></script>
-
-	<!-- JQuery Validator Plugin -->
-	<script src="${js}/jquery.validate.js"></script>
-
-	<!-- Bootstrap core JavaScript -->
-	<script src="${js}/bootstrap.bundle.min.js"></script>
-
-
-	<!--Data Table Plugin -->
-	<script src="${js}/jquery.dataTables.js"></script>
-
-	<!--Data Table Bootstrap -->
-	<script src="${js}/dataTables.bootstrap4.js"></script>
-
-	<!--Bootbox plugin -->
-	<script src="${js}/bootbox.min.js"></script>
-
-	<!-- Self Coded Java Script -->
-	<script src="${js}/myapp.js"></script> --%>
-
-
-
-
-
 	<!--js working-->
 	<script src='js/jquery-2.2.3.min.js'></script>
 	<!-- For the demo ad only -->

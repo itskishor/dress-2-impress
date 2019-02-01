@@ -76,11 +76,13 @@
 					<h5 class="pull-left" style="color: tomato">Order :<strong style="color:black">${orderDetail.id}</strong></h5>
 					<h5 class="pull-right" style="color: tomato">Order Date:<strong style="color:black">${orderDetail.issueDate}</strong></h5></br>
 				</div>
+            <hr>
 
 				<div class="row">
 					<div class="col-12">
 						<div class="row">
-							<div class="col-6 text-left">
+						<div class="col-12">
+							<div class="pull-left">
 								<address>
 									<h5 style="color: tomato">Billed To:</h5>
 									${orderDetail.user.firstName} ${orderDetail.user.lastName}<br>
@@ -90,7 +92,9 @@
 									${orderDetail.billing.state} - ${orderDetail.billing.country}
 								</address>
 							</div>
-							<div class="col-6 text-right">
+							
+							
+							<div class="pull-right">
 								<address>
 									<h5 style="color: tomato">
 										Shipped To:
@@ -104,6 +108,7 @@
 								</address>
 							</div>
 						</div>
+					</div>
 						<div class="row">
 							<div class="col-12 text-center">
 								<address>
