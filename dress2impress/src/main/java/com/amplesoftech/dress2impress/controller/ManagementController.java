@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.amplesoftech.dress2impress.validator.CategoryValidator;
+import com.amplesoftech.dress2impress.validator.EmployeeValidator;
 import com.amplesoftech.dress2impressbackend.dao.CategoryDAO;
 import com.amplesoftech.dress2impressbackend.dao.OrderDetailsDAO;
 import com.amplesoftech.dress2impressbackend.dao.UserDAO;
@@ -197,6 +198,10 @@ public class ManagementController {
 	@RequestMapping(value = "/employee", method = RequestMethod.POST)
 	public String handleEmployeeSubmission(@Valid @ModelAttribute("user") User muser, BindingResult results,
 			Model model, HttpServletRequest request) {
+		
+		if(muser.getId() == 0) {
+		       new EmployeeValidator().validate(muser, results);
+	      }
 		// check if there is any error
 		if (results.hasErrors()) {
 			model.addAttribute("userClickManageEmployee", true);

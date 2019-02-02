@@ -1,7 +1,9 @@
 package com.amplesoftech.dress2impress.handler;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -81,7 +83,7 @@ public class CheckoutHandler  implements Serializable {
 			checkoutModel.setCartLines(cartLines);
 				
 			checkoutModel.setCheckoutTotalDeposit(checkoutTotalDeposit);
-			checkoutModel.setCheckoutTotal(checkoutTotal);
+			checkoutModel.setCheckoutTotal(checkoutTotal+50);
 			checkoutModel.setCheckoutTotalRent(checkoutTotal-checkoutTotalDeposit);
 		}			
 		
@@ -191,6 +193,8 @@ public class CheckoutHandler  implements Serializable {
 		double orderTotal = 0.0;
 		int orderCount = 0;
 		Clothes clothes = null;
+		java.util.Date utilDate = new java.util.Date();
+	    java.sql.Date bookingDate = new java.sql.Date(utilDate.getTime());
 		
 		for(CartLine cartLine : cartLines) {
 			
@@ -199,6 +203,7 @@ public class CheckoutHandler  implements Serializable {
 			orderItem.setPricePerDay(cartLine.getPricePerDay());
 			orderItem.setClothes(cartLine.getClothes());
 			orderItem.setClothesCount(cartLine.getClothesCount());
+			orderItem.setBookingDate(bookingDate);
 			orderItem.setIssueDate(cartLine.getIssueDate());
 			orderItem.setReturnDate(cartLine.getReturnDate());
 			orderItem.setTotalPrice(cartLine.getTotalPrice());
@@ -229,6 +234,7 @@ public class CheckoutHandler  implements Serializable {
 		orderDetail.setOrderCount(orderCount);
 		orderDetail.setIssueDate(idate.toString());
 		orderDetail.setReturnDate(rdate.toString());
+		orderDetail.setBookingDate(orderItem.getBookingDate().toString());
 		orderDetail.setDeposite(checkoutModel.getCheckoutTotalDeposit());
 		orderDetail.setOrderTotal(checkoutModel.getCheckoutTotal());
 		orderDetail.setTotalRent(checkoutModel.getCheckoutTotalRent());

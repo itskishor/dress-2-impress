@@ -22,6 +22,7 @@
 							<th>User Name</th>
 							<th>User SirName</th>
 							<th>Clothes Count</th>
+							<th>Booking Date</th>
 							<th>Issue Date</th>
 							<th>Return Date</th>
 							<th>Total Rent</th>

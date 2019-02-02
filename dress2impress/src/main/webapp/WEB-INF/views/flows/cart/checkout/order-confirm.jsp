@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ page import = "java.io.*,java.util.*" %>
+<%@ page import = "javax.servlet.*,java.text.*" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
@@ -74,7 +76,12 @@
 				<hr>
 				<div>
 					<h5 class="pull-left" style="color: tomato">Order :<strong style="color:black">${orderDetail.id}</strong></h5>
-					<h5 class="pull-right" style="color: tomato">Order Date:<strong style="color:black">${orderDetail.issueDate}</strong></h5></br>
+					<h5 class="pull-right" style="color: tomato">Order Date:<strong style="color:black"> <%
+         Date dNow = new Date( );
+         SimpleDateFormat ft = 
+         new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss a");
+         out.print( ft.format(dNow));
+      %></strong></h5></br>
 				</div>
             <hr>
 
@@ -169,8 +176,17 @@
 										<td></td>
 										<td></td>
 										<td></td>
-										<td class="text-right"><strong style="color:green">&#8377; ${checkoutModel.checkoutTotalDeposit}/-</strong></td>
-										<td class="text-right"><strong style="color:green"> &#8377; ${checkoutModel.checkoutTotalRent}/-</strong></td>
+										<td class="text-right"><strong style="color:blue">&#8377; ${checkoutModel.checkoutTotalDeposit}/-</strong></td>
+										<td class="text-right"><strong style="color:blue"> &#8377; ${checkoutModel.checkoutTotalRent}/-</strong></td>
+										</tr>
+											<tr>
+										<td style="color:black"><strong>Delivery Charges:</strong></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td class="text-right"><strong style="color:blue">&#8377; 50 /-</strong></td>
 										</tr>
 										<tr>
 										<td style="color:black"><strong>Grand Total:</strong></td>
@@ -178,16 +194,20 @@
 										<td></td>
 										<td></td>
 										<td></td>
-										<td></td>
-										<td class="text-right"><strong style="color:green">&#8377; ${checkoutModel.checkoutTotal}/-</strong></td>
+										<td class="text-right"><strong style="color:blue">&#8377; ${checkoutModel.checkoutTotal}/-<i style="color:black">(* including all taxes)</i></strong></td>
 										</tr>
 										</tfoot>
 									</table>
 								</div>
 							</div>
+							<div>
+							<h6 style="color:red">Terms & Conditions:</h6><i>If clothes has not been returned to Dress2impress by the Rental Return Due Date then dress2Impress shall be entitled to charge additional charge until the Clothes is returned to Dress2Impress. <br> 
+							The User expressly authorises Dress2Impress to deduct such additional charges from the User's deposit which was taken at the time of booking of the User's order. Such additional charges shall be charged a fixed rate of Clothes for each day overdue.</i> 
+							</div>
 						</div>
 					</div>
 				</div>
+				<div class="pull-right"><input type="button" value="Print" onClick="window.print()"></div>
 				<div class="text-center">
 					<a href="${contextRoot}/show/all/clothes"
 						class="btn btn-lg btn-primary">Continue Renting</a>

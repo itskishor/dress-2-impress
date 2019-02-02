@@ -57,11 +57,23 @@ public class OrderItem implements Serializable {
 	@Column(name="return_date")
 	private Date returnDate;
 	
+	@Column(name="booking_date")
+	private Date bookingDate;
+	
 	@Column(name = "deposite")
 	private double deposite;
 
 	public Date getIssueDate() {
 		return issueDate;
+	}
+
+	
+	public Date getBookingDate() {
+		return bookingDate;
+	}
+
+	public void setBookingDate(Date bookingDate) {
+		this.bookingDate = bookingDate;
 	}
 
 	public void setIssueDate(Date issueDate) {
@@ -136,7 +148,7 @@ public class OrderItem implements Serializable {
 	public String toString() {
 		return "OrderItem [id=" + id + ", clothes=" + clothes + ", orderDetail=" + orderDetail + ", pricePerDay="
 				+ pricePerDay + ", clothesCount=" + clothesCount + ", totalPrice=" + totalPrice + ", issueDate="
-				+ issueDate + ", returnDate=" + returnDate + ", deposite=" + deposite + "]";
+				+ issueDate + ", returnDate=" + returnDate + ",bookingDate="+ bookingDate +", deposite=" + deposite + "]";
 	}
 
 	

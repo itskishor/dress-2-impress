@@ -51,6 +51,17 @@ public class OrderDetail implements Serializable {
 	@Column(name="return_date")
 	private String returnDate;
 	
+	@Column(name="booking_date")
+	private String bookingDate;
+	
+	public String getBookingDate() {
+		return bookingDate;
+	}
+
+	public void setBookingDate(String bookingDate) {
+		this.bookingDate = bookingDate;
+	}
+
 	@Column(name = "deposite")
 	private double deposite;
 	
@@ -160,7 +171,7 @@ public class OrderDetail implements Serializable {
 	public String toString() {
 		return "OrderDetail [id=" + id + ", user=" + user + ", orderTotal=" + orderTotal + ", shipping=" + shipping
 				+ ", billing=" + billing + ", orderItems=" + orderItems + ", orderCount=" + orderCount + ", issueDate="
-				+ issueDate.toString() + ", returnDate=" + returnDate.toString() + ", deposite=" + deposite + ", totalRent=" + totalRent
+				+ issueDate.toString() + ", returnDate=" + returnDate.toString() + ",bookingDate="+ bookingDate +", deposite=" + deposite + ", totalRent=" + totalRent
 				+ "]";
 	}
 	*/
