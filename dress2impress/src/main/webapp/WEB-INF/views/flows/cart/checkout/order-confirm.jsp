@@ -148,6 +148,7 @@
 												<td><strong>Item</strong></td>
 												<td class="text-center"><strong>Price</strong></td>
 												<td class="text-center"><strong>Quantity</strong></td>
+												<td class="text-center"><strong>No. Of Days</strong></td>
 												<td class="text-center"><strong>Issue Date</strong></td>
 												<td class="text-center"><strong>Return Date</strong></td>
 												<td class="text-center"><strong>Deposit</strong></td>
@@ -160,12 +161,13 @@
 											<c:forEach items="${orderDetail.orderItems}" var="orderItem">
 												<tr>
 													<td>${orderItem.clothes.name}</td>
-													<td class="text-center">&#8377;${orderItem.pricePerDay}</td>
+													<td class="text-center">&#8377;${orderItem.pricePerDay} /-</td>
 													<td class="text-center">${orderItem.clothesCount}</td>
+													<td class="text-center">${orderItem.noOfDays}</td>
 													<td class="text-center">${orderItem.issueDate}</td>
 													<td class="text-center">${orderItem.returnDate}</td>
-													<td class="text-center">&#8377;${orderItem.deposite}</td>
-													<td class="text-right">&#8377; ${orderItem.totalRent}</td>
+													<td class="text-center">&#8377;${orderItem.deposite} /-</td>
+													<td class="text-right">&#8377; ${orderItem.totalRent} /-</td>
 												</tr>
 											</c:forEach>
 										</tbody>
@@ -176,11 +178,13 @@
 										<td></td>
 										<td></td>
 										<td></td>
+										<td></td>
 										<td class="text-right"><strong style="color:blue">&#8377; ${checkoutModel.checkoutTotalDeposit}/-</strong></td>
-										<td class="text-right"><strong style="color:blue"> &#8377; ${checkoutModel.checkoutTotalRent}/-</strong></td>
+										<td class="text-right"><strong style="color:blue">&#8377; ${checkoutModel.checkoutTotalRent}/-</strong></td>
 										</tr>
 											<tr>
 										<td style="color:black"><strong>Delivery Charges:</strong></td>
+										<td></td>
 										<td></td>
 										<td></td>
 										<td></td>
@@ -194,7 +198,8 @@
 										<td></td>
 										<td></td>
 										<td></td>
-										<td class="text-right"><strong style="color:blue">&#8377; ${checkoutModel.checkoutTotal}/-<i style="color:black">(* including all taxes)</i></strong></td>
+										<td></td>
+										<td class="text-right"><strong style="color:blue">&#8377; ${checkoutModel.checkoutTotal} /-<i style="color:black">(* including all taxes)</i></strong></td>
 										</tr>
 										</tfoot>
 									</table>

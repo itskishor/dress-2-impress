@@ -68,4 +68,12 @@ public class OrderDetailsDAOImpl implements OrderDetailsDAO {
 							.getResultList();
 	}
 
+	@SuppressWarnings("deprecation")
+	@Override
+	public double totalProfit() {
+		String query = "Select sum(od.totalRent) FROM OrderDetail od";
+		return (double) sessionFactory.getCurrentSession().createQuery(query).list().get(0);
+		
+	}
+
 }

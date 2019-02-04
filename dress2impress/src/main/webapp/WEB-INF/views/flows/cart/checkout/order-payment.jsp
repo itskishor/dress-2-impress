@@ -12,8 +12,9 @@
 				<tr>
 					<th>Clothes Name</th>
 					<th>Clothes Count</th>
+					<th>No. Of Days</th>
 					<th>Price Per Day</th>
-					<th>Deposite</th>
+					<th>Deposit</th>
 					<th>Issue Date</th>
 					<th>Return Date</th>
 					<th>Grand Total</th>
@@ -22,6 +23,7 @@
 					<tr>
 						<td>${cartLine.clothes.name}</td>
 						<td>${cartLine.clothesCount}</td>
+						<td>${cartLine.noOfDays}</td>
 						<td>&#8377; ${cartLine.pricePerDay}/-</td>
 						<td>&#8377; ${cartLine.deposite}</td>
 						<td>${cartLine.issueDate}/-</td>
@@ -98,7 +100,7 @@
 
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<button type="submit" name="_eventId_saveOrder" class="btn btn-primary">
-										Next -Pay <span class="glyphicon glyphicon-chevron-right"></span>
+										Next -Pay <span class="glyphicon glyphicon-chevron-right"></span></button>
 							</div>
 						</div>
 

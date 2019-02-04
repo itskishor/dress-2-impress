@@ -983,6 +983,9 @@ $(function() {
 									data : 'orderCount'
 								},
 								{
+									data : 'noOfDays'
+								},
+								{
 									data : 'bookingDate'
 								},
 								{
@@ -1207,6 +1210,9 @@ $(function() {
 								},
 								{
 									data : 'orderCount'
+								},
+								{
+									data : 'noOfDays'
 								},
 								{
 									data : 'bookingDate'

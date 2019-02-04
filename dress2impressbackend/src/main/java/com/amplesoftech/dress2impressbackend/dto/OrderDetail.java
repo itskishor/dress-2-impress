@@ -45,6 +45,17 @@ public class OrderDetail implements Serializable {
 	@Column(name = "order_count")
 	private int orderCount;
 	
+	@Column (name = "no_of_days")
+	private int noOfDays;
+	
+	public int getNoOfDays() {
+		return noOfDays;
+	}
+
+	public void setNoOfDays(int noOfDays) {
+		this.noOfDays = noOfDays;
+	}
+	
 	@Column(name="issue_date")
 	private String issueDate;
 	
@@ -171,7 +182,7 @@ public class OrderDetail implements Serializable {
 	public String toString() {
 		return "OrderDetail [id=" + id + ", user=" + user + ", orderTotal=" + orderTotal + ", shipping=" + shipping
 				+ ", billing=" + billing + ", orderItems=" + orderItems + ", orderCount=" + orderCount + ", issueDate="
-				+ issueDate.toString() + ", returnDate=" + returnDate.toString() + ",bookingDate="+ bookingDate +", deposite=" + deposite + ", totalRent=" + totalRent
+				+ issueDate.toString() + ",noOfDays="+ noOfDays +", returnDate=" + returnDate.toString() + ",bookingDate="+ bookingDate +", deposite=" + deposite + ", totalRent=" + totalRent
 				+ "]";
 	}
 	*/

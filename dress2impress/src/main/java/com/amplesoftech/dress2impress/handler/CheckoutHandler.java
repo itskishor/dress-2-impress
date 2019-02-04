@@ -201,6 +201,7 @@ public class CheckoutHandler  implements Serializable {
 			orderItem = new OrderItem();
 			
 			orderItem.setPricePerDay(cartLine.getPricePerDay());
+			orderItem.setNoOfDays(cartLine.getNoOfDays());
 			orderItem.setClothes(cartLine.getClothes());
 			orderItem.setClothesCount(cartLine.getClothesCount());
 			orderItem.setBookingDate(bookingDate);
@@ -232,6 +233,7 @@ public class CheckoutHandler  implements Serializable {
 		java.sql.Date idate = new java.sql.Date(orderItem.getIssueDate().getTime());
 		java.sql.Date rdate = new java.sql.Date(orderItem.getReturnDate().getTime());
 		orderDetail.setOrderCount(orderCount);
+		orderDetail.setNoOfDays(orderItem.getNoOfDays());
 		orderDetail.setIssueDate(idate.toString());
 		orderDetail.setReturnDate(rdate.toString());
 		orderDetail.setBookingDate(orderItem.getBookingDate().toString());

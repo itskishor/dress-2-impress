@@ -31,6 +31,17 @@ public class OrderItem implements Serializable {
 	@JoinColumn(name = "order_id")
 	private OrderDetail orderDetail;
 	
+	@Column (name = "no_of_days")
+	private int noOfDays;
+	
+	public int getNoOfDays() {
+		return noOfDays;
+	}
+
+	public void setNoOfDays(int noOfDays) {
+		this.noOfDays = noOfDays;
+	}
+
 	@Column (name = "price_per_day")
 	private double pricePerDay;
 	
@@ -148,7 +159,7 @@ public class OrderItem implements Serializable {
 	public String toString() {
 		return "OrderItem [id=" + id + ", clothes=" + clothes + ", orderDetail=" + orderDetail + ", pricePerDay="
 				+ pricePerDay + ", clothesCount=" + clothesCount + ", totalPrice=" + totalPrice + ", issueDate="
-				+ issueDate + ", returnDate=" + returnDate + ",bookingDate="+ bookingDate +", deposite=" + deposite + "]";
+				+ issueDate + ", returnDate=" + returnDate + ",noOfDays="+noOfDays+",bookingDate="+ bookingDate +", deposite=" + deposite + "]";
 	}
 
 	

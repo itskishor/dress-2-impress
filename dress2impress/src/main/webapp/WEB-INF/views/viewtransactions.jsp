@@ -22,6 +22,7 @@
 							<th>User Name</th>
 							<th>User SirName</th>
 							<th>Clothes Count</th>
+							<th>No.Of Days</th>
 							<th>Booking Date</th>
 							<th>Issue Date</th>
 							<th>Return Date</th>
@@ -32,7 +33,12 @@
 						</tr>
 					</thead>
 				</table>
+				
 			</div>
 		</div>
 	</div>
+		<ul class="nav nav-pills nav-stacked">
+								<li class="active"><a href="#"><span
+										class="badge pull-right bg-danger"><h6 style="color:white">&#8377; ${TotalProfit} /-</h6></span> <strong>Total Profit:</strong> </a></li>
+							</ul><br>
 </div>

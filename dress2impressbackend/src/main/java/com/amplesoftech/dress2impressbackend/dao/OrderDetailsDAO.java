@@ -11,5 +11,6 @@ public interface OrderDetailsDAO
 	boolean delete(OrderDetail orderDetail);
 	OrderDetail get(int id);
 	List<OrderDetail> listActiveTransactions();
+	double totalProfit();
 
 }

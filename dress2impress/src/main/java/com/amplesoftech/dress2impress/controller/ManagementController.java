@@ -314,6 +314,8 @@ public class ManagementController {
 				ModelAndView mv = new ModelAndView("page");
 				mv.addObject("title", "View Transactions");
 				mv.addObject("userClickAdminViewTransaction", true);
+				
+				
 
 				OrderDetail orderDetail = new OrderDetail();
 				// assuming that the user is ADMIN
@@ -339,6 +341,7 @@ public class ManagementController {
 					model.addAttribute("message", "Validation Failed For Transaction Submission!");
 					return "page";
 				}
+				request.setAttribute("TotalProfit",orderDetailsDAO.totalProfit() );
 				logger.info(orderDetail.toString());
 				// Create a new Transaction Record
 				if (orderDetail.getId() == 0) 
