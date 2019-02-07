@@ -65,7 +65,7 @@
 								<sf:errors path="expiryMonth" cssClass="help-block" element="em" />
 							</div>
 							<div class="col-lg-3">
-								<sf:input type="number" path="expiryYear" id="expiryYear" class="form-control" min="2018" max="4000" required="required"
+								<sf:input type="number" path="expiryYear" id="expiryYear" class="form-control" min="2019" max="4000" required="required"
 									placeholder="Year"></sf:input>
 								<sf:errors path="expiryYear" cssClass="help-block" element="em" />
 							</div>
@@ -74,7 +74,7 @@
 						<div class="form-group row">
 							<label class="control-label col-md-4"><b>CVV Number</b></label>
 							<div class="col-3">
-								<sf:input type="number" path="cvvNumber" id="cvvNumber" class="form-control"
+								<sf:input type="password" path="cvvNumber" id="cvvNumber" class="form-control"
 									placeholder="CVV" required="required"></sf:input>
 								<sf:errors path="cvvNumber" cssClass="help-block" element="em" />
 							</div>

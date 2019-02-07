@@ -68,7 +68,7 @@
 						<div class="form-group row">
 							<label class="control-label col-md-3"><b>Unit Price:</b></label>
 							<div class="col-8">
-								<sf:input type="number" path="unitPrice" id="unitPrice"
+								<sf:input type="number" path="unitPrice" id="unitPrice" min="1"
 									class="form-control" required="true" placeholder="Enter Unit Price" />
 								<sf:errors path="unitPrice" cssClass="help-block" element="em" />
 							</div>
@@ -77,7 +77,7 @@
 						<div class="form-group row">
 							<label class="control-label col-md-3"><b>Price Per Day:</b></label>
 							<div class="col-8">
-								<sf:input type="number" path="pricePerDay" id="pricePerDay"
+								<sf:input type="number" path="pricePerDay" id="pricePerDay" min="1"
 									class="form-control" required="true" placeholder="Enter The Price/Day" />
 								<sf:errors path="pricePerDay" cssClass="help-block" element="em" />
 							</div>
@@ -86,7 +86,7 @@
 						<div class="form-group row">
 							<label class="control-label col-md-3"><b>Quantity:</b></label>
 							<div class="col-8">
-								<sf:input type="number" path="quantity" id="quantity"
+								<sf:input type="number" path="quantity" id="quantity" min="0"
 									class="form-control" required="true" placeholder="Enter Quantity Available" />
 								<sf:errors path="quantity" cssClass="help-block" element="em" />
 							</div>

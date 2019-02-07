@@ -13,6 +13,7 @@ public interface UserDAO {
 	// user related operation
 	User getByEmail(String email);
 	User get(int id);
+	public boolean getByEmail1(String email) ;
 
 	//boolean add(User user);
 	
@@ -27,4 +28,6 @@ public interface UserDAO {
 	/*
 	Address getBillingAddress(User user);
 	List<Address> listShippingAddresses(User user);*/
+	
+	public boolean alreadyExists(String email);
 }

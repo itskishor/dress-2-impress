@@ -26,8 +26,8 @@
 							<th>Booking Date</th>
 							<th>Issue Date</th>
 							<th>Return Date</th>
-							<th>Total Rent</th>
 							<th>Total Deposit</th>
+							<th>Total Rent</th>
 							<th>Grand Total</th>
 							<th>Status</th>
 						</tr>
@@ -37,8 +37,7 @@
 			</div>
 		</div>
 	</div>
-		<ul class="nav nav-pills nav-stacked">
-								<li class="active"><a href="#"><span
-										class="badge pull-right bg-danger"><h6 style="color:white">&#8377; ${TotalProfit} /-</h6></span> <strong>Total Profit:</strong> </a></li>
-							</ul><br>
+	
+		<div>
+		<span class="badge pull-right bg-success"><h6 style="color:Red">Total Profit :</h6> &#8377; ${TotalProfit} /-</span> <br>
 </div>

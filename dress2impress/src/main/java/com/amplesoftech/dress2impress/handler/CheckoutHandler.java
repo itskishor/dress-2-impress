@@ -208,7 +208,7 @@ public class CheckoutHandler  implements Serializable {
 			orderItem.setIssueDate(cartLine.getIssueDate());
 			orderItem.setReturnDate(cartLine.getReturnDate());
 			orderItem.setTotalPrice(cartLine.getTotalPrice());
-			orderItem.setTotalRent(cartLine.getPricePerDay()*cartLine.getClothesCount());
+			orderItem.setTotalRent(cartLine.getPricePerDay()*cartLine.getClothesCount()*cartLine.getNoOfDays());
 			orderItem.setDeposite(cartLine.getDeposite());
 			
 			orderItem.setOrderDetail(orderDetail);

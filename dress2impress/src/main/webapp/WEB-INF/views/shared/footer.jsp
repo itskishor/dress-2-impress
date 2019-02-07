@@ -43,12 +43,12 @@
           <ul class="list-unstyled">
             <li>
               <p>
-             <i class="fa fa-phone" aria-hidden="true"></i> <a href="http://192.168.0.119:3030/dress2impress/contactus">Contact Us</a>
+             <i class="fa fa-phone" aria-hidden="true"></i> <a href="http://192.168.0.107:3030/dress2impress/contactus">Contact Us</a>
               </p>
             </li>
             <li>
               <p>
-               <i class="fa fa-pencil-square-o" aria-hidden="true"></i> <a href="http://192.168.0.119:3030/dress2impress/aboutus">About Us</a>
+               <i class="fa fa-pencil-square-o" aria-hidden="true"></i> <a href="http://192.168.0.107:3030/dress2impress/aboutus">About Us</a>
               </p>
             </li>
           </ul>

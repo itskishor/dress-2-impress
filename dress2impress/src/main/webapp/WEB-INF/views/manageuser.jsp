@@ -93,8 +93,7 @@
 	<div class="row justify-content-center">
 
 		<!-- <div class="col-xs-12"></div> -->
-		<div class="col-8">
-
+		<div class="col-10">
 			<div style="overflow: auto">
 			
 			<!-- Employee Table For Admin -->
@@ -113,18 +112,6 @@
 							<th>Edit</th>
 						</tr>
 					</thead>
-
-					<tfoot>
-						<tr>
-							<th>Id</th>
-							<th>First Name</th>
-							<th>Last Name</th>
-							<th>Email</th>
-							<th>Contact</th>
-							<th>Activate</th>
-							<th>Edit</th>
-						</tr>
-					</tfoot>
 				</table>
 			</div>
 		</div>

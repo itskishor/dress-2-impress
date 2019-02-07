@@ -27,7 +27,7 @@
 									Line One</label>
 								<div class="col-8">
 									<sf:input type="text" path="addressLineOne"
-										class="form-control" placeholder="Enter Address Line One" />
+										class="form-control"/>
 								</div>
 							</div>
 
@@ -36,39 +36,36 @@
 									Line Two</label>
 								<div class="col-8">
 									<sf:input type="text" path="addressLineTwo"
-										class="form-control" placeholder="Enter Address Line Two" />
+										class="form-control" />
 								</div>
 							</div>
 
 							<div class="form-group row">
 								<label class="control-label col-md-4" for="city">City</label>
 								<div class="col-8">
-									<sf:input type="text" path="city" class="form-control"
-										placeholder="Enter the City" />
+									<sf:input type="text" pattern="[A-Za-z]{1,32}" title="Only Characters Allowed Here!!" path="city" class="form-control"/>
 								</div>
 							</div>
 							<div class="form-group row">
 								<label class="control-label col-md-4" for="postalCode">Postal
 									Code</label>
 								<div class="col-8">
-									<sf:input type="text" path="postalCode" class="form-control"
-										placeholder="XXXXXX" />
+									<sf:input type="text" path="postalCode" class="form-control"/>
 								</div>
 							</div>
 
 							<div class="form-group row">
 								<label class="control-label col-md-4" for="state">State</label>
 								<div class="col-8">
-									<sf:input type="text" path="state" class="form-control"
-										placeholder="Enter The State Name" />
+									<sf:input type="text" pattern="[A-Za-z]{1,32}" title="Only Characters Allowed Here!!" path="state" class="form-control"
+										 />
 								</div>
 							</div>
 
 							<div class="form-group row">
 								<label class="control-label col-md-4" for="country">Country</label>
 								<div class="col-8">
-									<sf:input type="text" path="country" class="form-control"
-										placeholder="Enter The Country Name" />
+									<sf:input type="text" pattern="[A-Za-z]{1,32}" title="Only Characters Allowed Here!!" path="country" class="form-control"/>
 								</div>
 							</div>
 

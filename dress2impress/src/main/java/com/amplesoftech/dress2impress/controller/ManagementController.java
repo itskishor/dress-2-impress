@@ -149,6 +149,9 @@ public class ManagementController {
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title", "Manage Employee");
 		mv.addObject("userClickManageEmployee", true);
+		
+		List<User> list=userDAO.listByRole("EMPLOYEE");
+		mv.addObject("list",list);
 
 		User nuser = new User();
 		// assuming that the user is ADMIN
@@ -198,7 +201,6 @@ public class ManagementController {
 	@RequestMapping(value = "/employee", method = RequestMethod.POST)
 	public String handleEmployeeSubmission(@Valid @ModelAttribute("user") User muser, BindingResult results,
 			Model model, HttpServletRequest request) {
-		
 		if(muser.getId() == 0) {
 		       new EmployeeValidator().validate(muser, results);
 	      }
@@ -309,13 +311,13 @@ public class ManagementController {
 		
 			//--------------Transaction Management Control--------------------
 			@RequestMapping(value = "/viewtransactions", method = RequestMethod.GET)
-			public ModelAndView showManageTransaction(@RequestParam(name = "operation", required = false) String operation) {
+			public ModelAndView showManageTransaction(@RequestParam(name = "operation", required = false) String operation,HttpServletRequest request) {
 
 				ModelAndView mv = new ModelAndView("page");
 				mv.addObject("title", "View Transactions");
 				mv.addObject("userClickAdminViewTransaction", true);
 				
-				
+				request.setAttribute("TotalProfit",orderDetailsDAO.totalProfit() );
 
 				OrderDetail orderDetail = new OrderDetail();
 				// assuming that the user is ADMIN

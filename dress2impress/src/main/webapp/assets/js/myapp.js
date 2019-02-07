@@ -154,7 +154,7 @@ $(function() {
 								bSortable : false,
 								mRender : function(data, type, row) {
 									var str = '';
-									if ((userRole !== 'ADMIN')||(userRole !== 'EMPLOYEE')||(userRole !== 'SUPPLIER')) {
+									if ((userRole== 'USER')) {
 										if (row.quantity < 1) {
 											str += '<a href="javascript:void(0)" class="btn btn-success btn-sm disabled">Cart<span class="fa fa-shopping-cart"></span></a>';
 										} 
@@ -168,24 +168,17 @@ $(function() {
 
 										}
 									} 
-									else {
-										if (userRole== 'ADMIN') {
-											str += '<a href="'
+									else
+										{
+											/*str += '<a href="'
 												+ window.contextRoot
 												+ '/manage/'
 												+ data
-												+ '/clothes" class="btn btn-success btn-sm disabled">Cart <span class="fa fa-shopping-cart"></span></a>';
+												+ '/clothes" class="btn btn-success btn-sm disabled">Cart <span class="fa fa-shopping-cart"></span></a>';*/
 											
 										}
-										else{
-										str += '<a href="'
-												+ window.contextRoot
-												+ '/manage/'
-												+ data
-												+ '/clothes" class="btn btn-success btn-sm">Edit <span class="fa fa-pencil"></span></a>';
-										}
-									}
 									return str;
+									
 								}
 
 							}
@@ -289,7 +282,7 @@ $(function() {
 								bSortable : false,
 								mRender : function(data, type, row) {
 									var str = '';
-									if ((userRole !== 'ADMIN')||(userRole !== 'EMPLOYEE')||(userRole !== 'SUPPLIER')) {
+									if ((userRole == 'USER')) {
 										if (row.quantity < 1) {
 											str += '<a href="javascript:void(0)" class="btn btn-success btn-sm disabled">Cart<span class="fa fa-shopping-cart"></span></a>';
 										} 
@@ -303,22 +296,9 @@ $(function() {
 
 										}
 									} 
-									else {
-										if (userRole== 'ADMIN') {
-											str += '<a href="'
-												+ window.contextRoot
-												+ '/manage/'
-												+ data
-												+ '/clothes" class="btn btn-success btn-sm disabled">Cart <span class="fa fa-shopping-cart"></span></a>';
-											
-										}
-										else{
-										str += '<a href="'
-												+ window.contextRoot
-												+ '/manage/'
-												+ data
-												+ '/clothes" class="btn btn-success btn-sm">Edit <span class="fa fa-pencil"></span></a>';
-										}
+									else 
+									{
+										
 									}
 									return str;
 								}
@@ -1160,11 +1140,16 @@ $(function() {
 									bSortable : false,
 									mRender : function(data, type, row) {
 										var str = '';
+										if (row.quantity < 1) {
+											str += '<a href="javascript:void(0)" class="btn btn-info btn-sm disabled"><span class="fa fa-shopping-bag">Purchase</span></a>';
+										}
+										else{
 										str += '<a href="'
 												+ window.contextRoot
 												+ '/show/'
 												+ data
 												+ '/supplierclothes" class="btn btn-info btn-sm"><span class="fa fa-shopping-bag"> Purchase</span></a>';
+										}
 										return str;
 									}
 

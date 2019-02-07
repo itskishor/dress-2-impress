@@ -206,6 +206,11 @@
 								</div>
 							</div>
 							<div>
+							<h6 style="color:Green">Contact Address:</h6><i>Office No-1, Parmar Trade Centre,Pune Station, Pune-413316</i> 
+							<h6 style="color:Blue">Contact Number:</h6><i>+913278632788</i> 
+							<h6 style="color:orange">Email:</h6><i>ss@gmail.com</i> 
+							</div>
+							<div>
 							<h6 style="color:red">Terms & Conditions:</h6><i>If clothes has not been returned to Dress2impress by the Rental Return Due Date then dress2Impress shall be entitled to charge additional charge until the Clothes is returned to Dress2Impress. <br> 
 							The User expressly authorises Dress2Impress to deduct such additional charges from the User's deposit which was taken at the time of booking of the User's order. Such additional charges shall be charged a fixed rate of Clothes for each day overdue.</i> 
 							</div>

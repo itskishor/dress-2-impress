@@ -72,7 +72,7 @@
 						<div class="form-group row">
 							<label class="control-label col-md-4"><b>CVV Number</b></label>
 							<div class="col-3">
-								<sf:input type="number" path="cvvNumber" id="cvvNumber" class="form-control"
+								<sf:input type="password" path="cvvNumber" id="cvvNumber" class="form-control"
 									placeholder="CVV" required="required"></sf:input>
 								<sf:errors path="cvvNumber" cssClass="help-block" element="em" />
 							</div>

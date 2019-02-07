@@ -58,8 +58,8 @@
 							<div class="form-group">
 								<label class="control-label col-md-4" for="city">City</label>
 								<div class="col-4">
-									<sf:input type="text" path="city" class="form-control"
-										placeholder="Enter City Name" />
+									<sf:input type="text" path="city" pattern="[A-Za-z]{1,32}" title="Only Characters Allowed Here!!" class="form-control"
+										placeholder="Enter City Name" pattern="[A-Za-z]"/>
 									<sf:errors path="city" cssClass="help-block" element="em"/> 
 								</div>
 							</div>					
@@ -74,16 +74,16 @@
 							<div class="form-group">
 								<label class="control-label col-md-4" for="state">State</label>
 								<div class="col-4">
-									<sf:input type="text" path="state" class="form-control"
-										placeholder="Enter State Name" />
+									<sf:input type="text" pattern="[A-Za-z]{1,32}" title="Only Characters Allowed Here!!" path="state" class="form-control"
+										placeholder="Enter State Name" pattern="[A-Za-z]"/>
 									<sf:errors path="state" cssClass="help-block" element="em"/> 
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-md-4" for="country">Country</label>
 								<div class="col-6">
-									<sf:input type="text" path="country" class="form-control"
-										placeholder="Enter Country Name" />
+									<sf:input type="text" pattern="[A-Za-z]{1,32}" title="Only Characters Allowed Here!!" path="country" class="form-control"
+										placeholder="Enter Country Name" pattern="[A-Za-z]" />
 									<sf:errors path="country" cssClass="help-block" element="em"/> 
 								</div>
 							</div>

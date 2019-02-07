@@ -14,14 +14,18 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav justify-content-center">
+			
 				<li id="viewclothes"><a class="nav-link"
 					href="${contextRoot}/show/all/clothes"><i class="fa fa-female" aria-hidden="true"></i> View Clothes</a></li>
-					<li id="popularclothes"><a class="nav-link"
+					
+				<li id="popularclothes"><a class="nav-link"
 						href="${contextRoot}/show/all/popularclothes"><i class="fa fa-eye" aria-hidden="true"></i> Most Popular</a></li>
-					<security:authorize access="hasAuthority('SUPPLIER')">
+					
+				<security:authorize access="hasAuthority('SUPPLIER')">
 					<li id="addclothes"><a class="nav-link"
 						href="${contextRoot}/add/supplierclothes"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Clothes</a></li>
-					</security:authorize>
+				</security:authorize>
+				
 				<security:authorize access="hasAuthority('ADMIN')">
 					<li id="manageemployee"><a class="nav-link"
 						href="${contextRoot}/manage/employee">Manage Employees</a></li>
@@ -32,9 +36,10 @@
 						<li id="adminviewtransactions"><a class="nav-link"
 						href="${contextRoot}/manage/viewtransactions">Transactions</a></li>
 				</security:authorize>
+				
 						<security:authorize access="hasAuthority('EMPLOYEE')">
 					    <li id="employeemanageclothes"><a class="nav-link"
-					href="${contextRoot}/employeemanage/clothes">Manage Clothes</a></li>
+					    href="${contextRoot}/employeemanage/clothes">Manage Clothes</a></li>
 						<li id="employeemanageuser"><a class="nav-link"
 						href="${contextRoot}/employeemanage/user">Manage User</a></li>
 						<li id="employeemanagetransactions"><a class="nav-link"
@@ -42,6 +47,7 @@
 						<li id="employeemanagepurchase"><a class="nav-link"
 						href="${contextRoot}/employeemanage/purchase">Purchase Clothes</a></li>
 				</security:authorize>
+				
 			</ul>
 			<ul class="navbar-nav ml-auto">
 				<!-- class="nav-item" -->

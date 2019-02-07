@@ -47,14 +47,17 @@ public class UserDAOImpl implements UserDAO {
 	public User getByEmail(String email) {
 		String selectQuery = "FROM User WHERE email = :email";
 		try {
+			System.out.println("Inside Method");
 		return sessionFactory
 				.getCurrentSession()
 					.createQuery(selectQuery,User.class)
 						.setParameter("email",email)
 							.getSingleResult();
+		       
 		}
 		catch(Exception ex) 
 		{
+			System.out.println("Inside Exception");
 			return null;
 		}
 							
@@ -154,5 +157,35 @@ public class UserDAOImpl implements UserDAO {
 			return false;
 		}
 	}
+	
+	@Transactional
+	@SuppressWarnings("deprecation")
+	public boolean alreadyExists(String email) {
+		List result = sessionFactory.getCurrentSession()
+	                         .createQuery("from User where email=:email")
+	                         .setParameter("email", email)
+	                         .list();
+	    return !result.isEmpty();
+	}
+	
+	@Override
+	public boolean getByEmail1(String email) {
+		String selectQuery = "FROM User WHERE email = :email";
+		try {
+		sessionFactory
+				.getCurrentSession()
+					.createQuery(selectQuery,User.class)
+						.setParameter("email",email)
+							.getSingleResult();
+		return true;
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+		}
+							
+	}
 
-}
+
+
