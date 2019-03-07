@@ -7,7 +7,6 @@ import com.amplesoftech.dress2impressbackend.dto.CartLine;
 import com.amplesoftech.dress2impressbackend.dto.OrderDetail;
 
 public interface CartLineDAO {
-
 	public List<CartLine> list(int cartId);
 	public CartLine get(int id);	
 	public boolean add(CartLine cartLine);

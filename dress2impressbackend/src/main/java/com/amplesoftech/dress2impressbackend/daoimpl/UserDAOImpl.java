@@ -2,6 +2,7 @@ package com.amplesoftech.dress2impressbackend.daoimpl;
 
 import java.util.List;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -9,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.amplesoftech.dress2impressbackend.dao.UserDAO;
 import com.amplesoftech.dress2impressbackend.dto.Address;
+import com.amplesoftech.dress2impressbackend.dto.Category;
 import com.amplesoftech.dress2impressbackend.dto.User;
 
 @Repository("userDAO")
@@ -17,6 +19,8 @@ public class UserDAOImpl implements UserDAO {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
+	
+	private Session session;
 
 	@Override
 	public boolean addUser(User user) {
@@ -184,6 +188,53 @@ public class UserDAOImpl implements UserDAO {
 			return false;
 		}
 		}
+
+	@Override
+	public User getByContactNumber(String contactNumber) {
+		String selectQuery = "FROM User WHERE contactNumber = :contactNumber";
+		try {
+			System.out.println("Inside Method");
+		return sessionFactory
+				.getCurrentSession()
+					.createQuery(selectQuery,User.class)
+						.setParameter("contactNumber",contactNumber)
+							.getSingleResult();
+		       
+		}
+		catch(Exception ex) 
+		{
+			System.out.println("Inside Exception");
+			return null;
+		}
+	}
+
+	@Override
+	public String getPasswordByContactNumber(String contactNumber) 
+	{
+		String selectQuery = " Select password FROM User WHERE contactNumber = :contactNumber";
+
+        @SuppressWarnings("deprecation")
+		String usrpassword = (String) session.createQuery(selectQuery).setInteger("id",10).uniqueResult();
+		try {
+		return usrpassword;
+		       
+		}
+		catch(Exception ex) 
+		{
+			System.out.println("Inside Exception");
+			return null;
+		}
+		
+		
+	}
+
+	@Override
+	public List<User> listAllUser() {
+		return sessionFactory
+				.getCurrentSession()
+					.createQuery("FROM User" , User.class)
+						.getResultList();
+	}
 							
 	}
 

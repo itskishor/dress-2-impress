@@ -92,7 +92,7 @@
 						<div class="form-group row">
 							<label class="control-label col-md-3"><b>Salary:</b></label>
 							<div class="col-8">
-								<sf:input type="number" path="salary" id="salary"
+								<sf:input type="number" path="salary" id="salary" min="1"
 									required="true" class="form-control" placeholder="Enter Salary" />
 								<sf:errors path="salary" cssClass="help-block" element="em" />
 							</div>
@@ -202,7 +202,8 @@
 			{
 			if(val == elist[i])
 				{
-				document.getElementById("errspan").innerHTML="Email Already Exist!!";
+				/* document.getElementById("errspan").innerHTML="Email Already Exist!!"; */
+				alert("Email Already Exist!!");
 				 document.getElementById("email").value="";
 				 
 				}
@@ -229,8 +230,9 @@
 			{
 			if(val == elist[i])
 				{
-				document.getElementById("errspan1").innerHTML="Contact Number Already Exist!!";
-				 document.getElementById("contactNumber").value="";
+				/* document.getElementById("errspan1").innerHTML="Contact Number Already Exist!!"; */
+				alert("Contact Number Already Exist!!"); 
+				document.getElementById("contactNumber").value="";
 				 
 				}
 			}

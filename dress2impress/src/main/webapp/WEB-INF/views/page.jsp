@@ -69,6 +69,11 @@
 			</c:if>
 			
 			<!--Loading The Manage Clothes Content -->
+			<c:if test="${userClickForgetPassword==true}">
+				<%@include file="forgetPassword.jsp"%> 
+			</c:if>
+			
+			<!--Loading The Manage Clothes Content -->
 			<c:if test="${userClickEmployeeManageClothes==true}">
 				<%@include file="manageclothes.jsp"%> 
 			</c:if>

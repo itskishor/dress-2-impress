@@ -102,6 +102,8 @@
 										<div class="col-8">
 											<input type="password" name="password" id="password"
 												class="form-control" />
+									      <div class="text-right">
+									      <a href="${contextRoot}/forgetPassword">Forget Password?</a></div>
 										</div>
 									</div>
 									<div class="form-group">

@@ -57,7 +57,15 @@ body {
 /* footer {
     margin: 0;
 } */
+.page-footer font-small blue
+{
+	 position: absolute;
+  bottom: 0;
+  width: 100%;
+  height:100%;
+   display: table-row;
 
+}
 
 /*
 	custom styling

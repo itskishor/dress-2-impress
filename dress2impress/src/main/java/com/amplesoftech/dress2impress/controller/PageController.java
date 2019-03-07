@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -25,21 +26,25 @@ import org.springframework.web.servlet.ModelAndView;
 import com.amplesoftech.dress2impress.excepiton.ClothesNotFoundException;
 import com.amplesoftech.dress2impress.excepiton.SupplierClothesNotFoundException;
 import com.amplesoftech.dress2impress.validator.CardValidator;
+import com.amplesoftech.dress2impress.validator.CategoryValidator;
 import com.amplesoftech.dress2impressbackend.dao.CategoryDAO;
 import com.amplesoftech.dress2impressbackend.dao.ClothesDAO;
 import com.amplesoftech.dress2impressbackend.dao.ContactusDAO;
 import com.amplesoftech.dress2impressbackend.dao.DebitCardDetailsDAO;
 import com.amplesoftech.dress2impressbackend.dao.SupplierClothesDAO;
+import com.amplesoftech.dress2impressbackend.dao.UserDAO;
 import com.amplesoftech.dress2impressbackend.dto.Category;
 import com.amplesoftech.dress2impressbackend.dto.Clothes;
 import com.amplesoftech.dress2impressbackend.dto.Contactus;
 import com.amplesoftech.dress2impressbackend.dto.DebitCardDetails;
 import com.amplesoftech.dress2impressbackend.dto.SupplierClothes;
+import com.amplesoftech.dress2impressbackend.dto.User;
 
 @Controller
 public class PageController {
 	private static final Logger logger = LoggerFactory.getLogger(PageController.class);
 	
+	HttpSession session;
 	
 	@Autowired
 	private CategoryDAO categoryDAO;
@@ -55,6 +60,9 @@ public class PageController {
 	private ClothesDAO clothesDAO;
 	@Autowired
 	private ContactusDAO contactUsDAO;
+	
+	@Autowired
+	private UserDAO userDAO;
 	
 	@RequestMapping(value= {"/","/home","/index"})
 	public ModelAndView index()
@@ -229,15 +237,16 @@ public class PageController {
 	
 	//--------------Supplier Payment Management Control--------------------
 	@RequestMapping(value = "/proceed/debitcarddetails", method = RequestMethod.GET)
-	public ModelAndView showCardDetails(@RequestParam(name = "operation", required = false) String operation) {
-
+	public ModelAndView showCardDetails(@RequestParam(name = "operation", required = false) String operation,HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("page");
+		//int id=(int) session.getAttribute("clothId");
+		
 		mv.addObject("title", "Manage Payment");
 		DebitCardDetails ndebitCardDetails = new DebitCardDetails();
 		mv.addObject("debitcarddetail", ndebitCardDetails);
 		mv.addObject("userClickProceedPayment", true);
 		
-		if (operation != null) {
+		if (operation != null) {		
 			if (operation.equals("mcarddetails")) {
 				mv.addObject("message", "Payment Done Successfully!");
 			}
@@ -247,15 +256,20 @@ public class PageController {
 	}
 
 	// Handling Card Details submission
-	@RequestMapping(value = "/proceed/debitcarddetails", method = RequestMethod.POST)
-	public String handleCardSubmission(@Valid @ModelAttribute("debitcarddetail") DebitCardDetails mcarddetails, BindingResult results,
-			Model model, HttpServletRequest request) {
+	@RequestMapping(value = "/proceed/{id}/debitcarddetails", method = RequestMethod.POST)
+	public String handleCardSubmission(@PathVariable("id") int id, @Valid @ModelAttribute("debitcarddetail") DebitCardDetails mcarddetails, BindingResult results,Model model, HttpServletRequest request)
+	{
 		
 		// Handle card validation for new card
 		if (mcarddetails.getId()==0) 
 		{
 			new CardValidator().validate(mcarddetails, results);
 		} 
+		session.setAttribute("clothId", id);
+		SupplierClothes supplierClothes=supplierClothesDAO.get(id);
+		supplierClothes.setQuantity(supplierClothes.getQuantity()-1);
+		supplierClothesDAO.update(supplierClothes);
+		
 		// check if there is any error
 		if (results.hasErrors()) {
 			model.addAttribute("userClickSupplierPayment", true);
@@ -264,6 +278,7 @@ public class PageController {
 			return "page";
 		}
 		logger.info(mcarddetails.toString());
+		//supplierClothes.setQuantity(supplierClothes.getQuantity()-1);
 		// Create a new Card Record
 		if (mcarddetails.getId() == 0) {
 			// create the card if id is 0
@@ -284,6 +299,8 @@ public class PageController {
 	@RequestMapping(value="/{id}/supplierpayment")
 	public ModelAndView supplierPayment(@PathVariable("id") int id, HttpServletRequest request)
 	{
+	session=request.getSession();
+	session.setAttribute("clothesId", id);
 	ModelAndView mv=new ModelAndView("page");
 	mv.addObject("title","Payment");
 	mv.addObject("userClickSupplierPayment", true);
@@ -312,6 +329,47 @@ public class PageController {
 		}
 		return mv;
 	}
+	
+	/*@RequestMapping(value= "/forgetPassword", method = RequestMethod.GET)
+	public String forgetPassword() 
+	{
+		return "forgetPassword";
+		
+	}*/
+	
+	@RequestMapping(value= "/forgetPassword", method = RequestMethod.GET)
+	public ModelAndView forgetPassword() 
+	{
+		ModelAndView mv = new ModelAndView("page");
+		List<User> list=userDAO.listAllUser();
+		for(int i=0;i<list.size();i++)
+		{
+			System.out.println(list.get(i));
+		}
+		
+		return new ModelAndView("forgetPassword","list",list);
+	}
+	
+	@RequestMapping(value= "/getPassword/{contactNumber}")
+	public ModelAndView getPassword(@PathVariable("contactNumber") String contactNumber) 
+	{
+		String pwd=userDAO.getPasswordByContactNumber(contactNumber);
+		return new ModelAndView("forgetPassword","pwd",pwd);
+	}
+	 /*@RequestMapping(value = "/forgot", method = RequestMethod.POST)
+	  public ModelAndView processForgotPasswordForm(ModelAndView modelAndView, @RequestParam("email") String email, HttpServletRequest request) {
+
+	    // Lookup user in database by e-mail
+	    String password = userDAO.getPasswordByEmail(email);
+	    request.setAttribute("password", password);
+
+	    if (!password.isEmpty()) {
+	      modelAndView.addObject("errorMessage", "We didn't find an account for that e-mail address.");
+	    }
+	    modelAndView.setViewName("forgotPassword");
+	    return modelAndView;
+	 }*/
+	
 	@RequestMapping(value="/perform-logout")
 	public String logout(HttpServletRequest request, HttpServletResponse response) {
 		// Invalidates HTTP Session, then unbinds any objects bound to it.
@@ -373,5 +431,15 @@ public class PageController {
 			return "redirect:/contactus?operation=contactus";
 
 		}
+		
+		/*@RequestMapping(value = "/getPassword", method = RequestMethod.POST)
+		public String handleContactNumberSubmission(Model model, HttpServletRequest request) {
+				// handle  validation for new category
+				// check if there is any error
+				String pwd=userDAO.getPasswordByContactNumber(request.getParameter("contactNumber"));
+				model.addAttribute("pwd",pwd);
+			return "redirect:/getPassword";
 
-}
+		}*/
+		
+	}

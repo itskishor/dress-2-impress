@@ -125,7 +125,13 @@
 				</div>
 				
 				<div class="row">
-				<div class="col-lg-6 about-txt-left">
+				<div class="col-lg-3 about-txt-left">
+					<img src="${images}/bg4.jpg" alt="" width="250px" hieght="350px">
+				</div>
+				<div class="col-lg-3 about-txt-left">
+					<img src="${images}/bg6.jpeg" alt="" width="180px" hieght="280px">
+				</div>
+					<div class="col-lg-6 about-txt-right">
 					<div class="jst-wthree-text">
 						<h2>
 							<br>
@@ -155,12 +161,6 @@
 						
 					</div>
 					</div>
-				<div class="col-lg-3 about-txt-right">
-					<img src="${images}/bg4.jpg" alt="" width="250px" hieght="350px">
-				</div>
-				<div class="col-lg-3 about-txt-right">
-					<img src="${images}/bg6.jpeg" alt="" width="180px" hieght="280px">
-				</div>
 			</div>
 				</div>
 	</section>

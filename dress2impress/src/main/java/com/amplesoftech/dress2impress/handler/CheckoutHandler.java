@@ -1,9 +1,7 @@
 package com.amplesoftech.dress2impress.handler;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -16,7 +14,6 @@ import org.springframework.binding.message.MessageContext;
 import org.springframework.stereotype.Component;
 
 import com.amplesoftech.dress2impress.model.CheckoutModel;
-import com.amplesoftech.dress2impress.model.RegisterModel;
 import com.amplesoftech.dress2impress.model.UserModel;
 import com.amplesoftech.dress2impressbackend.dao.CartLineDAO;
 import com.amplesoftech.dress2impressbackend.dao.ClothesDAO;
@@ -240,6 +237,7 @@ public class CheckoutHandler  implements Serializable {
 		orderDetail.setDeposite(checkoutModel.getCheckoutTotalDeposit());
 		orderDetail.setOrderTotal(checkoutModel.getCheckoutTotal());
 		orderDetail.setTotalRent(checkoutModel.getCheckoutTotalRent());
+	
 
 		
 		// save the order

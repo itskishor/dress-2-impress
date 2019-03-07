@@ -1073,6 +1073,35 @@ $(function() {
 		}
 		
 // --------------------------
+//Forget Password For User	
+/*		var $table = $("#forgetPasswordTable");		
+		if ($table.length){
+			$table
+			.DataTable({ajax : {
+				dataSrc : ''
+			},
+			columns : [
+				{
+				data : 'email',
+				bSortable : false,
+				mRender : function(data, type, row) {
+					var str = '';
+					
+					str += '<a href="'
+							+ window.contextRoot
+							+ '//json/data/'
+							+ data
+							+ '/getPassword"';
+					return str;
+				}
+				}
+			   ]
+				
+			})
+			
+		}*/
+//---------------------------------------------------
+		
 //Supplier Clothes for Employee for Purchase
 		var $table = $("#supplierClothesListTable");
 

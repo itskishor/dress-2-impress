@@ -20,7 +20,6 @@
 		<transition on="addressSelection" to="saveAddressSelection" validate="false"/>
 		<transition on="saveAddress" to="saveAddress" />
 	</view-state>
-
 	<!-- action state to save the address -->
 	<action-state id="saveAddressSelection">		
 		<evaluate expression="checkoutHandler.saveAddressSelection(flowScope.checkoutModel, requestParameters.shippingId)" />

@@ -18,15 +18,15 @@
 	<table id="cart" class="table table-hover table-responsible-xs table-sm table-condensed">
     				<thead>
 						<tr>
-							<th style="width:24%">Clothes</th>
-							<th style="width:10%">Price/Day</th>
-			       			<th style="width:8%">Quantity</th>
-							<th style="width:8%">Deposit</th>
-							<th style="width:20%">No.Of Days</th>
-							<th style="width:8%">Issue Date</th>
-							<th style="width:8%">Return Date</th>
-							<th style="width:10%" class="text-center">SubTotal</th>
-							<th style="width:6%"></th>
+							<th>Clothes</th>
+							<th>Price/Day</th>
+			       			<th>Quantity</th>
+							<th>Deposit</th>
+							<th>NoOfDays</th>
+							<th>Issue Date</th>
+							<th>Return Date</th>
+							<th class="text-center">SubTotal</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -49,7 +49,9 @@
 								<input type="number" id="count_${cartLine.id}" min="1" class="form-control text-center" value="${cartLine.clothesCount}">
 							</td>
 							<td data-th="Deposite">&#8377;${cartLine.deposite}</td>
-							<td data-th="NoOfDays"><input type="number" id="countdays_${cartLine.id}" min="1" class="form-control text-center" value="${cartLine.noOfDays}"></td>
+							<td data-th="NoOfDays">
+							<input type="number" id="countdays_${cartLine.id}" min="1" class="form-control" value="${cartLine.noOfDays}">
+							</td>
 							<td data-th="IssueDate"><input type="date" id="issuedate_${cartLine.id}" min="${cartLine.issueDate}" class="form-control text-center" value="${cartLine.issueDate}" ></td>
 							<td data-th="ReturnDate"><input type="date" id="returndate_${cartLine.id}" class="form-control text-center" value="${cartLine.returnDate}" disabled></td>
 							<td data-th="Subtotal" class="text-center">&#8377; ${cartLine.totalPrice} /-</td>
@@ -59,16 +61,16 @@
 							</td>
 						</tr>
 						</c:forEach>
-					</tbody>
-					
-						<tfoot>
+					</tbody>		
+					<tfoot>					
 					<tr>
 						<td><a href="${contextRoot}/show/all/clothes" class="btn btn-warning"><i class="fa fa-angle-left" style="font-size:24px;color:red"></i> Continue Shopping</a></td>
 						<td colspan="6" class="hidden-xs"></td>
-						<td class="pull-right"><strong>GrandTotal &#8377; ${userModel.cart.grandTotal}/-</strong></td>
+						<td class="pull-right"><strong>GrandTotal &#8377;${userModel.cart.grandTotal}/-</strong></td>
 						
 						<c:choose>
 							<c:when test="${availableCount != 0}">
+							<h6 class="pull-right" style="color:red">Warning:Please Press The <button  type="button" name="refreshCart" class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button> Button To Refresh The Cart Before You Checkout</h6>
 								<td><a href="${contextRoot}/cart/validate" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right" style="font-size:24px;color:red"></i></a></td>
 							</c:when>							
 							<c:otherwise>

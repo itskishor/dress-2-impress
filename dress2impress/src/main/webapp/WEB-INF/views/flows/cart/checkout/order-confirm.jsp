@@ -65,9 +65,9 @@
 
 		<div class="content">
 			<div class="container">
-				<div class="alert alert-success">
+				<!-- <div class="alert alert-success">
 					<h3 class="text-center">Your Order is Confirmed!!</h3>
-				</div>
+				</div> -->
 				<div class="invoice-title">
 					<center><h2 style="color: tomato">
 						Invoice
@@ -224,4 +224,3 @@
 				</div>
 			</div>
 		</div>
-		<%@include file="../../shared/flows-footer.jsp"%>

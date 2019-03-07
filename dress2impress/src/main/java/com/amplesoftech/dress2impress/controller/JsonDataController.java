@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.amplesoftech.dress2impressbackend.dao.CategoryDAO;
 import com.amplesoftech.dress2impressbackend.dao.ClothesDAO;
@@ -77,6 +79,7 @@ public class JsonDataController
 		return clothesDAO.list();
 				
 	}
+	
 
 	@RequestMapping("/admin/all/employees")
 	@ResponseBody
@@ -113,6 +116,21 @@ public class JsonDataController
 	public List<Clothes> getMostRentedClothes() {		
 		return clothesDAO.getClothesByParam("rented");				
 	}
+	
+	/*@RequestMapping(value ="/{email}/getPassword", method = RequestMethod.GET)
+	public ModelAndView showEditCategory(@PathVariable String email) {
+
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "Forget Password");
+		mv.addObject("userClickGetPassWord", true);
+		// fetch the category from database
+		String emaill=userDAO.getPasswordByContactNumber(email);
+		// set the category fetch from the database
+		mv.addObject("email", emaill);
+
+		return mv;
+
+	}*/
 	
 	
 

@@ -21,6 +21,8 @@ public class CartController {
 	public ModelAndView showCart(@RequestParam(name = "result", required = false) String result) {
 
 		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "User Cart");
+		mv.addObject("userClickShowCart", true);
 		if (result != null) {
 			switch (result) {
 			case "updated":
@@ -31,6 +33,9 @@ public class CartController {
 				break;
 			case "unavailable":
 				mv.addObject("message", "Clothes quantity is not available!");					
+				break;
+			case "modified":
+				mv.addObject("message", "Items inside cart has been modified!");
 				break;
 			case "deleted":
 				mv.addObject("message", "Cart has been Removed successfully!");
@@ -43,8 +48,13 @@ public class CartController {
 				break;
 			}
 		}
-		mv.addObject("title", "User Cart");
-		mv.addObject("userClickShowCart", true);
+		
+		else {
+			String response = cartService.validateCartLine();
+			if(response.equals("result=modified")) {
+				mv.addObject("message", "Items inside cart has been modified!");
+			}
+		}
 		mv.addObject("cartLines", cartService.getCartLines());
 		return mv;
 
@@ -74,7 +84,8 @@ public class CartController {
 		if(!response.equals("result=success")) {
 			return "redirect:/cart/show?"+response;
 		}
-		else {
+		else 
+		{
 			return "redirect:/cart/checkout";
 		}
 	}

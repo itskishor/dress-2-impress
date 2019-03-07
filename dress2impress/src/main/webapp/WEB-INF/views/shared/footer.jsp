@@ -43,12 +43,12 @@
           <ul class="list-unstyled">
             <li>
               <p>
-             <i class="fa fa-phone" aria-hidden="true"></i> <a href="http://192.168.0.107:3030/dress2impress/contactus">Contact Us</a>
+             <i class="fa fa-phone" aria-hidden="true"></i> <a href="http://192.168.0.120:3030/dress2impress/contactus">Contact Us</a>
               </p>
             </li>
             <li>
               <p>
-               <i class="fa fa-pencil-square-o" aria-hidden="true"></i> <a href="http://192.168.0.107:3030/dress2impress/aboutus">About Us</a>
+               <i class="fa fa-pencil-square-o" aria-hidden="true"></i> <a href="http://192.168.0.120:3030/dress2impress/aboutus">About Us</a>
               </p>
             </li>
           </ul>
@@ -71,11 +71,11 @@
             </li>
             <li>
               <p>
-                <i class="fa fa-envelope mr-3"></i> info@example.com</p>
+              &nbsp;<i class="fa fa-envelope mr-3"></i> info@example.com</p>
             </li>
             <li>
               <p>
-                <i class="fa fa-phone mr-3"></i> 9028528094</p>
+              &nbsp; <i class="fa fa-phone mr-3"></i> 9028528094</p>
             </li>
            
           </ul>
@@ -86,24 +86,25 @@
         <hr class="clearfix w-100 d-md-none">
 
         <!-- Grid column -->
-        <div class="col-md-2 col-lg-2 text-center mx-auto my-4">
+        <div class="col-md-4 col-lg-3 text-center mx-auto my-4">
 
           <!-- Social buttons -->
           <h5 class="font-weight-bold text-uppercase mb-4">Follow Us</h5>   
           <ul class="list-unstyled">
             <li>
               <p>
-             <i class="fa fa-twitter" aria-hidden="true"></i> <a href="https://www.twitter.com/">Twitter</a>
+             <i class="fa fa-twitter"></i> <a href="https://www.twitter.com/">Twitter</a>
               </p>
             </li>
             <li>
               <p>
-               <i class="fa fa-facebook-f" aria-hidden="true"></i> <a href="https://www.facebook.com/">Facebook</a>
+              &nbsp;&nbsp;&nbsp;
+               <i class="fa fa-facebook-f"></i> <a href="https://www.facebook.com/">Facebook</a>
               </p>
             </li>
              <li>
               <p>
-               <i class="fa fa-google-plus" aria-hidden="true"></i> <a href="https://plus.google.com/discover">Google Plus</a>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-google-plus"></i> <a href="https://plus.google.com/discover">GooglePlus</a>
               </p>
             </li>
           </ul>

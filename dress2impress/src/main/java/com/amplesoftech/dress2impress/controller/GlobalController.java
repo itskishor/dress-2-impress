@@ -25,6 +25,8 @@ public class GlobalController
 	private User user = null;	
 	
 	
+	
+	
 	@ModelAttribute("userModel")
 	public UserModel getUserModel() {		
 		if(session.getAttribute("userModel")==null) {

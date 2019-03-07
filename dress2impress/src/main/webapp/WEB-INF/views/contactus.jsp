@@ -26,27 +26,27 @@
 						enctype="multipart/form-data">
 						<div class="form-group row">
 							<label class="control-label col-md-3"><b>Enter Your Name:</b></label>
-							<div class="col-4">
+							<div class="col-6">
 								<sf:input type="text" path="name" id="name" class="form-control"
-									placeholder="your Name" />
+									placeholder="Your Name" />
 								<sf:errors path="name" cssClass="help-block" element="em" />
 							</div>
 						</div>
 
 						<div class="form-group row">
 							<label class="control-label col-md-3"><b>Email:</b></label>
-							<div class="col-5">
+							<div class="col-6">
 								<sf:input type="email" path="email" id="email"
-									class="form-control" placeholder="Your Email" />
+									class="form-control" placeholder="Enter Your Email" />
 								<sf:errors path="email" cssClass="help-block" element="em" />
 							</div>
 						</div>
 
 						<div class="form-group row">
 							<label class="control-label col-md-3"><b>Contact Number:</b></label>
-							<div class="col-3">
+							<div class="col-6">
 								<sf:input type="text" path="contactNumber" id="contactNumber" class="form-control"
-									placeholder="Enter Yor Contact here!"></sf:input>
+									placeholder="Enter Yor Contact Here!"></sf:input>
 								<sf:errors path="contactNumber" cssClass="help-block" element="em" />
 							</div>
 						</div>
@@ -55,7 +55,7 @@
 							<label class="control-label col-md-3"><b>Query:</b></label>
 							<div class="col-6">
 								<sf:textarea path="query" id="query" rows="4"
-									class="form-control" placeholder="Enter your Query here!"></sf:textarea>
+									class="form-control" placeholder="Enter Your Query Here!"></sf:textarea>
 								<sf:errors path="query" cssClass="help-block" element="em" />
 							</div>
 						</div>
@@ -70,9 +70,7 @@
 
 							</div>
 						</div>
-
 					</sf:form>
-
 				</div>
 			</div>
 		</div>

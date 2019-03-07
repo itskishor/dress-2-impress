@@ -47,7 +47,7 @@
 					</div>
 					<div class="col-10">
 					<sf:form class="form-horizontal"  modelAttribute="debitcarddetail" 
-					action="${contextRoot}/proceed/debitcarddetails" method="POST">
+					action="${contextRoot}/proceed/${clothId}/debitcarddetails" method="POST">
 						<div class="form-group row">
 							<label class="control-label col-sm-4" ><b>Card Number</b></label>
 							<div class="col-lg-7">

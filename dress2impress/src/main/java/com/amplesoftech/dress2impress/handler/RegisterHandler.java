@@ -48,6 +48,11 @@ public class RegisterHandler
 					.build());
 			transitionValue = "failure";
 		}
+		if (userDAO.getByContactNumber(user.getContactNumber())!= null) {
+			error.addMessage(new MessageBuilder().error().source("contactNumber").defaultText("Contact Number is already taken!")
+					.build());
+			transitionValue = "failure";
+		}
 		return transitionValue;
 	}
 

@@ -12,8 +12,10 @@ public interface UserDAO {
 	boolean update(User user);
 	// user related operation
 	User getByEmail(String email);
+	User getByContactNumber(String contactNumber);
 	User get(int id);
 	public boolean getByEmail1(String email) ;
+	public String getPasswordByContactNumber(String contactNumber);
 
 	//boolean add(User user);
 	
@@ -25,6 +27,8 @@ public interface UserDAO {
 	Address getBillingAddress(int userId);
 	List<Address> listShippingAddresses(int userId);
 	List<User> listByRole(String role);
+	
+	List<User> listAllUser();
 	/*
 	Address getBillingAddress(User user);
 	List<Address> listShippingAddresses(User user);*/
